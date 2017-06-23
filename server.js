@@ -122,28 +122,14 @@ if(typeof server_ip_address ==='undefined'){
 
 //local database
 
-
-
-if (process.env.INSTANCE_CONNECTION_NAME && process.env.NODE_ENV === 'production') {
-  if (process.env.SQL_CLIENT === 'mysql') {
-    config.socketPath = `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`;
-  } else if (process.env.SQL_CLIENT === 'pg') {
-    config.host = `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`;
-  }
-}
-
-
-
-
 var pool = mysql.createPool({
     
     host:      config.cloudSql.INSTANCE_CONNECTION_NAME,
-    user:      process.env.SQL_USER,
-    password : process.env.SQL_PASSWORD,
-    database:  process.env.SQL_DATABASE
+    user:      config.cloudSql.MYSQL_USER,
+    password : config.cloudSql.MYSQL_PASSWORD,
+    database:  'database3' 
     
 });
-
 
 /*
 //original
