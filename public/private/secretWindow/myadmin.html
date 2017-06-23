@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html>
+<head id="main_head">
+    
+    
+    
+    
+    <style>
+        body{
+            width: auto;
+            height: auto;
+            overflow-x: hidden;
+            overflow-y: auto;
+            background-color:white;
+        }
+        #mainDiv_mh,#footer{
+            width : 100%;
+            height: auto;
+            color: white;
+            background-color: black;
+            padding-bottom: 60px; 
+            margin: 0px;
+            position: relative;
+            top: -20px;
+            left: -10px;
+            padding: 30px;
+            padding-bottom: 60px;
+            border-bottom-style:inset;
+            border-bottom-width: thick;
+            border-collapse: collapse;
+            border-bottom-color:#89C35C;
+            border-top-color:#89C35C;
+            border-top-style:outset;
+            border-top-width: thick;
+            font-family: sans-serif;
+            font-size: 1.5em;
+            font-weight: 300;
+        }
+        
+        #mainDiv_mb{
+            width : 110%;
+            height: auto;
+            background: -webkit-linear-gradient(left, #52D017 0%, #89C35C 52%, #85BB65 65%, #52D017 100%);
+            background: -moz-linear-gradient(left, #52D017 0%, #89C35C 52%, #85BB65 65%, #52D017 100%);
+            background: -o-linear-gradient(left, #52D017 0%, #89C35C 52%, #85BB65 65%, #52D017 100%);
+            position: relative;
+            left: -10px;
+            top: 10px;
+            padding-bottom: 50px;
+            margin-bottom: 100px;
+            
+        }
+        
+        #subDiv_mb{
+            width: 85.5%;
+            height: auto;
+           background: -webkit-linear-gradient(left, rgba(224,224,224,1) 0%, rgba(245,245,245,0.93) 47%, rgba(224,224,224,0.86) 100%);
+           background: -moz-linear-gradient(left, rgba(224,224,224,1) 0%, rgba(245,245,245,0.93) 47%, rgba(224,224,224,0.86) 100%);
+            background: -o-linear-gradient(left, rgba(224,224,224,1) 0%, rgba(245,245,245,0.93) 47%, rgba(224,224,224,0.86) 100%);
+            padding: 30px; 
+            position: relative;
+            top: 20px;
+            left: 30px;
+            
+        }
+        
+        
+        /** the form elements **/
+#mainForm_mb { box-sizing: border-box; }
+ 
+#mainForm_mb .txtinput { 
+  display: block;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #dedede;
+  margin-bottom: 20px;
+  font-size: 1.55em;
+  padding: 11px 25px;
+  padding-left: 55px;
+  width: 90%;
+  color: #777;
+   
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset; 
+   
+  transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+  -webkit-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+  -moz-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+  -o-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+}
+ 
+#mainForm_mb .txtinput:focus { 
+  color: #333;
+  border-color: rgba(41, 92, 161, 0.4);
+   
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
+  outline: 0 none; 
+}
+        
+        
+        
+        
+        
+        
+        
+        #mainForm_mb textarea {
+  display: block;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  border-style: solid;
+  border-width: 1px;
+  font-size: 1.5em;
+  color: #777;
+  border-color: #dedede;
+  margin-bottom: 15px;
+  padding: 11px 25px;
+  padding-left: 55px;
+  width: 90%;
+  height: 180px;
+  
+   
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset; 
+   
+  transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+  -webkit-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+  -moz-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+  -o-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+}
+#mainForm_mb textarea:focus {
+  color: #333;
+  border-color: rgba(41, 92, 161, 0.4);
+ 
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(40, 90, 160, 0.6);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(40, 90, 160, 0.6);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(40, 90, 160, 0.6);
+  outline: 0 none; 
+}
+
+        
+        
+        
+    
+        
+        
+        
+        
+#del_blog{
+        
+display: block;
+  float: left;
+  height: 3em;
+  padding: 0 .4em;
+  border: 1px solid;
+  outline: 0;
+  font-weight: bold;
+  font-size: 1.3em;
+  color: #fff;
+  text-shadow: 0px 1px 0px #222;
+  white-space: nowrap;
+  word-wrap: normal;
+  vertical-align: middle;
+  cursor: pointer;
+   
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+   
+  border-color: #cb0303 #cb0303 #000;
+   
+  -moz-box-shadow: inset 0 1px 0 rgba(256,256,256, .35);
+  -ms-box-shadow: inset 0 1px 0 rgba(256,256,256, .35);
+  -webkit-box-shadow: inset 0 1px 0 rgba(256,256,256, .35);
+  box-shadow: inset 0 1px 0 rgba(256,256,256, .35);
+   
+  background: -moz-linear-gradient(top, #ff2911 0%, #cb0303 100%);
+  background: -webkit-linear-gradient(top, #ff2911 0%, #cb0303 100%);
+  background: -o-linear-gradient(top, #ff2911 0%, #cb0303 100%);
+  background: -ms-linear-gradient(top, #ff2911 0%, #cb0303 100%);
+  background: -moz-linear-gradient(top, #ff2911 0%, #cb0303 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2eeaf', endColorstr='#ff2911',GradientType=0 );
+}
+#del_blog:hover, #del_blog:active {
+  border-color: #cb4141 #cb4141 #000;
+  color: #fff;
+   
+  -moz-box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
+  -ms-box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
+  -webkit-box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
+  box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
+   
+  background: -moz-linear-gradient(top, #fd7c6d 0%, #cb4141 100%);
+  background: -webkit-linear-gradient(top, #fd7c6d 0%, #cb4141 100%); 
+  background: -o-linear-gradient(top, #fd7c6d 0%, #cb4141 100%); 
+  background: -ms-linear-gradient(top, #fd7c6d 0%, #cb4141 100%); 
+  background: -moz-linear-gradient(top, #fd7c6d 0%, #cb4141 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4edbd', endColorstr='#fd7c6d',GradientType=0 );
+    
+        
+}        
+        
+        
+        
+        
+        
+#buttons #submitbtn {
+  display: block;
+  float: left;
+  height: 3em;
+  padding: 0 1em;
+  border: 1px solid;
+  outline: 0;
+  font-weight: bold;
+  font-size: 1.3em;
+  color: #fff;
+  text-shadow: 0px 1px 0px #222;
+  white-space: nowrap;
+  word-wrap: normal;
+  vertical-align: middle;
+  cursor: pointer;
+   
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+   
+  border-color: #5e890a #5e890a #000;
+   
+  -moz-box-shadow: inset 0 1px 0 rgba(256,256,256, .35);
+  -ms-box-shadow: inset 0 1px 0 rgba(256,256,256, .35);
+  -webkit-box-shadow: inset 0 1px 0 rgba(256,256,256, .35);
+  box-shadow: inset 0 1px 0 rgba(256,256,256, .35);
+   
+  background-color: rgb(226,238,175);
+  background-image: -moz-linear-gradient(top, rgb(226,238,175) 3%, rgb(188,216,77) 3%, rgb(144,176,38) 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(3%,rgb(226,238,175)), color-stop(3%,rgb(188,216,77)), color-stop(100%,rgb(144,176,38))); 
+  background-image: -webkit-linear-gradient(top, rgb(226,238,175) 3%,rgb(188,216,77) 3%,rgb(144,176,38) 100%);
+  background-image: -o-linear-gradient(top, rgb(226,238,175) 3%,rgb(188,216,77) 3%,rgb(144,176,38) 100%);
+  background-image: -ms-linear-gradient(top, rgb(226,238,175) 3%,rgb(188,216,77) 3%,rgb(144,176,38) 100%);
+  background-image: linear-gradient(top, rgb(226,238,175) 3%,rgb(188,216,77) 3%,rgb(144,176,38) 100%); 
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2eeaf', endColorstr='#90b026',GradientType=0 );
+}
+#buttons #submitbtn:hover, #buttons #submitbtn:active {
+  border-color: #7c9826 #7c9826 #000;
+  color: #fff;
+   
+  -moz-box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
+  -ms-box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
+  -webkit-box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
+  box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
+   
+  background: rgb(228,237,189);
+  background: -moz-linear-gradient(top, rgb(228,237,189) 2%, rgb(207,219,120) 3%, rgb(149,175,54) 100%); 
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,rgb(228,237,189)), color-stop(3%,rgb(207,219,120)), color-stop(100%,rgb(149,175,54))); 
+  background: -webkit-linear-gradient(top, rgb(228,237,189) 2%,rgb(207,219,120) 3%,rgb(149,175,54) 100%); 
+  background: -o-linear-gradient(top, rgb(228,237,189) 2%,rgb(207,219,120) 3%,rgb(149,175,54) 100%); background: -ms-linear-gradient(top, rgb(228,237,189) 2%,rgb(207,219,120) 3%,rgb(149,175,54) 100%); background: linear-gradient(top, rgb(228,237,189) 2%,rgb(207,219,120) 3%,rgb(149,175,54) 100%); 
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4edbd', endColorstr='#95af36',GradientType=0 );
+}
+        
+        
+        
+        
+        #buttons #resetbtn {
+  display: block;
+  float: left;
+  color: #515151;
+  text-shadow: -1px 1px 0px #fff;
+  margin-right: 20px;
+  height: 3em;
+  padding: 0 1em;
+  outline: 0;
+  font-weight: bold;
+  font-size: 1.3em;
+  white-space: nowrap;
+  word-wrap: normal;
+  vertical-align: middle;
+  cursor: pointer;
+   
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+   
+  background-color: #fff;
+  background-image: -moz-linear-gradient(top, rgb(255,255,255) 2%, rgb(240,240,240) 2%, rgb(222,222,222) 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(2%,rgb(255,255,255)), color-stop(2%,rgb(240,240,240)), color-stop(100%,rgb(222,222,222)));
+  background-image: -webkit-linear-gradient(top, rgb(255,255,255) 2%,rgb(240,240,240) 2%,rgb(222,222,222) 100%);
+  background-image: -o-linear-gradient(top, rgb(255,255,255) 2%,rgb(240,240,240) 2%,rgb(222,222,222) 100%);  background-image: -ms-linear-gradient(top, rgb(255,255,255) 2%,rgb(240,240,240) 2%,rgb(222,222,222) 100%);
+  background-image: linear-gradient(top, rgb(255,255,255) 2%,rgb(240,240,240) 2%,rgb(222,222,222) 100%); 
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dedede',GradientType=0 );
+   
+  border: 1px solid #969696;
+            
+  box-shadow: 0 1px 2px rgba(144, 144, 144, 0.4);
+  -moz-box-shadow: 0 1px 2px rgba(144, 144, 144, 0.4);
+  -webkit-box-shadow: 0 1px 2px rgba(144, 144, 144, 0.4);
+   
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+}
+#buttons #resetbtn:hover {
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75); 
+  color: #818181;
+   
+  background-color: #fff;
+  background-image: -moz-linear-gradient(top, rgb(255,255,255) 2%, rgb(244,244,244) 2%, rgb(229,229,229) 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(2%,rgb(255,255,255)), color-stop(2%,rgb(244,244,244)), color-stop(100%,rgb(229,229,229)));
+  background-image: -webkit-linear-gradient(top, rgb(255,255,255) 2%,rgb(244,244,244) 2%,rgb(229,229,229) 100%);background-image: -o-linear-gradient(top, rgb(255,255,255) 2%,rgb(244,244,244) 2%,rgb(229,229,229) 100%); background-image: -ms-linear-gradient(top, rgb(255,255,255) 2%,rgb(244,244,244) 2%,rgb(229,229,229) 100%); background-image: linear-gradient(top, rgb(255,255,255) 2%,rgb(244,244,244) 2%,rgb(229,229,229) 100%); 
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 );
+   
+  border-color: #aeaeae;
+   
+  box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
+}
+        
+        
+        @media screen and (max-width: 800px) {
+  body {
+    padding: 10px 15px;
+  }
+  #container {
+    width: 100%;
+  }
+  #mainForm_mb #aligned {
+    width: 100%;
+    float: none;
+    display: block;
+  }
+  
+  #mainForm_mb .txtinput, mainForm_mb textarea {
+    width: 85%;
+  }
+            
+            
+            
+            /* smaller screen dropoff *******/
+@media only screen and (max-width: 550px) {
+  #mainForm_mb .txtinput, #mainForm_mb textarea {
+    width: 80%;
+  }
+}
+ 
+/* iPhone Landscape ********/
+@media only screen and (max-width: 480px) {
+  body {
+    padding: 10px 0px;
+  }
+  select.selmenu {
+    width: 190px;
+  }
+}
+ 
+/* iPhone portrait *******/
+@media only screen and (max-width: 320px) {
+  body {
+    padding: 10px 0px;
+  }
+  #mainForm_mb .txtinput, #mainForm_mb textarea {
+    width: 70%;
+  }
+  #mainForm_mb #aligned {
+    overflow: hidden;
+  }
+  select.selmenu {
+    width: 160px;
+  }
+  #recipientcase {
+    margin-right: 30px;
+  }
+}
+             
+    </style>
+    
+    
+    <style>
+    
+           #activity_div_mb{
+                
+                position: fixed;
+                z-index: 1;
+                top:0px;
+                right: 100px;
+                box-shadow: 1px 1px 20px #888888; 
+                width: 40%;
+                height: 20%;
+                background: -webkit-linear-gradient(left, rgba(245,239,152,1) 0%, rgba(235,223,86,0.85) 52%, rgba(240,221,96,0.81) 65%, rgba(253,217,124,1) 100%);
+                background: -moz-linear-gradient(left, rgba(245,239,152,1) 0%, rgba(235,223,86,0.85) 52%, rgba(240,221,96,0.81) 65%, rgba(253,217,124,1) 100%);
+                background: -o-linear-gradient(left, rgba(245,239,152,1) 0%, rgba(235,223,86,0.85) 52%, rgba(240,221,96,0.81) 65%, rgba(253,217,124,1) 100%);
+                background: linear-gradient(left, rgba(245,239,152,1) 0%, rgba(235,223,86,0.85) 52%, rgba(240,221,96,0.81) 65%, rgba(253,217,124,1) 100%);
+               
+                font-family: "Helvetica Neue", Arial, sans-serif;
+                font-size: 2.0em;
+                color: darkred;
+               text-align: center;
+                
+            }
+    
+    </style>
+    
+    
+    <title>
+    Admin Panel
+    </title>
+    <div id="mainDiv_mh">
+        <h1>
+        Welcome to Admin Panel
+        </h1>
+        
+    </div>
+    
+    
+</head>
+    
+<body id="main_body">
+    <div id="mainDiv_mb">
+        <div id="subDiv_mb">
+            <form id="mainForm_mb" method="post" enctype="multipart/form-data">
+                <div id="header_div_mb">
+                    <section id="aligned">
+                        
+                        <div id="activity_div_mb">
+                               &#35;Activity Log                    
+                            <p style="font-size: 0.7em;color: #777;margin-top:5px;" id="respose_Area">
+                               No Activity
+                            </p>
+                        </div>
+                        <div id="headBlog_div_mb" style="position:relative">
+                            <input type="button" name="del_blog" id="del_blog" value="delete blog" style="position:absolute;top:-5px;right:80px;" onclick="deleteBlog();"> 
+                        </div>    
+                        <div style="padding:20px;">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <p>
+                                        SELECT THE FILE(file uploads automatically)
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p>
+                                        Select a file image(max 500kb)
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p>
+                                        Preview image
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="file" accept="image/*" name="file" id="object_file" tabindex="3" value="Upload Object" class="uploadBtn">
+                                    </td>
+                                    
+                                    <td>
+                                        <input type="file" accept="image/*"  name="file" id="notes_image" tabindex="4" value="upload file" class="uploadBtn">
+                                    </td>
+                                    <td>
+                                        <input type="image" accept="image/*" name="notes_image_preview" id="notes_image_preview" class="preview" alt="img not uploaded" width="100" height="100">
+                                    </td>
+                                </tr>
+                                <div>
+                                    <tr style="visibility:hidden;" id="oAuth_Consent_Col1">
+                                        <br>
+                                        <td>
+                                            <a href="#" id="oAuthUrl" target="_blank">click here to authorize to google drive if you havent already.</a>
+                                        </td>
+                                        <br>
+                                    </tr>
+                                    <tr style="visibility:hidden;" id="oAuth_Consent_Col2">
+                                        <td>
+                                            <input type="text" id="oAuthCode" placeholder="paste the code here.." autocomplete="off" style="width:100%">    
+                                        </td>
+                                        <td>
+                                            <input type="submit" id="submitoAuthCode" value="Submit">
+                                        </td>
+                                    </tr>
+                                </div>
+                            </table>
+                        </div>
+                        
+                        
+                        <input type="text" name="user_name" id="user_name" placeholder="Your Name" autocomplete="off" tabindex="4" class="txtinput">
+                        <div style="position:relative">
+                            <textarea name="user_message_blog" id="user_message_blog" placeholder="Write your small description..." tabindex="6" class="txtblock" style="width:50%;">
+                            </textarea>
+                            <div style="position:relative;top:-170px;right:100px;" align="right">
+                                <table cellspacing="20">
+                                    <tr>
+                                        <td>
+                                        Select your own pic(max 500kb)
+                                        </td>
+                                        <p>
+                                        Preview image
+                                        </p>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="file" accept="image/*"  name="file" id="user_image" tabindex="4" value="upload file" class="uploadBtn">
+                                        </td>
+                                        <td>
+                                            <input type="image" accept="image/*" name="user_image_preview" id="user_image_preview" class="preview" alt="img not uploaded" width="100" height="100">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="buttons">
+                        <input type="reset" name="reset" id="resetbtn" class="resetbtn" value="Reset">
+                        <input type="submit" name="submit" id="submitbtn" class="submitbtn" tabindex="7" value="Submit this!">
+                        <br style="clear:both;">
+                    </section>
+                    
+                    <br><br><br><hr>
+                    
+                    <div id="testapp">
+                    
+                        <input type="text" name="test_url" id="test_url" placeholder="Type a Url" autocomplete="off" class="txtinput">
+                        <input type="file" accept="image/*"  name="file" id="test_image" value="test image" class="uploadBtn">
+                        
+                    </div>
+                    
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div id="footer" style="height:150px;position:relative;top:60px;border-bottom-style: hidden;">
+        <p style="text-align: center;">
+        my admin panel
+        </p>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    
+    
+    <script>
+        
+         document.addEventListener('change',handleChangeEvt,false);
+        var socket = io();
+          socket.emit('join','AdminPanel');
+        
+        var object_file = document.getElementById("object_file");
+        var notes_image_preview = document.getElementById("notes_image_preview");
+        
+        
+       function handleChangeEvt(evt){
+           
+           if(evt.target.type == 'file' && evt.target.id == "object_file"){
+               
+               var files = evt.target.files;
+                for(var i = 0,file; file = files[i]; i++){
+                    
+                    var reader = new FileReader();
+                    
+                    reader.onload = (function(readFile){
+                        
+                        return function(e){
+                            
+                            console.log(e.target.result);
+                            
+                            var obj = {
+                                
+                                Shop_Name:'modifio manzz',
+                                Shop_Address:'malviya nagar 23j',
+                                Shop_Email:'onlinefreenotes@gmail.com',
+                                Shop_Number:'95959595',
+                                Shop_Description: 'about the shop',
+                                Shop_Images:e.target.result,
+                                
+                            };
+                            
+                            //var base64String = btoa(String.fromCharCode.apply(null, new Uint8Array(e.target.result)));
+                            
+                            //notes_image_preview.src = 'data:image/png;base64,' + base64String;
+                            
+                            socket.emit('ShopData',obj);
+                            
+                        }
+                        
+                    })(file);
+                    
+                    reader.readAsArrayBuffer(file);
+                    
+                }
+               
+           }
+           
+       }
+        
+    </script>
+    
+    
+    
+    
+    <script id="modifiable">
+    /*
+           function handleChangeEvt(evt){
+           
+           if(evt.target.type == 'file' && evt.target.id == "object_file"){
+               
+               var files = evt.target.files;
+                for(var i = 0,file; file = files[i]; i++){
+                    
+                    var reader = new FileReader();
+                    
+                    reader.onload = (function(readFile){
+                        
+                        return function(e){
+                            
+                            console.log(e.target.result);
+                            
+                            var obj = {
+                                
+                                'modelData':e.target.result
+                                
+                            };
+                            
+                            //var base64String = btoa(String.fromCharCode.apply(null, new Uint8Array(e.target.result)));
+                            
+                            //notes_image_preview.src = 'data:image/png;base64,' + base64String;
+                            
+                            socket.emit('carModelDat',obj);
+                            
+                        }
+                        
+                    })(file);
+                    
+                    reader.readAsArrayBuffer(file);
+                    
+                }
+               
+           }
+           
+       }
+    */
+    </script>
+    
+    
+    
+</body>
+</html>

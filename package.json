@@ -1,0 +1,28 @@
+{
+  "name": "projectX",
+  "version": "1.0.0",
+  "description": "",
+  "repository": "https://github.com/prabhakarupadhyay/projectX",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+  },
+  "author": "prabhakar marshall",
+  "contributors": [
+    {
+      "name": "akshay"
+    },
+    {
+      "name": "tejas"
+    },
+    {
+      "name": "utkarsh",
+    }
+  ],
+  "license": "ISC",
+  "dependencies": {
+  },
+  "engines": {
+    "node": ">=4.3.2"
+  }
+}
