@@ -21,6 +21,20 @@
   ],
   "license": "ISC",
   "dependencies": {
+    "express": "*",
+    "request": "*",
+    "connect-livereload": "*",
+    "morgan": "*",
+    "express-session": "*",
+    "body-parser": "*",
+    "cookie-parser": "*",
+    "serve-favicon": "*",
+    "finalhandler": "*",
+    "passport": "*",
+    "passport-google-oauth2": "*",
+    "socket.io": "*",
+    "mime": "*",
+    "path": "*"
   },
   "engines": {
     "node": ">=4.3.2"
