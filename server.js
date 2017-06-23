@@ -126,8 +126,8 @@ var pool = mysql.createPool({
     
     host:      config.cloudSql.INSTANCE_CONNECTION_NAME,
     user:      config.cloudSql.MYSQL_USER,
-    password : config.cloudSql.MYSQL_PASSWORD
-    database:  'database3' 
+    password : config.cloudSql.MYSQL_PASSWORD,
+    database:  process.env.SQL_DATABASE
     
 });
 
