@@ -124,13 +124,13 @@ if(typeof server_ip_address ==='undefined'){
 
 var pool = mysql.createPool({
     
-    host:      'localhost',
-    user:      'root',
-    port:      '3306',
-    password : 'nadhukar123',
-    database:  'database3'
+    host:      config.cloudSql.INSTANCE_CONNECTION_NAME,
+    user:      config.cloudSql.MYSQL_USER,
+    password : config.cloudSql.MYSQL_PASSWORD
+    database:  'database3' 
     
-    });
+});
+
 
 /*
 //original

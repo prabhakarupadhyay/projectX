@@ -34,7 +34,12 @@
     "passport-google-oauth2": "*",
     "socket.io": "*",
     "mime": "*",
-    "path": "*"
+    "path": "*",
+    "mysql": "*",
+    "cheerio": "*",
+    "googleapis": "*",
+    "passport-oauth2-refresh": "*"
+      
   },
   "engines": {
     "node": ">=4.3.2"
