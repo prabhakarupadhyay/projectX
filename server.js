@@ -137,7 +137,10 @@ var options = {
   host: '104.197.220.246',
   user: 'admin',
   password: 'nadhukar123',
-  database: 'database3'
+  database: 'database3',
+     dialectOptions: {
+ socketPath: '/cloudsql/titanium-flash-171510:us-central1:instance-1'
+ }
     
 }
 
