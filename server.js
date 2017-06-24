@@ -139,7 +139,7 @@ var options = {
   password: 'nadhukar123',
   database: 'database3',
      dialectOptions: {
- socketPath: '/cloudsql/titanium-flash-171510:us-central1:instance-1'
+ socketPath: '/cloudsql/titanium-flash-171510:us-central1:mysqlcloud0007'
  }
     
 }
