@@ -250,7 +250,7 @@ function isLoggedIn(req, res, next) {
 
 
 
- server.listen(server_port, () => {
+ server.listen(server_port,'10.128.0.2', () => {
     const port = server.address().port;
     console.log(`App listening on port ${port}`);
   });
