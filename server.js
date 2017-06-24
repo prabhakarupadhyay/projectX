@@ -105,8 +105,8 @@ var htmlFiles = ['./public/index.html','./public/private/secretWindow/myadmin.ht
  select between openshift or local port
 *
 */
-var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
-var server_ip_address = process.env.OPENSHIFT_NODEJS_IP ;
+var server_port = process.env.PORT || 8080;
+var server_ip_address = '35.188.61.74' ;
 
 if(typeof server_ip_address ==='undefined'){
     server_ip_address = '127.0.0.1';
@@ -125,8 +125,8 @@ if(typeof server_ip_address ==='undefined'){
 var pool = mysql.createPool({
     
     host:      '35.184.217.2',
-    user:      'root',
-  //  password : config.cloudSql.MYSQL_PASSWORD,
+    user:      config.cloudSql.MYSQL_USER,
+    password : config.cloudSql.MYSQL_PASSWORD,
     database:  'database3' 
     
 });
