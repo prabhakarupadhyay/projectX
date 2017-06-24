@@ -113,7 +113,7 @@ var htmlFiles = ['./public/index.html','./public/private/secretWindow/myadmin.ht
  select between openshift or local port
 *
 */
-var server_port = process.env.PORT;
+var server_port = 8080;
 var server_ip_address ;
 
 if(typeof server_ip_address ==='undefined'){
@@ -251,11 +251,11 @@ function isLoggedIn(req, res, next) {
 
 
 
-server.listen(server_port,function () {
-    console.log( "Listening on " + server_ip_address + ", server_port " + server_port );
-});
 
-
+ server.listen(server_port, () => {
+    const port = server.address().port;
+    console.log(`App listening on port ${port}`);
+  });
 
 
 /*
