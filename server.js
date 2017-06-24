@@ -114,7 +114,7 @@ var htmlFiles = ['./public/index.html','./public/private/secretWindow/myadmin.ht
 *
 */
 var server_port = 8080;
-var server_ip_address ;
+var server_ip_address = '35.188.61.74';
 
 if(typeof server_ip_address ==='undefined'){
     server_ip_address = '127.0.0.1';
@@ -132,6 +132,7 @@ if(typeof server_ip_address ==='undefined'){
 
 var pool = mysql.createPool({
     
+    host:      '35.184.217.2',
     user:      config.cloudSql.MYSQL_USER,
     password : config.cloudSql.MYSQL_PASSWORD,
     database:  'database3' 
@@ -250,7 +251,7 @@ function isLoggedIn(req, res, next) {
 
 
 
- server.listen(server_port,'10.128.0.2', () => {
+ server.listen(server_port,server_ip_address, () => {
     const port = server.address().port;
     console.log(`App listening on port ${port}`);
   });
