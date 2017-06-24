@@ -38,7 +38,9 @@
     "mysql": "*",
     "cheerio": "*",
     "googleapis": "*",
-    "passport-oauth2-refresh": "*"
+    "passport-oauth2-refresh": "*",
+    "@google-cloud/datastore": "~1.0.0",
+      
       
   },
   "engines": {

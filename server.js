@@ -49,6 +49,7 @@ var xmlReqHandler = require("./lib/xmlReqHandler.js");
 var createSql = require("./lib/sql tables/createSql.js");
 var sessionHandle = require('./lib/sessionHandler.js');
 var config = require('./lib/config.js');
+var config2 = require('./lib/config2.js');
 var operations = require("./lib/operations.js");
 var passportOauth = require("./lib/passport.js");
 var readHtml = require("./lib/readHtml.js");
@@ -130,14 +131,24 @@ if(typeof server_ip_address ==='undefined'){
 
 //local database
 
-var pool = mysql.createPool({
+
+var options = {
     
-    host:      '35.184.217.2',
-    user:      config.cloudSql.MYSQL_USER,
-    password : config.cloudSql.MYSQL_PASSWORD,
-    database:  'database3' 
+  user: config2.get('MYSQL_USER'),
+  password: config2.get('MYSQL_PASSWORD'),
+  database: 'bookshelf'
     
-});
+}
+
+
+if (config2.get('INSTANCE_CONNECTION_NAME') && config2.get('NODE_ENV') === 'production') {
+  options.socketPath = `/cloudsql/${config2.get('INSTANCE_CONNECTION_NAME')}`;
+}
+
+
+var pool = mysql.createPool(options);
+
+
 
 /*
 //original
