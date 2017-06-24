@@ -133,10 +133,11 @@ if(typeof server_ip_address ==='undefined'){
 
 
 var options = {
-    
+
+  host: '35.184.217.2',
   user: config2.get('MYSQL_USER'),
   password: config2.get('MYSQL_PASSWORD'),
-  database: 'bookshelf'
+  database: 'database3'
     
 }
 
