@@ -124,7 +124,7 @@ if(typeof server_ip_address ==='undefined'){
 
 var pool = mysql.createPool({
     
-    host:       config.cloudSql.INSTANCE_CONNECTION_NAME,
+    host:      '35.184.217.2',
     user:      config.cloudSql.MYSQL_USER,
     password : config.cloudSql.MYSQL_PASSWORD,
     database:  'database3' 
