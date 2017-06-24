@@ -26,6 +26,14 @@ var bodyParser = require('body-parser');
 var router = express.Router();
 
 
+// Activate Google Cloud Trace and Debug when in production
+if (process.env.NODE_ENV === 'production') {
+  require('@google-cloud/trace-agent').start();
+  require('@google-cloud/debug-agent').start();
+}
+
+
+
 /*
  *
  other file paths
@@ -105,8 +113,8 @@ var htmlFiles = ['./public/index.html','./public/private/secretWindow/myadmin.ht
  select between openshift or local port
 *
 */
-var server_port = process.env.PORT || 8080;
-var server_ip_address = '35.188.61.74' ;
+var server_port = process.env.PORT;
+var server_ip_address ;
 
 if(typeof server_ip_address ==='undefined'){
     server_ip_address = '127.0.0.1';
@@ -243,11 +251,14 @@ function isLoggedIn(req, res, next) {
 
 
 
-server.listen(server_port, server_ip_address, function () {
+app.listen(,function () {
     console.log( "Listening on " + server_ip_address + ", server_port " + server_port );
 });
 
-
+ server = app.listen(server_port, () => {
+    const port = server.address().port;
+    console.log(`App listening on port ${port}`);
+  });
 
 
 /*
