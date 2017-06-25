@@ -135,12 +135,9 @@ if(typeof server_ip_address ==='undefined'){
 var options = {
 
   host: '104.197.220.246',
-  user: 'admin',
-  password: 'nadhukar123',
-  database: 'database3',
-     dialectOptions: {
- socketPath: '/cloudsql/titanium-flash-171510:us-central1:mysqlcloud0007'
- }
+  user: config2.get('MYSQL_USER'),
+  password: config2.get('MYSQL_PASSWORD'),
+  database: 'database'
     
 }
 
