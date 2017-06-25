@@ -6,7 +6,7 @@
 
 var express = require('express');
 var app = express();
-var server = require("http").Server(app);
+var server = require("https").Server(app);
 var fs = require("fs");
 var mime = require("mime");
 var async = require("async");
