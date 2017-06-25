@@ -134,7 +134,7 @@ if(typeof server_ip_address ==='undefined'){
 
 var options = {
 
-  host: '104.197.220.246',
+  host: '35.188.16.148',
   user: config2.get('MYSQL_USER'),
   password: config2.get('MYSQL_PASSWORD'),
   database: 'database'
