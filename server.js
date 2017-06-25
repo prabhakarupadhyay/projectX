@@ -115,7 +115,7 @@ var htmlFiles = ['./public/index.html','./public/private/secretWindow/myadmin.ht
 *
 */
 var server_port = process.env.PORT || 8080;
-var server_ip_address = '10.128.0.2';
+var server_ip_address = 'localhost';
 
 if(typeof server_ip_address ==='undefined'){
     server_ip_address = '127.0.0.1';
@@ -265,7 +265,7 @@ function isLoggedIn(req, res, next) {
 //
 
 
-server.listen(server_ip_address,function () {
+server.listen(server_port,server_ip_address,function () {
     console.log( "Listening on " + server_ip_address + ", server_port " + server_port );
 });
 
