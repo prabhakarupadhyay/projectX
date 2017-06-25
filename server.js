@@ -115,7 +115,7 @@ var htmlFiles = ['./public/index.html','./public/private/secretWindow/myadmin.ht
 *
 */
 var server_port = process.env.PORT || 443;
-var server_ip_address = '104.197.220.246';
+var server_ip_address = '10.128.0.2';
 
 if(typeof server_ip_address ==='undefined'){
     server_ip_address = '127.0.0.1';
