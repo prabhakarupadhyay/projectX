@@ -114,8 +114,8 @@ var htmlFiles = ['./public/index.html','./public/private/secretWindow/myadmin.ht
  select between openshift or local port
 *
 */
-var server_port = process.env.PORT || 443;
-var server_ip_address = '10.128.0.2';
+var server_port = process.env.PORT || 8080;
+var server_ip_address = 'localhost';
 
 if(typeof server_ip_address ==='undefined'){
     server_ip_address = '127.0.0.1';
