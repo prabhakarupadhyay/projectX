@@ -115,7 +115,7 @@ var htmlFiles = ['./public/index.html','./public/private/secretWindow/myadmin.ht
 *
 */
 var server_port = process.env.PORT || 8080;
-var server_ip_address = '10.128.0.2';
+var server_ip_address = '104.197.220.246';
 
 if(typeof server_ip_address ==='undefined'){
     server_ip_address = '127.0.0.1';
@@ -128,10 +128,6 @@ if(typeof server_ip_address ==='undefined'){
  connect to mysql server
 *
 */
-
-//local database
-
-
 var options = {
 
   host: config2.get('MYSQL_HOST'),
@@ -145,7 +141,6 @@ var options = {
 if (config2.get('INSTANCE_CONNECTION_NAME') && config2.get('NODE_ENV') === 'production') {
   options.socketPath = `/cloudsql/${config2.get('INSTANCE_CONNECTION_NAME')}`;
 }
-
 
 var pool = mysql.createPool(options);
 
