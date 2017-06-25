@@ -6,7 +6,7 @@
 
 var express = require('express');
 var app = express();
-var server = require("https").Server(app);
+var server = require("http").Server(app);
 var fs = require("fs");
 var mime = require("mime");
 var async = require("async");
@@ -115,7 +115,7 @@ var htmlFiles = ['./public/index.html','./public/private/secretWindow/myadmin.ht
 *
 */
 var server_port = process.env.PORT || 8080;
-var server_ip_address = '10.128.0.2';
+var server_ip_address = 'localhost';
 
 if(typeof server_ip_address ==='undefined'){
     server_ip_address = '127.0.0.1';
