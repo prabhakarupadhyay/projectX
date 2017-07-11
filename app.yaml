@@ -20,7 +20,7 @@ env_variables:
 
   CLOUD_BUCKET: 'titanium-flash-171510.appspot.com'
   PROJECT_ID: 'titanium-flash-171510'
-  SQL_USER: 'root'
+  SQL_USER: 'local'
   SQL_PASSWORD: 'nadhukar123'
   SQL_DATABASE: 'database'
   # e.g. my-awesome-project:us-central1:my-cloud-sql-instance

@@ -79,7 +79,7 @@
       
       
 	                
-      <form method="POST" action="https://titanium-flash-171510.appspot.com/adminUpload_SHOPS_IMAGE" enctype="multipart/form-data" id="form1"  onsubmit="return submitForm(this);">
+      <form method="POST" action="/adminUpload_SHOPS_IMAGE" enctype="multipart/form-data" id="form1"  onsubmit="return submitForm(this);">
           File: <input type="file" name="fileUpload" id="files">
           <input type="submit" value="send" id="sub1">   
       </form>
@@ -253,8 +253,9 @@
         
     </script>
     
+    
     <script id="modifiable">    
-          var socket = io().connect('https://titanium-flash-171510.appspot.com', {secure: true});;
+          var socket = io();
         socket.emit('join','AdminPanel');
    
 //     var xhr = new XMLHttpRequest();
