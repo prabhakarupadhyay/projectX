@@ -1,532 +1,138 @@
 <!DOCTYPE html>
-<html>
-<head id="main_head">
-    
-    
-    
-    
-    <style>
-        body{
-            width: auto;
-            height: auto;
-            overflow-x: hidden;
-            overflow-y: auto;
-            background-color:white;
-        }
-        #mainDiv_mh,#footer{
-            width : 100%;
-            height: auto;
-            color: white;
-            background-color: black;
-            padding-bottom: 60px; 
-            margin: 0px;
-            position: relative;
-            top: -20px;
-            left: -10px;
-            padding: 30px;
-            padding-bottom: 60px;
-            border-bottom-style:inset;
-            border-bottom-width: thick;
-            border-collapse: collapse;
-            border-bottom-color:#89C35C;
-            border-top-color:#89C35C;
-            border-top-style:outset;
-            border-top-width: thick;
-            font-family: sans-serif;
-            font-size: 1.5em;
-            font-weight: 300;
-        }
-        
-        #mainDiv_mb{
-            width : 110%;
-            height: auto;
-            background: -webkit-linear-gradient(left, #52D017 0%, #89C35C 52%, #85BB65 65%, #52D017 100%);
-            background: -moz-linear-gradient(left, #52D017 0%, #89C35C 52%, #85BB65 65%, #52D017 100%);
-            background: -o-linear-gradient(left, #52D017 0%, #89C35C 52%, #85BB65 65%, #52D017 100%);
-            position: relative;
-            left: -10px;
-            top: 10px;
-            padding-bottom: 50px;
-            margin-bottom: 100px;
-            
-        }
-        
-        #subDiv_mb{
-            width: 85.5%;
-            height: auto;
-           background: -webkit-linear-gradient(left, rgba(224,224,224,1) 0%, rgba(245,245,245,0.93) 47%, rgba(224,224,224,0.86) 100%);
-           background: -moz-linear-gradient(left, rgba(224,224,224,1) 0%, rgba(245,245,245,0.93) 47%, rgba(224,224,224,0.86) 100%);
-            background: -o-linear-gradient(left, rgba(224,224,224,1) 0%, rgba(245,245,245,0.93) 47%, rgba(224,224,224,0.86) 100%);
-            padding: 30px; 
-            position: relative;
-            top: 20px;
-            left: 30px;
-            
-        }
-        
-        
-        /** the form elements **/
-#mainForm_mb { box-sizing: border-box; }
- 
-#mainForm_mb .txtinput { 
-  display: block;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #dedede;
-  margin-bottom: 20px;
-  font-size: 1.55em;
-  padding: 11px 25px;
-  padding-left: 55px;
-  width: 90%;
-  color: #777;
-   
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset; 
-   
-  transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
-  -webkit-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
-  -moz-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
-  -o-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
-}
- 
-#mainForm_mb .txtinput:focus { 
-  color: #333;
-  border-color: rgba(41, 92, 161, 0.4);
-   
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
-  outline: 0 none; 
-}
-        
-        
-        
-        
-        
-        
-        
-        #mainForm_mb textarea {
-  display: block;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  border-style: solid;
-  border-width: 1px;
-  font-size: 1.5em;
-  color: #777;
-  border-color: #dedede;
-  margin-bottom: 15px;
-  padding: 11px 25px;
-  padding-left: 55px;
-  width: 90%;
-  height: 180px;
-  
-   
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset; 
-   
-  transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
-  -webkit-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
-  -moz-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
-  -o-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
-}
-#mainForm_mb textarea:focus {
-  color: #333;
-  border-color: rgba(41, 92, 161, 0.4);
- 
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(40, 90, 160, 0.6);
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(40, 90, 160, 0.6);
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(40, 90, 160, 0.6);
-  outline: 0 none; 
-}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="free notes online">
+    <meta name="author" content="one developer">
+      
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="911031615494-l9u7nqmq7oe8da6674k0g164ln4j16f6.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 
-        
-        
-        
-    
-        
-        
-        
-        
-#del_blog{
-        
-display: block;
-  float: left;
-  height: 3em;
-  padding: 0 .4em;
-  border: 1px solid;
-  outline: 0;
-  font-weight: bold;
-  font-size: 1.3em;
-  color: #fff;
-  text-shadow: 0px 1px 0px #222;
-  white-space: nowrap;
-  word-wrap: normal;
-  vertical-align: middle;
-  cursor: pointer;
-   
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-   
-  border-color: #cb0303 #cb0303 #000;
-   
-  -moz-box-shadow: inset 0 1px 0 rgba(256,256,256, .35);
-  -ms-box-shadow: inset 0 1px 0 rgba(256,256,256, .35);
-  -webkit-box-shadow: inset 0 1px 0 rgba(256,256,256, .35);
-  box-shadow: inset 0 1px 0 rgba(256,256,256, .35);
-   
-  background: -moz-linear-gradient(top, #ff2911 0%, #cb0303 100%);
-  background: -webkit-linear-gradient(top, #ff2911 0%, #cb0303 100%);
-  background: -o-linear-gradient(top, #ff2911 0%, #cb0303 100%);
-  background: -ms-linear-gradient(top, #ff2911 0%, #cb0303 100%);
-  background: -moz-linear-gradient(top, #ff2911 0%, #cb0303 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2eeaf', endColorstr='#ff2911',GradientType=0 );
-}
-#del_blog:hover, #del_blog:active {
-  border-color: #cb4141 #cb4141 #000;
-  color: #fff;
-   
-  -moz-box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
-  -ms-box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
-  -webkit-box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
-  box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
-   
-  background: -moz-linear-gradient(top, #fd7c6d 0%, #cb4141 100%);
-  background: -webkit-linear-gradient(top, #fd7c6d 0%, #cb4141 100%); 
-  background: -o-linear-gradient(top, #fd7c6d 0%, #cb4141 100%); 
-  background: -ms-linear-gradient(top, #fd7c6d 0%, #cb4141 100%); 
-  background: -moz-linear-gradient(top, #fd7c6d 0%, #cb4141 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4edbd', endColorstr='#fd7c6d',GradientType=0 );
-    
-        
-}        
-        
-        
-        
-        
-        
-#buttons #submitbtn {
-  display: block;
-  float: left;
-  height: 3em;
-  padding: 0 1em;
-  border: 1px solid;
-  outline: 0;
-  font-weight: bold;
-  font-size: 1.3em;
-  color: #fff;
-  text-shadow: 0px 1px 0px #222;
-  white-space: nowrap;
-  word-wrap: normal;
-  vertical-align: middle;
-  cursor: pointer;
-   
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-   
-  border-color: #5e890a #5e890a #000;
-   
-  -moz-box-shadow: inset 0 1px 0 rgba(256,256,256, .35);
-  -ms-box-shadow: inset 0 1px 0 rgba(256,256,256, .35);
-  -webkit-box-shadow: inset 0 1px 0 rgba(256,256,256, .35);
-  box-shadow: inset 0 1px 0 rgba(256,256,256, .35);
-   
-  background-color: rgb(226,238,175);
-  background-image: -moz-linear-gradient(top, rgb(226,238,175) 3%, rgb(188,216,77) 3%, rgb(144,176,38) 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(3%,rgb(226,238,175)), color-stop(3%,rgb(188,216,77)), color-stop(100%,rgb(144,176,38))); 
-  background-image: -webkit-linear-gradient(top, rgb(226,238,175) 3%,rgb(188,216,77) 3%,rgb(144,176,38) 100%);
-  background-image: -o-linear-gradient(top, rgb(226,238,175) 3%,rgb(188,216,77) 3%,rgb(144,176,38) 100%);
-  background-image: -ms-linear-gradient(top, rgb(226,238,175) 3%,rgb(188,216,77) 3%,rgb(144,176,38) 100%);
-  background-image: linear-gradient(top, rgb(226,238,175) 3%,rgb(188,216,77) 3%,rgb(144,176,38) 100%); 
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2eeaf', endColorstr='#90b026',GradientType=0 );
-}
-#buttons #submitbtn:hover, #buttons #submitbtn:active {
-  border-color: #7c9826 #7c9826 #000;
-  color: #fff;
-   
-  -moz-box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
-  -ms-box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
-  -webkit-box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
-  box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
-   
-  background: rgb(228,237,189);
-  background: -moz-linear-gradient(top, rgb(228,237,189) 2%, rgb(207,219,120) 3%, rgb(149,175,54) 100%); 
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,rgb(228,237,189)), color-stop(3%,rgb(207,219,120)), color-stop(100%,rgb(149,175,54))); 
-  background: -webkit-linear-gradient(top, rgb(228,237,189) 2%,rgb(207,219,120) 3%,rgb(149,175,54) 100%); 
-  background: -o-linear-gradient(top, rgb(228,237,189) 2%,rgb(207,219,120) 3%,rgb(149,175,54) 100%); background: -ms-linear-gradient(top, rgb(228,237,189) 2%,rgb(207,219,120) 3%,rgb(149,175,54) 100%); background: linear-gradient(top, rgb(228,237,189) 2%,rgb(207,219,120) 3%,rgb(149,175,54) 100%); 
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4edbd', endColorstr='#95af36',GradientType=0 );
-}
-        
-        
-        
-        
-        #buttons #resetbtn {
-  display: block;
-  float: left;
-  color: #515151;
-  text-shadow: -1px 1px 0px #fff;
-  margin-right: 20px;
-  height: 3em;
-  padding: 0 1em;
-  outline: 0;
-  font-weight: bold;
-  font-size: 1.3em;
-  white-space: nowrap;
-  word-wrap: normal;
-  vertical-align: middle;
-  cursor: pointer;
-   
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-   
-  background-color: #fff;
-  background-image: -moz-linear-gradient(top, rgb(255,255,255) 2%, rgb(240,240,240) 2%, rgb(222,222,222) 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(2%,rgb(255,255,255)), color-stop(2%,rgb(240,240,240)), color-stop(100%,rgb(222,222,222)));
-  background-image: -webkit-linear-gradient(top, rgb(255,255,255) 2%,rgb(240,240,240) 2%,rgb(222,222,222) 100%);
-  background-image: -o-linear-gradient(top, rgb(255,255,255) 2%,rgb(240,240,240) 2%,rgb(222,222,222) 100%);  background-image: -ms-linear-gradient(top, rgb(255,255,255) 2%,rgb(240,240,240) 2%,rgb(222,222,222) 100%);
-  background-image: linear-gradient(top, rgb(255,255,255) 2%,rgb(240,240,240) 2%,rgb(222,222,222) 100%); 
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dedede',GradientType=0 );
-   
-  border: 1px solid #969696;
-            
-  box-shadow: 0 1px 2px rgba(144, 144, 144, 0.4);
-  -moz-box-shadow: 0 1px 2px rgba(144, 144, 144, 0.4);
-  -webkit-box-shadow: 0 1px 2px rgba(144, 144, 144, 0.4);
-   
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-}
-#buttons #resetbtn:hover {
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75); 
-  color: #818181;
-   
-  background-color: #fff;
-  background-image: -moz-linear-gradient(top, rgb(255,255,255) 2%, rgb(244,244,244) 2%, rgb(229,229,229) 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(2%,rgb(255,255,255)), color-stop(2%,rgb(244,244,244)), color-stop(100%,rgb(229,229,229)));
-  background-image: -webkit-linear-gradient(top, rgb(255,255,255) 2%,rgb(244,244,244) 2%,rgb(229,229,229) 100%);background-image: -o-linear-gradient(top, rgb(255,255,255) 2%,rgb(244,244,244) 2%,rgb(229,229,229) 100%); background-image: -ms-linear-gradient(top, rgb(255,255,255) 2%,rgb(244,244,244) 2%,rgb(229,229,229) 100%); background-image: linear-gradient(top, rgb(255,255,255) 2%,rgb(244,244,244) 2%,rgb(229,229,229) 100%); 
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 );
-   
-  border-color: #aeaeae;
-   
-  box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
-}
-        
-        
-        @media screen and (max-width: 800px) {
-  body {
-    padding: 10px 15px;
-  }
-  #container {
-    width: 100%;
-  }
-  #mainForm_mb #aligned {
-    width: 100%;
-    float: none;
-    display: block;
-  }
-  
-  #mainForm_mb .txtinput, mainForm_mb textarea {
-    width: 85%;
-  }
-            
-            
-            
-            /* smaller screen dropoff *******/
-@media only screen and (max-width: 550px) {
-  #mainForm_mb .txtinput, #mainForm_mb textarea {
-    width: 80%;
-  }
-}
- 
-/* iPhone Landscape ********/
-@media only screen and (max-width: 480px) {
-  body {
-    padding: 10px 0px;
-  }
-  select.selmenu {
-    width: 190px;
-  }
-}
- 
-/* iPhone portrait *******/
-@media only screen and (max-width: 320px) {
-  body {
-    padding: 10px 0px;
-  }
-  #mainForm_mb .txtinput, #mainForm_mb textarea {
-    width: 70%;
-  }
-  #mainForm_mb #aligned {
-    overflow: hidden;
-  }
-  select.selmenu {
-    width: 160px;
-  }
-  #recipientcase {
-    margin-right: 30px;
-  }
-}
-             
-    </style>
-    
-    
-    <style>
-    
-           #activity_div_mb{
-                
-                position: fixed;
-                z-index: 1;
-                top:0px;
-                right: 100px;
-                box-shadow: 1px 1px 20px #888888; 
-                width: 40%;
-                height: 20%;
-                background: -webkit-linear-gradient(left, rgba(245,239,152,1) 0%, rgba(235,223,86,0.85) 52%, rgba(240,221,96,0.81) 65%, rgba(253,217,124,1) 100%);
-                background: -moz-linear-gradient(left, rgba(245,239,152,1) 0%, rgba(235,223,86,0.85) 52%, rgba(240,221,96,0.81) 65%, rgba(253,217,124,1) 100%);
-                background: -o-linear-gradient(left, rgba(245,239,152,1) 0%, rgba(235,223,86,0.85) 52%, rgba(240,221,96,0.81) 65%, rgba(253,217,124,1) 100%);
-                background: linear-gradient(left, rgba(245,239,152,1) 0%, rgba(235,223,86,0.85) 52%, rgba(240,221,96,0.81) 65%, rgba(253,217,124,1) 100%);
-               
-                font-family: "Helvetica Neue", Arial, sans-serif;
-                font-size: 2.0em;
-                color: darkred;
-               text-align: center;
-                
-            }
-    
-    </style>
-    
-    
-    <title>
-    Admin Panel
-    </title>
-    <div id="mainDiv_mh">
-        <h1>
-        Welcome to Admin Panel
-        </h1>
-        
-    </div>
-    
-    
-</head>
-    
-<body id="main_body">
-    <div id="mainDiv_mb">
-        <div id="subDiv_mb">
-            <form id="mainForm_mb" method="post" enctype="multipart/form-data">
-                <div id="header_div_mb">
-                    <section id="aligned">
-                        
-                        <div id="activity_div_mb">
-                               &#35;Activity Log                    
-                            <p style="font-size: 0.7em;color: #777;margin-top:5px;" id="respose_Area">
-                               No Activity
-                            </p>
-                        </div>
-                        <div id="headBlog_div_mb" style="position:relative">
-                            <input type="button" name="del_blog" id="del_blog" value="delete blog" style="position:absolute;top:-5px;right:80px;" onclick="deleteBlog();"> 
-                        </div>    
-                        <div style="padding:20px;">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <p>
-                                        SELECT THE FILE(file uploads automatically)
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p>
-                                        Select a file image(max 500kb)
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p>
-                                        Preview image
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type="file" accept="image/*" name="file" id="object_file" tabindex="3" value="Upload Object" class="uploadBtn">
-                                    </td>
-                                    
-                                    <td>
-                                        <input type="file" accept="image/*"  name="file" id="notes_image" tabindex="4" value="upload file" class="uploadBtn">
-                                    </td>
-                                    <td>
-                                        <input type="image" accept="image/*" name="notes_image_preview" id="notes_image_preview" class="preview" alt="img not uploaded" width="100" height="100">
-                                    </td>
-                                </tr>
-                                <div>
-                                    <tr style="visibility:hidden;" id="oAuth_Consent_Col1">
-                                        <br>
-                                        <td>
-                                            <a href="#" id="oAuthUrl" target="_blank">click here to authorize to google drive if you havent already.</a>
-                                        </td>
-                                        <br>
-                                    </tr>
-                                    <tr style="visibility:hidden;" id="oAuth_Consent_Col2">
-                                        <td>
-                                            <input type="text" id="oAuthCode" placeholder="paste the code here.." autocomplete="off" style="width:100%">    
-                                        </td>
-                                        <td>
-                                            <input type="submit" id="submitoAuthCode" value="Submit">
-                                        </td>
-                                    </tr>
-                                </div>
-                            </table>
-                        </div>
-                        
-                        
-                        <input type="text" name="user_name" id="user_name" placeholder="Your Name" autocomplete="off" tabindex="4" class="txtinput">
-                        <div style="position:relative">
-                            <textarea name="user_message_blog" id="user_message_blog" placeholder="Write your small description..." tabindex="6" class="txtblock" style="width:50%;">
-                            </textarea>
-                            <div style="position:relative;top:-170px;right:100px;" align="right">
-                                <table cellspacing="20">
-                                    <tr>
-                                        <td>
-                                        Select your own pic(max 500kb)
-                                        </td>
-                                        <p>
-                                        Preview image
-                                        </p>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input type="file" accept="image/*"  name="file" id="user_image" tabindex="4" value="upload file" class="uploadBtn">
-                                        </td>
-                                        <td>
-                                            <input type="image" accept="image/*" name="user_image_preview" id="user_image_preview" class="preview" alt="img not uploaded" width="100" height="100">
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </section>
-                    
-                    <section id="buttons">
-                        <input type="reset" name="reset" id="resetbtn" class="resetbtn" value="Reset">
-                        <input type="submit" name="submit" id="submitbtn" class="submitbtn" tabindex="7" value="Submit this!">
-                        <br style="clear:both;">
-                    </section>
-                    
-                    <br><br><br><hr>
-                    
-                    <div id="testapp">
-                    
-                        <input type="text" name="test_url" id="test_url" placeholder="Type a Url" autocomplete="off" class="txtinput">
-                        <input type="file" accept="image/*"  name="file" id="test_image" value="test image" class="uploadBtn">
-                        
-                    </div>
-                    
-                    
-                </div>
-            </form>
+    <title>Free Notes Online </title>
+
+      
+   <!-- BOOTSTRAP CORE STYLE CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Static navbar -->
+    <div class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://freenotesonline-adseeker.rhcloud.com/">FREE NOTES ONLINE</a>
         </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a>Notes</a></li>
+            <li><div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" hidden="true"></div>
+              
+                <a href="/auth/google">login via google</a>
+              
+              </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
     </div>
+
+	<!-- +++++ Welcome Section +++++ -->
+	<div id="ww">
+	    <div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2 centered">
+					
+					<h1><a href="./searchnotes.html" style="color:#333;">Get Free Notes</a></h1>
+					<p>Hello everybody. This website is a contribution of a student who would always find it difficult to get free and effective notes. Free Notes Online consist of all kind of notes made by students studying courses that can be downloaded for free.</p>
+					<p>Please, contact us on<a href="https://www.facebook.com/onedeveloper.1/"> on Facebook</a> or email to help us expand this website anyone who is willing to contribute his/her notes.</p>
+				
+				</div><!-- /col-lg-8 -->
+			</div><!-- /row -->
+	    </div> <!-- /container -->
+	</div><!-- /ww -->
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+	                
+      <form method="POST" action="https://titanium-flash-171510.appspot.com/adminUpload_SHOPS_IMAGE" enctype="multipart/form-data" id="form1"  onsubmit="return submitForm(this);">
+          File: <input type="file" name="fileUpload" id="files">
+          <input type="submit" value="send" id="sub1">   
+      </form>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+	<!-- +++++ Footer Section +++++ -->
+	
+	<div id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+					<h4>My Email</h4>
+					<p>
+						onlinefreenotes@gmail.com
+					</p>
+				</div><!-- /col-lg-4 -->
+				
+				<div class="col-lg-4">
+					<h4>follow us</h4>
+					<p>
+						<a href="https://www.facebook.com/onedeveloper.1/">Facebook</a><br/>
+					</p>
+				</div><!-- /col-lg-4 -->
+				
+				<div class="col-lg-4">
+					<h4>About OneDeveloper</h4>
+					<p>OneDeveloper is an organisation working hard to make websites,app,games etc.</p>
+				</div><!-- /col-lg-4 -->
+			
+			</div>
+		
+		</div>
+	</div>
+    
     
     <div id="footer" style="height:150px;position:relative;top:60px;border-bottom-style: hidden;">
         <p style="text-align: center;">
@@ -537,67 +143,134 @@ display: block;
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     
-    
     <script>
-        
-         document.addEventListener('change',handleChangeEvt,false);
-        var socket = io();
-          socket.emit('join','AdminPanel');
-        
-        var object_file = document.getElementById("object_file");
-        var notes_image_preview = document.getElementById("notes_image_preview");
-        
-        
-       function handleChangeEvt(evt){
-           
-           if(evt.target.type == 'file' && evt.target.id == "object_file"){
-               
-               var files = evt.target.files;
-                for(var i = 0,file; file = files[i]; i++){
-                    
-                    var reader = new FileReader();
-                    
-                    reader.onload = (function(readFile){
-                        
-                        return function(e){
-                            
-                            console.log(e.target.result);
-                            
-                            var obj = {
-                                
-                                Shop_Name:'modifio manzz',
-                                Shop_Address:'malviya nagar 23j',
-                                Shop_Email:'onlinefreenotes@gmail.com',
-                                Shop_Number:'95959595',
-                                Shop_Description: 'about the shop',
-                                Shop_Images:e.target.result,
-                                
-                            };
-                            
-                            //var base64String = btoa(String.fromCharCode.apply(null, new Uint8Array(e.target.result)));
-                            
-                            //notes_image_preview.src = 'data:image/png;base64,' + base64String;
-                            
-                            socket.emit('ShopData',obj);
-                            
-                        }
-                        
-                    })(file);
-                    
-                    reader.readAsArrayBuffer(file);
-                    
-                }
-               
-           }
-           
-       }
+        document.onchange = function(e){
+            
+            console.log(e.target.value);
+            
+        }
+//         document.addEventListener('change',handleChangeEvt,false);
+//        var socket = io();
+//          
+//        
+//        var object_file = document.getElementById("object_file");
+//        var notes_image_preview = document.getElementById("notes_image_preview");
+//        
+//        
+//       function handleChangeEvt(evt){
+//           
+//           if(evt.target.type == 'file' && evt.target.id == "object_file"){
+//               
+//               var files = evt.target.files;
+//                for(var i = 0,file; file = files[i]; i++){
+//                    
+//                    var reader = new FileReader();
+//                    
+//                    reader.onload = (function(readFile){
+//                        
+//                        return function(e){
+//                            
+//                            console.log(e.target.result);
+//                            
+//                            var obj = {
+//                                
+//                                Shop_Name:'modifio manzz',
+//                                Shop_Address:'malviya nagar 23j',
+//                                Shop_Email:'onlinefreenotes@gmail.com',
+//                                Shop_Number:'95959595',
+//                                Shop_Description: 'about the shop',
+//                                Shop_Images:e.target.result,
+//                                
+//                            };
+//                            
+//                            //var base64String = btoa(String.fromCharCode.apply(null, new Uint8Array(e.target.result)));
+//                            
+//                            //notes_image_preview.src = 'data:image/png;base64,' + base64String;
+//                            
+//                            socket.emit('ShopData',obj);
+//                            
+//                        }
+//                        
+//                    })(file);
+//                    
+//                    reader.readAsArrayBuffer(file);
+//                    
+//                }
+//               
+//           }
+//           
+//       }//         document.addEventListener('change',handleChangeEvt,false);
+//        var socket = io();
+//          
+//        
+//        var object_file = document.getElementById("object_file");
+//        var notes_image_preview = document.getElementById("notes_image_preview");
+//        
+//        
+//       function handleChangeEvt(evt){
+//           
+//           if(evt.target.type == 'file' && evt.target.id == "object_file"){
+//               
+//               var files = evt.target.files;
+//                for(var i = 0,file; file = files[i]; i++){
+//                    
+//                    var reader = new FileReader();
+//                    
+//                    reader.onload = (function(readFile){
+//                        
+//                        return function(e){
+//                            
+//                            console.log(e.target.result);
+//                            
+//                            var obj = {
+//                                
+//                                Shop_Name:'modifio manzz',
+//                                Shop_Address:'malviya nagar 23j',
+//                                Shop_Email:'onlinefreenotes@gmail.com',
+//                                Shop_Number:'95959595',
+//                                Shop_Description: 'about the shop',
+//                                Shop_Images:e.target.result,
+//                                
+//                            };
+//                            
+//                            //var base64String = btoa(String.fromCharCode.apply(null, new Uint8Array(e.target.result)));
+//                            
+//                            //notes_image_preview.src = 'data:image/png;base64,' + base64String;
+//                            
+//                            socket.emit('ShopData',obj);
+//                            
+//                        }
+//                        
+//                    })(file);
+//                    
+//                    reader.readAsArrayBuffer(file);
+//                    
+//                }
+//               
+//           }
+//           
+//       }
         
     </script>
     
-    
-    
-    
-    <script id="modifiable">
+    <script id="modifiable">    
+          var socket = io().connect('https://titanium-flash-171510.appspot.com', {secure: true});;
+        socket.emit('join','AdminPanel');
+   
+//     var xhr = new XMLHttpRequest();
+//xhr.open("POST", '/server', true);
+//
+////Send the proper header information along with the request
+//xhr.setRequestHeader("Content-type", "multipart/form-data");
+//
+//xhr.onreadystatechange = function() {//Call a function when the state changes.
+//    if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+//        console.log('return');
+//    }
+//}
+//xhr.send("yoooooooooooooooooooooo"); 
+        
+        
     /*
            function handleChangeEvt(evt){
            
@@ -638,8 +311,87 @@ display: block;
            
        }
     */
-    </script>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+//               
+//        document.onclick = function(evt){
+//           
+//            //check for submit click
+//            if(evt.target.type == "submit"){
+//            
+//                var submitBtn = evt.target;
+//                if(submitBtn.id == 'sub1'){
+//                    getForm(submitBtn);
+//                
+//                }
+//                return false;
+//            }
+//            
+//            else{
+//            
+//                return;
+//            
+//            }
+//        }
+     ///adminUpload_SHOPS_IMAGE   
+        
+        
+        
+        
+function submitForm(oFormElement)
+{
+    //shop images
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function(){ console.log(xhr.responseText); }
+  xhr.open (oFormElement.method, oFormElement.action, true);
+  xhr.send (new FormData (oFormElement));
+  
+    ///shop info
+              let shopInfo = {
+                  Shop_User_Email: "commona007@gmail.com",
+                  Shop_Number:"1",
+                  Name : "Auto Marg",
+                  Address : "rohini sector 41",
+                  Number : "9999-9999-88",
+                  Email : 'autoMarg@gmail.com',
+                  description: 'about the shop..................'
+              }
+              
+                   socket.emit('ShopData',shopInfo);
+          
     
+    return false; // Markus had to return true
+
+    
+}
+        
+        
+       //shop cars  
+        setTimeout(function(){
+            
+                          
+            var shopInfo = {
+                Shop_User_Email: "commona007@gmail.com",
+                Shop_Number:"1",
+                Car_Names:["SWIFTSPORTS","endeavour"]
+                
+              }
+              
+                   socket.emit('availableCars',shopInfo);
+            
+        },4000);
+        
+        
+    </script>
     
     
 </body>

@@ -1,0 +1,60 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+@import url('https://fonts.googleapis.com/css?family=Crushed');
+
+body
+{
+    background:#212121;
+}
+
+.main-content
+{
+    top:10px;
+    padding: 0;
+    background: rgba(0,0,0,1);
+    min-height: 600px;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+}
+
+.main-content h1{
+    font-family: 'Crushed', cursive;
+    background: #0275d8;
+    margin: 0 0 30px 0;
+}
+
+.noty-holder{
+    padding-bottom: 100px;
+}
+
+.alert-read{
+    background: rgba(10,52,100,1);
+}
+
+.alert-read:hover{
+    cursor: pointer;
+}
+
+.alert-unread{
+    background: #0275d8;
+}
+
+.alert-unread:hover{
+    cursor: pointer;
+}
+
+.navbottom-link
+{
+    
+    width: 100px;
+    text-align: center;
+    transition: background 0.5s;
+}
+
+.navbottom-link:hover
+{
+    background: #0275d8;
+    width: 100px;
+    text-align: center;
+    color: white;
+}

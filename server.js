@@ -6,7 +6,7 @@
 
 var express = require('express');
 var app = express();
-var server = require("http").Server(app);
+var server = require("https").Server(app);
 var fs = require("fs");
 var mime = require("mime");
 var async = require("async");
@@ -25,13 +25,14 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var router = express.Router();
 
+const Storage = require('@google-cloud/storage');
+const Datastore = require('@google-cloud/datastore');
 
 // Activate Google Cloud Trace and Debug when in production
 if (process.env.NODE_ENV === 'production') {
   require('@google-cloud/trace-agent').start();
   require('@google-cloud/debug-agent').start();
 }
-
 
 
 /*
@@ -44,15 +45,17 @@ if (process.env.NODE_ENV === 'production') {
 
 var myauth = require("./myauth.js");
 var manageSockets = require("./lib/manageSockets.js");
-var ftpHandler = require("./lib/ftpHandler.js");
+//var ftpHandler = require("./lib/ftpHandler.js");
 var xmlReqHandler = require("./lib/xmlReqHandler.js");
 var createSql = require("./lib/sql tables/createSql.js");
 var sessionHandle = require('./lib/sessionHandler.js');
 var config = require('./lib/config.js');
-var config2 = require('./lib/config2.js');
+//var config2 = require('./lib/config2.js');
 var operations = require("./lib/operations.js");
 var passportOauth = require("./lib/passport.js");
 var readHtml = require("./lib/readHtml.js");
+var Bucket = require("./lib/bucket.js");
+
 
 
 /*
@@ -67,11 +70,10 @@ express middlewares
 //app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(logger('dev'));
+//app.use(logger('dev'));
 app.use(cookieParser(config.session.sessionSecret));
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true  }));
-
+app.use(bodyParser.json());
 app.use(require('express-session')({
     secret: config.session.sessionSecret,
     saveUninitialized: true, // saved new sessions
@@ -80,12 +82,20 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(path.join(__dirname, 'public/assets')));
-
+app.use("/assets",express.static(path.join(__dirname, 'public/assets')));
+console.log(path.join(__dirname, 'public/assets'));
 app.use(require('connect-livereload')({
     port: 35729
   }));
 
+
+var Multer = require('multer');
+var multer = Multer({
+  storage: Multer.MemoryStorage,
+  limits: {
+    fileSize: 50 * 1024 * 1024 // no larger than 5mb
+  }
+});
 
 /*
  *
@@ -106,7 +116,7 @@ global.requestNormalWait = true;
 var cache = {};
 //var dirName = __dirname + "/public";
 
-var htmlFiles = ['./public/index.html','./public/private/secretWindow/myadmin.html']
+var htmlFiles = ['./public/index1.html','./public/private/secretWindow/myadmin.html','./public/dynamic.html']
 
 
 /*
@@ -114,7 +124,7 @@ var htmlFiles = ['./public/index.html','./public/private/secretWindow/myadmin.ht
  select between openshift or local port
 *
 */
-var server_port = process.env.PORT || 8081;
+var server_port = process.env.PORT || 8080;
 var server_ip_address = 'localhost';
 
 if(typeof server_ip_address ==='undefined'){
@@ -128,50 +138,114 @@ if(typeof server_ip_address ==='undefined'){
  connect to mysql server
 *
 */
+
+//global sql 
 var options = {
 
-  host: config2.get('MYSQL_HOST'),
-  user: config2.get('MYSQL_USER'),
-  password: config2.get('MYSQL_PASSWORD'),
-  database:  config2.get('MYSQL_DB')
+  client: process.env.SQL_CLIENT,
+  user: process.env.SQL_USER,
+  password: process.env.SQL_PASSWORD,
+  database:  process.env.SQL_DATABASE
     
 }
 
 
-if (config2.get('INSTANCE_CONNECTION_NAME') && config2.get('NODE_ENV') === 'production') {
-  options.socketPath = `/cloudsql/${config2.get('INSTANCE_CONNECTION_NAME')}`;
+
+
+//local cloud sql connection via proxy
+//var options = {
+//
+//  host: '127.0.0.1',
+//  port:'3307',
+//  user: 'local',
+//  password: 'nadhukar123',
+//  database:  'localDB'
+//    
+//}
+
+if (process.env.INSTANCE_CONNECTION_NAME && process.env.NODE_ENV === 'production') {
+
+    if (process.env.SQL_CLIENT === 'mysql') {
+    
+        options.socketPath = `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`;
+
+    }
+  
 }
 
 var pool = mysql.createPool(options);
 
 
 
-/*
-//original
-var connection = mysql.createConnection({
-  host     : process.env.OPENSHIFT_MYSQL_DB_HOST,
-  user     : process.env.OPENSHIFT_MYSQL_DB_USERNAME,
-  password : process.env.OPENSHIFT_MYSQL_DB_PASSWORD,
-  port     : process.env.OPENSHIFT_MYSQL_DB_PORT,
-  database : process.env.OPENSHIFT_APP_NAME,
-  connectionLimit : 500,
- });
+//var pool = mysql.createPool({
+//    host:     'localhost',
+//    user:     'root',
+//    password: 'nadhukar123',
+//    port:     '3306',
+//    database: 'database3',
+//    connectionLimit : 500
+//    });
+//            
 
+/*
+ *
+ connect to bucket storage
+*
+*/
+//global bucket
+var cloudBucket = process.env.CLOUD_BUCKET;
+var storage = Storage({
+  projectId: process.env.PROJECT_ID,
+    keyFilename: './MyFirstProject-34650eef0b12.json'
+});
+var bucket = storage.bucket(cloudBucket);
+
+
+//local connection with the cloud storage
+//var cloudBucket = 'titanium-flash-171510.appspot.com';
+//var storage = Storage({
+//  projectId: 'titanium-flash-171510',
+//    keyFilename: './MyFirstProject-34650eef0b12.json'
+//});
+//var bucket = storage.bucket(cloudBucket);
+
+
+/*
+ *
+ connect to datastore(nosql)
+*
 */
 
-            
+//global datastore
+var datastore = Datastore({
+  projectId: process.env.PROJECT_ID,
+    keyFilename: './MyFirstProject-34650eef0b12.json'
+});
 
 
+//var datastore = Datastore({
+//  projectId: 'titanium-flash-171510',
+//    keyFilename: './MyFirstProject-34650eef0b12.json'
+//});
+
+
+
+/****
+*
+*
+////////////////////////////////PROCCESS//////////////////////////////////
+*
+*
+****/
 
 
 //create mysql tables
 createSql.createTables(pool);
 
 passportOauth.init(pool,passport,config,GoogleStrategy);
-manageSockets.listen(io,pool);
+manageSockets.listen(io,pool,datastore,bucket);
 
 readHtml.readAll(htmlFiles);
-
 
 var myLogger = function (req, res, next) {
     setHead(res);
@@ -180,33 +254,93 @@ var myLogger = function (req, res, next) {
 
 app.use(myLogger);
 
-app.use(function(request, response, next ) {
-
-    console.log(request.url);
-    next();
-});
-
-
-app.use( function( error, request, response, next ) {
-    if(!error) {
-        return next();
+app.use(function(req, res, next ) {
+    
+    if(req.method == 'POST'){
+        var splitUrl = req.url.split('_');
+        if(splitUrl[0] == '/adminUpload'){
+            next();
+        }else{
+            res.write('Post request error : Unable to detect the request');
+            res.end();
+        }
+        
+    }else{
+        //check for dynamic shop request
+        checkDynamicShopReq(req,function(isDynamic,dynamicUrl){
+            if(isDynamic){
+                //pass on dynamic shop html page
+                console.log("dynamic page here..........");
+                requestNormalWait = true;
+                operations.loadPageFourDat(req,res,pool,bucket,datastore,dynamicUrl,htmlFiles[2]);
+            }else{
+                next(); 
+            }
+            
+        });
     }
-   Error404(response);
+    
 });
 
 
+app.post('*',multer.single('fileUpload'),function(req,res) {
+    //emited from ManageSockets.js
+     eventEmit.on('pushShopId',function(jsonShopId){
+         req.file.Shop_Sub_Id = jsonShopId.Shop_Sub_Id;
+     });
+    
+    operations.sortPostUploads(req,res,function(actualPath,fileType){
+    
+        if(actualPath != undefined){
+        
+            res.write("storing file in cloud storage.."+'\n\n');
+            Bucket.feadBucket(req,bucket,actualPath,fileType,function(isPresent,response,totalPath,message){
+          
+                if(isPresent != undefined){ 
+                    req.file.cloudStoragePublicUrl = response;
+                    req.file.storedPath = totalPath;
+                    res.write('data:'+message+'\n\n');
+                    res.write("writing data in cloud DB.."+'\n\n');
+                    operations.StoreFilesDb(req,pool,datastore,function(DbResponse){
+                        res.write('data:'+DbResponse+'\n\n');
+                        res.end();                          
+                    });
+                }else{
+                    res.write('data:'+message+'\n\n');
+                    res.write('data:'+response+'\n\n');
+                    res.end();                    
+                }
+        
+            });
+        }else{
+                res.write(fileType);
+                res.end();            
+        }
+    });
+});
+
+         
+         
+         
 app.get('/', function (req, res) {
     requestNormalWait = true;
     var absPath =  htmlFiles[0];
-    eventEmit.once('index_trigger',function(pageData){
-        console.log('pageData');
-        if(requestNormalWait != true){
-            exportProcessUrl(res,absPath,pageData);        
+    operations.sortPageName(htmlFiles[0],function(pgName){
+        if(pgName != undefined){
+            operations.loadPageOneDat(pool,pgName);
+            
+            eventEmit.once(pgName+'_trigger',function(pageData){
+                if(requestNormalWait != true){
+                    exportProcessUrl(res,absPath,pageData);        
+                }
+            });     
         }
     });
-            
-    operations.loadPageOneDat(pool,absPath);
+});
 
+
+app.get('/searchData', function (req, res) {
+    res.end("request proccessed............fuck yeah!!!!!!!!!!!");
 });
 
 
@@ -246,6 +380,15 @@ app.get('/mysecretwindow', function(req, res) {
 
 
 
+app.use( function( error, request, response, next ) {
+    if(!error) {
+        return next();
+    }
+   Error404(response);
+});
+
+
+
 function isLoggedIn(req, res, next) {
 
     // if user is authenticated in the session, carry on
@@ -257,7 +400,6 @@ function isLoggedIn(req, res, next) {
 }
 
 
-
 // server.listen(server_port,server_ip_address, () => {
 //    const port = server.address().port;
 //    console.log(`App listening on port ${port}`);
@@ -266,74 +408,11 @@ function isLoggedIn(req, res, next) {
 
 
 server.listen(server_port,function () {
-    console.log( "Listening on " + server_ip_address + ", server_port " + server_port );
+    console.log( "Listening on server_port " + server_port );
 });
 
 
-/*
- *
- create server Main
-*
-*/
-//var server = http.createServer(function(req,res){
-//    console.log("request received- " + req.url);
-//   
-//    setHead(res);
-//    var absPath = '';
-//    var filePath = './';
-//    
-//    
-//    //initial request
-//    if(req.url == "/"){
-//         sessions(req,res,pool,sessionHandler,function(isLoggedIn,sessionData){
-//             
-//             absPath = filePath+"public/index.html";
-//             global.exportProcessUrl(req,res,absPath);
-//              manageSockets.listen(server,socketio,pool,'UserPanel');
-//             
-//             if(isLoggedIn){
-//                 eventEmit.emit('LoggedInUser',sessionData);
-//                 return;
-//             }
-//            //setTimeout(function(){eventEmit.emit('GuestUser',sessionData);},7000); 
-//             
-//         });
-//        
-//    }
-//    else if(req.url == "/mysecretwindow" || req.url == "/private/secretWindow/myadmin.html"){
-//        //initiate authentication password for admin panel
-//        myauth.auth(req,res,server,socketio,pool);
-//        //  ftpHandler.connectFTP(ftpClient,connectionProperties,pool);
-//        
-//    }   
-//    else if(req.url == '/auth/google'){
-//       
-//       // xmlReqHandler.handleXmlReq(res,req,pool,'googleLogin');
-//        router(req, res, finalhandler(req, res));
-//        
-//    }
-//    //rest requests
-//    else{
-//        
-//        operations.extReqCode(req,function(reqCallback){
-//            
-//            if(reqCallback != undefined){
-//                
-//                router(req, res, finalhandler(req, res));
-//                
-//            }else{
-//            
-//                absPath = filePath+"public"+req.url;
-//                global.exportProcessUrl(req,res,absPath);
-//           
-//            }
-//            
-//        });
-//           
-//    }
-//    
-//    });
-//
+
 /*
  *
  functions starts here
@@ -378,4 +457,23 @@ function setHead(res){
 pool.on('connection',function(con){
     console.log('connection setup');
     });
+
+
+function checkDynamicShopReq(req,callback){
+    
+    var splitUrl = req.url.split('/');
+    var lastId = splitUrl[splitUrl.length-1];
+    for(let i in splitUrl){
+        if(splitUrl[i] == "dynamicShop"){
+           return callback(true,lastId);
+        }else if(i == splitUrl.length-1){
+            console.log(i);
+           return callback(false,lastId);  
+        }
+    }
+     
+}
+
+
+
 

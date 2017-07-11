@@ -1,0 +1,94 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+@import url('https://fonts.googleapis.com/css?family=Crushed');
+body {
+    background: #212121;
+}
+
+.main-content {
+    top: 10px;
+    padding: 0;
+    background: rgba(0, 0, 0, 1);
+    min-height: 600px;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    margin-bottom: 100px;
+}
+
+.main-content h1 {
+    font-family: 'Crushed', cursive;
+    background: #0275d8;
+    margin: 0 0 30px 0;
+}
+
+form {
+    background: rgba(0, 21, 33, 1);
+    ;
+    padding: 20px;
+}
+
+form .btn {
+    background: #0275d8;
+    color: white;
+    transition: all 0.7s ease;
+    -o-transition: all 0.7s ease;
+    -moz-transition: all 0.7s ease;
+    -webkit-transition: all 0.7s ease;
+}
+
+form .btn:hover,
+form .btn:active {
+    cursor: pointer;
+    background: rgba(10, 52, 100, 1);
+}
+
+.form-control {
+    background: rgba(10, 42, 91, 1);
+    color: white;
+}
+
+.form-control:focus {
+    background: rgba(10, 42, 91, 1);
+    color: white;
+}
+
+label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.navbottom-link {
+    width: 100px;
+    text-align: center;
+    transition: background 0.5s;
+    border-radius: 72px / 145px;
+}
+
+.navbottom-link:hover {
+    background: #0275d8;
+    width: 100px;
+    text-align: center;
+    color: white;
+}
+
+.notif {
+    background: #0275d8;
+}
+
+.space {
+    padding: 20px;
+}
+
+.nav-item h5 {
+    color: white;
+}
+
+.fa {
+    font-size: 25px;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+}

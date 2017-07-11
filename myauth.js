@@ -25,14 +25,19 @@ exports.auth = function(req,res,absPath,pool){
         var pass = creds[1];
         
         if(user == origUser && pass == origPass){
-            eventEmit.once('myadmin_trigger',function(pageData){
-                console.log('adminPage');
-                if(requestNormalWait != true){
-                    exportProcessUrl(res,absPath,pageData);        
+
+            operations.sortPageName(absPath,function(pgName){
+                if(pgName != undefined){
+                       
+                    eventEmit.once(pgName+'_trigger',function(pageData){
+                        console.log('adminPage');
+                        if(requestNormalWait != true){
+                            exportProcessUrl(res,absPath,pageData);        
+                        }
+                    });
+                    operations.loadAdminPanelDat(pool,pgName);
                 }
             });
-            operations.loadAdminPanelDat(pool,absPath);            
-            
             //make admin panel listen to specific admin sockets
            // eventEmit.emit('AdminUser');
         }

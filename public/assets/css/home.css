@@ -1,0 +1,55 @@
+body
+{
+    background: #424242;
+}
+
+.main-content
+{
+    top:0px;
+    background: rgba(0,0,0,0.6);
+    text-align: center;
+    vertical-align: middle;
+    padding: 0;
+    color: white;
+}
+
+
+.btn1
+{
+    font-variant: small-caps;
+    background: #002a5b;
+    color: aliceblue;
+    cursor: pointer;
+}
+
+
+.full-screen {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.banner
+{
+    padding-bottom: 50px;
+    padding-top: 50px;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.banner-img
+{
+    height: 50%;
+    width: 90%;
+    margin-bottom: 50px;
+}
+.slogan 
+{
+    color: white;
+}
+.intro
+{
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 20px;
+}
+

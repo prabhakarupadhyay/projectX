@@ -66,7 +66,7 @@
 			</div><!-- /row -->
 	    </div> <!-- /container -->
 	</div><!-- /ww -->
-      
+            
 	
 	<!-- +++++ Footer Section +++++ -->
 	
@@ -212,9 +212,8 @@
             
         }); 
 
-          
+        
       </script>
-      
       
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -273,24 +272,26 @@
               
           var splitToken = Object.keys(Ser_logUserDat[0]);      
           /*
+          
+          
           setTimeout(function(){
               
-              var userInfoObj = {
-                  Name : "prabhakar marshall",
-                  Address : "d 21 gk",
-                  Number : "123456789"   
-              }
-              userInfoObj[splitToken[0]] = Ser_logUserDat[0][splitToken[0]];
-          
-              var firstName = splitToken[0].split('_')[0];
-              
-              if(firstName == 'User'){
-                  socket.emit('UserData',userInfoObj);
-              }else{
-                   socket.emit('ShopOwnerData',userInfoObj);
-              }
-              
-          
+//              var userInfoObj = {
+                    Token : splitToken,
+//                  Name : "prabhakar marshall",
+//                  Address : "d 21 gk",
+//                  Number : "123456789"   
+//              }
+//              userInfoObj[splitToken[0]] = Ser_logUserDat[0][splitToken[0]];
+//          
+//              var firstName = splitToken[0].split('_')[0];
+//              
+//              if(firstName == 'User'){
+//                  socket.emit('UserData',userInfoObj);
+//              }else{
+//                   socket.emit('ShopOwnerData',userInfoObj);
+//              }
+//              
           
           },4000);*/
           

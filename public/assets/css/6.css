@@ -1,0 +1,71 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+@font-face {
+    font-family: airstrike;
+    src: url('fonts/airstrike/airstrike.ttf') format('truetype');
+}
+
+body
+{
+    background: url(/IMG_1116930.jpg) #212121;
+    background-position: center;
+    background-size: cover;
+    background-blend-mode:overlay;
+}
+
+.main-content
+{
+    top:10px;
+    background: rgba(0,0,0,1);
+    min-height: 600px;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+}
+
+.main-content h1{
+    font-family: airstrike;
+    background: #f57c00;
+    margin-bottom: 30px;
+}
+
+form
+{
+    background: #424242;
+    padding: 20px;
+}
+
+form .btn{
+    background: #f57c00;
+    color: white;
+}
+label
+{
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+}
+.btn1
+{
+    font-variant: small-caps;
+    background: #ffb300;
+}
+
+
+.navbottom-link
+{
+    
+    width: 100px;
+    text-align: center;
+    transition: background 0.5s;
+}
+
+.navbottom-link:hover
+{
+    background: #f57c00;
+    width: 100px;
+    text-align: center;
+    color: white;
+}
+
+
