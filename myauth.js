@@ -1,5 +1,4 @@
 var myserver = require('./server.js');
-var manageSockets = require("./lib/manageSockets.js");
 var operations = require("./lib/operations.js");
 var origUser = 'ki';
 var origPass = 'ka';
@@ -28,6 +27,7 @@ exports.auth = function(req,res,absPath,pool){
 
             operations.sortPageName(absPath,function(pgName){
                 if(pgName != undefined){
+                    
                        
                     eventEmit.once(pgName+'_trigger',function(pageData){
                         console.log('adminPage');

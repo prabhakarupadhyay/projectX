@@ -219,30 +219,9 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
      <!-- BOOTSTRAP SCRIPTS  -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-      
-      <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>         
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>    
 
       <script id="modifiable">
-          
-         var socket = io();
-          socket.emit('join','UserPanel');
-          
-          socket.on('UserToken',function(token){
-              
-              console.log('comeeeeeeeeeee');
-              console.log(token);
-              
-          });     
-          
-          socket.on('OwnerToken',function(token){
-              
-              console.log(token);
-              
-          });  
-          
-        
           
           function onSignIn(googleUser) {
               console.log('goooooooooooooooooo');

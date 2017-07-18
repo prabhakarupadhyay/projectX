@@ -11,19 +11,18 @@ var fs = require("fs");
 var mime = require("mime");
 var async = require("async");
 var path = require("path");
-var io = require("socket.io")(server);
 var mysql = require("mysql");
 var events = require("events");
-var session = require('client-sessions');
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth2').Strategy;
-var finalhandler = require('finalhandler');
-var Router = require('router');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var router = express.Router();
+var firebaseAdmin = require("firebase-admin");
+
+var session = require('express-session');
+var MemcachedStore = require('connect-memcached')(session);
 
 const Storage = require('@google-cloud/storage');
 const Datastore = require('@google-cloud/datastore');
@@ -35,17 +34,14 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
+
 /*
  *
- other file paths
+ other inline file paths
 *
 */
 
-
-
 var myauth = require("./myauth.js");
-var manageSockets = require("./lib/manageSockets.js");
-//var ftpHandler = require("./lib/ftpHandler.js");
 var xmlReqHandler = require("./lib/xmlReqHandler.js");
 var createSql = require("./lib/sql tables/createSql.js");
 var sessionHandle = require('./lib/sessionHandler.js');
@@ -55,7 +51,25 @@ var operations = require("./lib/operations.js");
 var passportOauth = require("./lib/passport.js");
 var readHtml = require("./lib/readHtml.js");
 var Bucket = require("./lib/bucket.js");
+var firebaseHandler = require("./lib/firebaseHandler");
+var fireBaseCreds = require("./titanium-flash-171510-firebase-adminsdk-5ovgm-eac858c3c6.json");
+var cloudApiCreds = require("./MyFirstProject-34650eef0b12.json");
 
+
+
+var sessionConfig = {
+  resave: false,
+  saveUninitialized: false,
+  secret: config.session.sessionSecret,
+  signed: true
+};
+
+
+if (process.env.NODE_ENV === 'production' && process.env.MEMCACHE_URL) {
+  sessionConfig.store = new MemcachedStore({
+    hosts: [process.env.MEMCACHE_URL]
+  });
+}
 
 
 /*
@@ -65,6 +79,8 @@ express middlewares
 *
 *
 */
+var timeSession = 1000*60*60*24*30;//30 days
+app.set('trust proxy', true);
 
 //app.set('views', path.join(__dirname, 'views'));
 //app.set('view engine', 'jade');
@@ -74,26 +90,16 @@ app.use(logger('dev'));
 app.use(cookieParser(config.session.sessionSecret));
 app.use(bodyParser.urlencoded({ extended: true  }));
 app.use(bodyParser.json());
-app.use(require('express-session')({
-    secret: config.session.sessionSecret,
-    saveUninitialized: true, // saved new sessions
-    resave: false,
-    cookie : { httpOnly: true, maxAge: 90000 } // configure when sessions expires
-}));
+app.use(session(sessionConfig));
+app.use("/assets",express.static(path.join(__dirname, 'public/assets')));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use("/assets",express.static(path.join(__dirname, 'public/assets')));
-console.log(path.join(__dirname, 'public/assets'));
-app.use(require('connect-livereload')({
-    port: 35729
-  }));
-
 
 var Multer = require('multer');
 var multer = Multer({
   storage: Multer.MemoryStorage,
   limits: {
-    fileSize: 50 * 1024 * 1024 // no larger than 5mb
+    fileSize: 50 * 1024 * 1024 // no larger than 50mb
   }
 });
 
@@ -174,9 +180,6 @@ if (process.env.INSTANCE_CONNECTION_NAME && process.env.NODE_ENV === 'production
 }
 
 var pool = mysql.createPool(options);
-
-
-
 //var pool = mysql.createPool({
 //    host:     'localhost',
 //    user:     'root',
@@ -196,7 +199,7 @@ var pool = mysql.createPool(options);
 var cloudBucket = process.env.CLOUD_BUCKET;
 var storage = Storage({
   projectId: process.env.PROJECT_ID,
-    keyFilename: './MyFirstProject-34650eef0b12.json'
+    keyFilename: "./MyFirstProject-34650eef0b12.json"
 });
 var bucket = storage.bucket(cloudBucket);
 
@@ -205,7 +208,7 @@ var bucket = storage.bucket(cloudBucket);
 //var cloudBucket = 'titanium-flash-171510.appspot.com';
 //var storage = Storage({
 //  projectId: 'titanium-flash-171510',
-//    keyFilename: './MyFirstProject-34650eef0b12.json'
+//    keyFilename: "./MyFirstProject-34650eef0b12.json"
 //});
 //var bucket = storage.bucket(cloudBucket);
 
@@ -219,15 +222,29 @@ var bucket = storage.bucket(cloudBucket);
 //global datastore
 var datastore = Datastore({
   projectId: process.env.PROJECT_ID,
-    keyFilename: './MyFirstProject-34650eef0b12.json'
+    keyFilename: "./MyFirstProject-34650eef0b12.json"
 });
 
 
 //var datastore = Datastore({
 //  projectId: 'titanium-flash-171510',
-//    keyFilename: './MyFirstProject-34650eef0b12.json'
+//    keyFilename: "./MyFirstProject-34650eef0b12.json"
 //});
+//
 
+
+/*
+ *
+ connect to firebase datastore
+*
+*/
+
+firebaseAdmin.initializeApp({
+  credential: firebaseAdmin.credential.cert("./titanium-flash-171510-firebase-adminsdk-5ovgm-eac858c3c6.json"),
+  databaseURL: config.firebase.databaseURL
+});
+ 
+var fireDatabase = firebaseAdmin.database();
 
 
 /****
@@ -243,9 +260,9 @@ var datastore = Datastore({
 createSql.createTables(pool);
 
 passportOauth.init(pool,passport,config,GoogleStrategy);
-manageSockets.listen(io,pool,datastore,bucket);
 
 readHtml.readAll(htmlFiles);
+firebaseHandler.listen(fireDatabase,pool,datastore,bucket);
 
 var myLogger = function (req, res, next) {
     setHead(res);
@@ -258,7 +275,7 @@ app.use(function(req, res, next ) {
     
     if(req.method == 'POST'){
         var splitUrl = req.url.split('_');
-        if(splitUrl[0] == '/adminUpload'){
+        if(splitUrl[0] == '/adminUpload'){              
             next();
         }else{
             res.write('Post request error : Unable to detect the request');
@@ -285,44 +302,55 @@ app.use(function(req, res, next ) {
 
 app.post('*',multer.single('fileUpload'),function(req,res) {
     //emited from ManageSockets.js
-     eventEmit.on('pushShopId',function(jsonShopId){
+     eventEmit.once('pushShopId',function(jsonShopId){
+         if(req.file != undefined){
          req.file.Shop_Sub_Id = jsonShopId.Shop_Sub_Id;
+         console.log(req.file);
+         }
      });
     
     operations.sortPostUploads(req,res,function(actualPath,fileType){
-    
+
+        if(req.file == undefined){
+             res.write("please insert a file.");
+             res.end();
+             return;
+         }
+       
         if(actualPath != undefined){
         
-            res.write("storing file in cloud storage.."+'\n\n');
+            res.write("storing file in cloud storage..\n");
             Bucket.feadBucket(req,bucket,actualPath,fileType,function(isPresent,response,totalPath,message){
           
                 if(isPresent != undefined){ 
                     req.file.cloudStoragePublicUrl = response;
                     req.file.storedPath = totalPath;
-                    res.write('data:'+message+'\n\n');
-                    res.write("writing data in cloud DB.."+'\n\n');
+                    res.write(message);
+                    res.write("\nwriting data in cloud DB..\n");
                     operations.StoreFilesDb(req,pool,datastore,function(DbResponse){
-                        res.write('data:'+DbResponse+'\n\n');
-                        res.end();                          
+                        res.write(DbResponse);
+                        res.end();
                     });
                 }else{
-                    res.write('data:'+message+'\n\n');
-                    res.write('data:'+response+'\n\n');
+                    res.write(message+"\n");
+                    res.write(response);
                     res.end();                    
                 }
         
             });
         }else{
-                res.write(fileType);
+            
+                 res.write(fileType);
                 res.end();            
         }
+    
     });
 });
-
-         
+        
          
          
 app.get('/', function (req, res) {
+    
     requestNormalWait = true;
     var absPath =  htmlFiles[0];
     operations.sortPageName(htmlFiles[0],function(pgName){
@@ -337,6 +365,8 @@ app.get('/', function (req, res) {
         }
     });
 });
+
+
 
 
 app.get('/searchData', function (req, res) {
@@ -354,25 +384,18 @@ app.get('/auth/google',
 app.get('/auth/google/callback',
         
         passport.authenticate('google', {
-                    successRedirect : '/signIn',
+                    successRedirect : '/',
                     failureRedirect : '/'
-            }),function(err,user){cosole.log('goo');
-                                                          
-        });
-
-
-app.get('/signIn', isLoggedIn, function(req, res) {
-
-    res.redirect('/');
-    
+            }),function(err,user){
+    cosole.log(user);
 });
-
 
 
 app.get('/mysecretwindow', function(req, res) {
     requestNormalWait = true;
     var absPath = htmlFiles[1];
     console.log("------------->>>>>>");
+
     myauth.auth(req,res,absPath,pool);
     
 });
@@ -399,12 +422,6 @@ function isLoggedIn(req, res, next) {
     res.redirect('/');
 }
 
-
-// server.listen(server_port,server_ip_address, () => {
-//    const port = server.address().port;
-//    console.log(`App listening on port ${port}`);
-//  });
-//
 
 
 server.listen(server_port,function () {

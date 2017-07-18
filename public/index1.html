@@ -171,62 +171,188 @@
         
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script> <!--bootstrap-->
         
-        <script src = "./assets/js/index.js" type="text/javascript"></script>
-              <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>         
-
+        <script src = "./assets/js/index.js" type="text/javascript"></script> 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+     
       <script id="modifiable">
+        
           
-         var socket = io();
-          socket.emit('join','UserPanel');
           
-//          socket.on('UserToken',function(token){
-//              
-//              console.log('comeeeeeeeeeee');
-//              console.log(token);
-//              
-//          });     
-//          
-//          socket.on('OwnerToken',function(token){
-//              
-//              console.log(token);
-//              
-//          });  
-//    
           
+          //check if common variable is present or not
           if (typeof Ser_comLoadDat != 'undefined'){
               
-             console.log(Ser_comLoadDat);
+             executeComUserFunc();
           
           }
           
-          if (typeof Ser_logUserDat != 'undefined'){
-              
-          var splitToken = Object.keys(Ser_logUserDat[0]);  
-              console.log(Ser_logUserDat);
-          /*
-          1developer.mail@gmail.com
-          setTimeout(function(){
-              
-//              var userInfoObj = {
-                    Token : splitToken,
-//                  Name : "prabhakar marshall",
-//                  Address : "d 21 gk",  //concatinate house number,city,and locality in one address
-//                  Number : "1234567892"   
-//              }
-//              userInfoObj[splitToken[0]] = Ser_logUserDat[0][splitToken[0]];
-//          
-//              var firstName = splitToken[0].split('_')[0];
-//              
-//              if(firstName == 'User'){
-//                  socket.emit('UserData',userInfoObj);
-//              }else{
-//                   socket.emit('ShopOwnerData',userInfoObj);
-//              }
-//              
           
-          },4000);*/
+          //check if login user variable is present or not
+          if (typeof Ser_logUserDat != 'undefined'){
+               
+              executeLogUserFunc();
           
           }      
+          
+          function executeComUserFunc(){
+              
+              //common data user
+              
+          }
+          
+          function executeLogUserFunc(){
+                            
+        /********
+        *
+        *
+        USING FIREBASE CLOUD MESSAGE IN PLACE OF SOCKETS
+        *
+        *
+        **********/
+
+        var getLoginKeys = Object.keys(Ser_logUserDat[0]);
+        var splitLoginKeys = getLoginKeys[0].split('_')[0];
+        
+        //pass this to authorize the firebase on user login(after which it is deleted)      
+        var idTokenName = splitLoginKeys + "_IdToken";
+        
+        //pass this value with every socket resquest to the server       
+        var accessToken = splitLoginKeys + "_AccessToken";
+        var callOnce = true;
+        var FireBaseUser = null;        
+        
+        
+        //user creds for firebase 
+        var configFirebase = {
+            apiKey: "AIzaSyCB3xwPLgUI6O4AQQQYxW8PaZWsAcrXRq0",
+            authDomain: "titanium-flash-171510.firebaseapp.com",
+            databaseURL: "https://titanium-flash-171510.firebaseio.com",
+            projectId: "titanium-flash-171510",
+            storageBucket: "titanium-flash-171510.appspot.com",
+            messagingSenderId: "284593292198",
+            "gcm_sender_id": "103953800507"
+        };
+        
+        firebase.initializeApp(configFirebase);
+                 
+              
+        var unsubscribe = firebase.auth().onAuthStateChanged(function(firebaseUser) {
+            unsubscribe(); 
+            //check if user is logged in to firebase or not
+            if (isUserEqual(firebaseUser) == false) {
+       
+                var credential = firebase.auth.GoogleAuthProvider.credential(Ser_logUserDat[0][idTokenName]);
+                // Sign in with credential from the Google user.
+                firebase.auth().signInWithCredential(credential).then(function(result){
+                    //user successfully logged in to firebase
+                    //listen to change in socket events
+                    listeToSockets(result);
+                }).catch(function(error) {
+                    //prompt user to login again
+                });
+            
+            }else{
+                //user already signed in
+                listeToSockets(firebaseUser);  
+            }
+            
+        });
+        
+        
+        
+
+        function listeToSockets(firebaseUser){
+            FireBaseUser = firebaseUser.uid;
+
+            //listen to changes at specific socket id
+            firebase.database().ref('Channels/Sockets/' + firebaseUser.uid).on('value', function(socketResponse) {
+                
+                //delete id_token in database once the user is logged in
+                if(Ser_logUserDat[0][idTokenName] != null && callOnce == true){
+                    callOnce = false;
+                    //call once the user is authorized
+                    delIdToken(firebaseUser,accessToken,Ser_logUserDat[0][accessToken],idTokenName);   
+                }
+                //get the results/values/response/data of the socket data request
+                console.log(socketResponse.val());
+                //remove the data from the firebase db to free the space once the data is recieved
+                firebase.database().ref('Channels/Sockets/' + firebaseUser.uid).remove();
+            });
+        }
+              
+              
+              
+  
+        function delIdToken(firebaseUser,keyName,keyValue,keyNameToDelete){
+            
+            var makeObj ={
+                Event_Name:"deleteTokValue",
+                Array_info:[keyName,keyValue,keyNameToDelete]
+            } 
+            //pass data to server at specific socket id(different for every user) to delete id_token(not to be confused with accessToken)
+            firebase.database().ref('Channels/Sockets/' + firebaseUser.uid).set(makeObj);
+        }
+              
+              
+              
+              
+        
+        function isUserEqual(firebaseUser) {
+            if (firebaseUser) {
+                var providerData = firebaseUser.providerData;
+                console.log(firebase.auth.GoogleAuthProvider.PROVIDER_ID);
+                for (var i = 0; i < providerData.length; i++) {
+                    console.log(providerData[i].providerId);
+                    if (providerData[i].providerId === firebase.auth.GoogleAuthProvider.PROVIDER_ID){
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+                      
+              
+              //MAKE A SEPERATE TAB/PAGE FOR THIS PART using proper buttons and text fields
+           
+               //user information is passed to the server using firebase after 4 seconds(for testing purpose)
+              setTimeout(function(){
+              
+          //check if user is authorized before connecting the server
+        if(FireBaseUser != null){      
+            
+              var userInfoObj = {
+                  
+                  Name : "prabhakar marshall",
+                  Address : "d 21 gk",  //concatinate house number,city,and locality in one address
+                  Number : "1234567892"   
+             
+              }
+             //push access token name and value to the object
+              userInfoObj[accessToken] = Ser_logUserDat[0][accessToken];
+              
+              if(splitLoginKeys == 'User'){
+                userInfoObj.Event_Name = "UserData";
+              }else{
+                  userInfoObj.Event_Name = "ShopOwnerData";
+              }
+              
+              firebase.database().ref('Channels/Sockets/' + FireBaseUser).set(userInfoObj);
+          
+        }
+          },4000);
+          }
+          
+          
       
       </script>
     </body>

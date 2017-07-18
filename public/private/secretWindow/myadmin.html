@@ -7,9 +7,7 @@
     <meta name="description" content="free notes online">
     <meta name="author" content="one developer">
       
-    <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="911031615494-l9u7nqmq7oe8da6674k0g164ln4j16f6.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
 
     <title>Free Notes Online </title>
 
@@ -141,7 +139,7 @@
     </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+   
     
     <script>
         document.onchange = function(e){
@@ -253,104 +251,46 @@
         
     </script>
     
+      <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
     
-    <script id="modifiable">    
-          var socket = io();
-        socket.emit('join','AdminPanel');
-   
-//     var xhr = new XMLHttpRequest();
-//xhr.open("POST", '/server', true);
-//
-////Send the proper header information along with the request
-//xhr.setRequestHeader("Content-type", "multipart/form-data");
-//
-//xhr.onreadystatechange = function() {//Call a function when the state changes.
-//    if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
-//        console.log('return');
-//    }
-//}
-//xhr.send("yoooooooooooooooooooooo"); 
+    <script id="modifiable">
+          
+        
+        /********
+        *
+        *
+        USING FIREBASE CLOUD MESSAGE IN PLACE OF SOCKETS
+        *
+        *
+        **********/ 
         
         
-    /*
-           function handleChangeEvt(evt){
-           
-           if(evt.target.type == 'file' && evt.target.id == "object_file"){
-               
-               var files = evt.target.files;
-                for(var i = 0,file; file = files[i]; i++){
-                    
-                    var reader = new FileReader();
-                    
-                    reader.onload = (function(readFile){
-                        
-                        return function(e){
-                            
-                            console.log(e.target.result);
-                            
-                            var obj = {
-                                
-                                'modelData':e.target.result
-                                
-                            };
-                            
-                            //var base64String = btoa(String.fromCharCode.apply(null, new Uint8Array(e.target.result)));
-                            
-                            //notes_image_preview.src = 'data:image/png;base64,' + base64String;
-                            
-                            socket.emit('carModelDat',obj);
-                            
-                        }
-                        
-                    })(file);
-                    
-                    reader.readAsArrayBuffer(file);
-                    
-                }
-               
-           }
-           
-       }
-    */
+        var configFirebase = {
+            apiKey: "AIzaSyCB3xwPLgUI6O4AQQQYxW8PaZWsAcrXRq0",
+            authDomain: "titanium-flash-171510.firebaseapp.com",
+            databaseURL: "https://titanium-flash-171510.firebaseio.com",
+            projectId: "titanium-flash-171510",
+            storageBucket: "titanium-flash-171510.appspot.com",
+            messagingSenderId: "284593292198",
+            "gcm_sender_id": "103953800507"
+        };
+  
+        firebase.initializeApp(configFirebase);
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-//               
-//        document.onclick = function(evt){
-//           
-//            //check for submit click
-//            if(evt.target.type == "submit"){
-//            
-//                var submitBtn = evt.target;
-//                if(submitBtn.id == 'sub1'){
-//                    getForm(submitBtn);
-//                
-//                }
-//                return false;
-//            }
-//            
-//            else{
-//            
-//                return;
-//            
-//            }
-//        }
-     ///adminUpload_SHOPS_IMAGE   
-        
-        
+            firebase.database().ref('Channels/AdminSockets').on('value', function(adminResponse) {
+                      
+                //listen to response from server for every event
+                console.log(adminResponse.val());
+                firebase.database().ref('Channels/AdminSockets').remove();
+            
+            });   
+
         
         
 function submitForm(oFormElement)
 {
-    //shop images
+   // shop images
   var xhr = new XMLHttpRequest();
   xhr.onload = function(){ console.log(xhr.responseText); }
   xhr.open (oFormElement.method, oFormElement.action, true);
@@ -358,39 +298,35 @@ function submitForm(oFormElement)
   
     ///shop info
               let shopInfo = {
+                  Event_Name:"ShopData",
                   Shop_User_Email: "commona007@gmail.com",
                   Shop_Number:"1",
                   Name : "Auto Marg",
                   Address : "rohini sector 41",
-                  Number : "9999-9999-88",
+                  Number : "9999-000-88",
                   Email : 'autoMarg@gmail.com',
                   description: 'about the shop..................'
-              }
+              };
               
-                   socket.emit('ShopData',shopInfo);
-          
+                               
+          firebase.database().ref('Channels/AdminSockets').set(shopInfo);
     
     return false; // Markus had to return true
-
     
 }
         
-        
-       //shop cars  
-        setTimeout(function(){
-            
-                          
-            var shopInfo = {
-                Shop_User_Email: "commona007@gmail.com",
-                Shop_Number:"1",
-                Car_Names:["SWIFTSPORTS","endeavour"]
-                
-              }
-              
-                   socket.emit('availableCars',shopInfo);
-            
-        },4000);
-        
+//          var shopInfo = {
+//                Event_Name:"availableCars",
+//                Shop_User_Email: "commona007@gmail.com",
+//                Shop_Number:"1",
+//                Car_Names:["SWIFTSPORTS","ENDEAVOUR"]
+//                
+//              }
+//              
+//                               
+//          firebase.database().ref('Channels/adminResponse).set(shopInfo);
+// 
+          
         
     </script>
     

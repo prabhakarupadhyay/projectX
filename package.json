@@ -23,20 +23,17 @@
   "dependencies": {
     "express": "*",
     "request": "*",
-    "connect-livereload": "*",
+    "firebase-admin": "*",
     "morgan": "*",
-    "express-session": "*",
+    "express-session": "~1.15.2",
+    "connect-memcached": "~0.2.0",
     "body-parser": "*",
     "cookie-parser": "*",
     "serve-favicon": "*",
-    "finalhandler": "*",
     "passport": "*",
     "passport-google-oauth2": "*",
-    "client-sessions":"*",
-    "socket.io": "*",
     "mime": "*",
     "path": "*",
-    "router": "*",
     "mysql": "*",
     "cheerio": "*",
     "shortid": "*",
@@ -61,13 +58,14 @@
     "test": {
       "app": {
         "requiredEnvVars": [
-            "CLOUD_BUCKET",
-            "PROJECT_ID",
+          "CLOUD_BUCKET",
+          "PROJECT_ID",
           "SQL_CLIENT",
           "SQL_USER",
           "SQL_PASSWORD",
           "SQL_DATABASE",
           "INSTANCE_CONNECTION_NAME"
+          "MEMCACHE_URL"
         ],
         "msg": "Last 10 visits:",
         "substitutions": "YOUR_SQL_CLIENT=$SQL_CLIENT,YOUR_USER=$SQL_USER,YOUR_PASSWORD=$SQL_PASSWORD,YOUR_DATABASE=$SQL_DATABASE,YOUR_INSTANCE_CONNECTION_NAME=$INSTANCE_CONNECTION_NAME",
