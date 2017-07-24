@@ -37,8 +37,8 @@ function geocode() {
         lat = response.data.results[0].geometry.location.lat;
         lng = response.data.results[0].geometry.location.lng;
         coords = {
-            lat: lat
-            , lng: lng
+            Lat: lat
+            , Lon: lng
         };
         
         console.log(lat); console.log(lng);
