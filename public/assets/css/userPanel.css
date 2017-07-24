@@ -1,0 +1,36 @@
+
+.user
+{
+    background: rgba(0,0,0,0.5);
+}
+
+.user-head
+{
+    color: white;
+    text-align: center;
+}
+
+.user-head button
+{
+    color: white;
+}
+.user-body
+{
+    background: rgba(0,0,0,0);
+}
+
+.userform{
+    background: rgba(0,0,0,0);
+    margin-bottom: 20px;
+}
+
+.userlabel
+{
+    color: white;
+}
+
+.userinput
+{
+    background: white;
+    color: black;
+}

@@ -14,9 +14,10 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/2.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/navbar+footer.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/notif.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/userPanel.css">
     <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet"> </head>
 
-<body style = "background-image: url(./assets/images/bkground.jpg);">
+<body style="background-image: url(./assets/images/bkground.jpg);">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <!-- Top NavBar -->
     <nav class="navbar navbar-toggleable-md">
@@ -35,95 +36,72 @@
             <div class="col-2"></div>
             <div class="col-8">
                 <form>
-                    <div class="form-group">
-                        <label for="exampleSelect1">Select Your Car</label>
-                        <select class="form-control" id="exampleSelect1">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-8">
-                                <label for="exampleSelect1">Select Parts:</label>
-                                <select class="form-control" id="exampleSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                            <div class="col-4">
-                                <label for="exampleSelect1">Quantity:</label>
-                                <select class="form-control" id="exampleSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="example-text-input" class="col-form-label">Budget Range: </label>
-                        <div class="row">
-                            <div class="col-5">
-                                <input class="form-control" type="text" value="minimum" id="example-text-input"> </div>
-                            <label for="example-text-input" class="col-2 col-form-label">to</label>
-                            <div class="col-5">
-                                <input class="form-control" type="text" value="maximum" id="example-text-input"> </div>
-                        </div>
-                    </div>
                     <div class="form-group" id="location-form">
                         <label for="location" class="col-form-label">Enter Your Location: </label>
                         <div class="row">
-                            <div class="col-8">
-                                  <p id="out"></p>
-                                   <input class="form-control" type="text" value="e.g: mehrauli" id="location" >
-                            </div>
-                            
-                            <div class="col-2">
-                                <button type="button" class="btn" id="search"><i class="fa fa-search" aria-hidden="true"></i></button>
-                            </div>
-                            
-                            <div class="col-2">
-                                   <button class = "btn" onclick="geoFindMe()"><i class="fa fa-dot-circle-o" aria-hidden="true"></i></button>
+                            <div class="col-10">
+                                <p id="out"></p>
+                                <input class="form-control" type="text" value="e.g: mehrauli" id="location"> </div>
+                            <div class="col-2" style = "padding-top: 15px;">
+                                <button class="btn" onclick="geoFindMe()"><i class="fa fa-dot-circle-o" aria-hidden="true"></i></button>
                             </div>
                         </div>
                     </div>
                     <br>
-                    <button type="submit" class="btn">GO!</button>
+                    <button type="button" class="btn" id="search"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </form>
             </div>
             <div class="col-2"></div>
         </div>
     </div>
     <!-- USER PANEL -->
-    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="UserPanel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="m-title">User Panel</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+            <div class="modal-content user">
+                <div class="modal-header user-head">
+                   <div style="text-align: center; width: 100%"><h5 class="m-title">USER PANEL</h5></div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></button>
                 </div>
-                <div class="modal-body">
-                    <div class="container-fluid"> </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn">Go to Shop</button>
+                <div class="modal-body user-body">
+                        <form class="container-fluid userform">
+                            <div class="form-group row">
+                                <label for="name" class="col-2 userlabel">Name: </label>
+                                <div class="col-10">
+                                    <input type="text" class="form-control userinput" id="name" placeholder=""> </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="state" class="col-2 userlabel">State: </label>
+                                <div class="col-2">
+                                    <input type="text" class="form-control userinput" id="state" placeholder=""> </div>
+                                <label for="city" class="col-2 userlabel">City: </label>
+                                <div class="col-2">
+                                    <input type="text" class="form-control userinput" id="city" placeholder=""> </div>
+                                <label for="state" class="col-2 userlabel">Zip-Code: </label>
+                                <div class="col-2">
+                                    <input type="number" class="form-control userinput" id="zipcode" placeholder=""> </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="address" class="col-2 userlabel">Address: </label>
+                                <div class="col-10">
+                                    <textarea class="form-control userinput" id="address" rows="2"></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group row">
+                                <label for="number" class="col-2 userlabel">Number: </label>
+                                <div class="col-10">
+                                    <input type="number" class="form-control userinput" id="number">
+                                </div>
+                            </div>
+                            <div style="text-align: center"><button type="submit" class="btn">Save Changes</button></div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
     <!--USER PANEL ENDS-->
-    
     <!-- NOTIFICATION -->
-    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="Notification" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content notif">
                 <div class="modal-header notif-head">
@@ -160,7 +138,6 @@
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
                     </div>
                 </div>
-                
                 <div class="modal-footer notif-foot">
                     <button type="button" class="btn">Close</button>
                 </div>
@@ -168,11 +145,11 @@
         </div>
     </div>
     <!-- NOTIFICATION ENDS-->
-    
     <!-- bottom nav -->
     <div class="navbottom-content container"> </div>
     <nav class="navbar navbar-toggleable-md fixed-bottom container navbottom">
-        <div class="col-4 navbottom-left"> <a data-toggle="modal" data-target="#myModal1"><i class="fa fa-user" aria-hidden="true"></i></a> <h3  class="userIcon">User Panel</h3></div>
+        <div class="col-4 navbottom-left"> <a data-toggle="modal" data-target="#UserPanel"><i class="fa fa-user" aria-hidden="true"></i></a>
+            <h3 class="userIcon">User Panel</h3></div>
         <div class="col-4">
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav">
@@ -182,7 +159,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col-4 navbottom-right" style="text-align: right"> <a data-toggle="modal" data-target="#myModal2"><i class="fa fa-bell" aria-hidden="true"></i></a> </div>
+        <div class="col-4 navbottom-right" style="text-align: right"> <a data-toggle="modal" data-target="#Notification"><i class="fa fa-bell" aria-hidden="true"></i></a> </div>
     </nav>
     <!-- bottom nav -->
     <!-- Scripts -->
@@ -194,7 +171,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <!--bootstrap-->
     <script src="./assets/js/notif.js"></script>
-    
 </body>
 
 </html>
