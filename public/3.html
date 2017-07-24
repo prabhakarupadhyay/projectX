@@ -32,14 +32,14 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8 col-12">
-               <div class = "row" id="dynamicAlloc">
-                <div class=" col-12 col-md-6" id="DynamicTag">
-                    <div class="card" style="width: 20rem;">
-                        <div class="card-header" id="Name"> Shop Name </div>
-                        <a id="Dynamic_Url" href=""><img class="card-img-top" id="Images" src="./assets/shop1.jpg" alt="Could Not Load"></a>
-                        <button type="button" class="btn preview" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye" aria-hidden="true"></i> Shop Preview</button>
+                <div class="row" id="dynamicAlloc">
+                    <div class=" col-12 col-md-6" id="DynamicTag">
+                        <div class="card" style="width: 20rem;">
+                            <div class="card-header" id="Name"> Shop Name </div>
+                            <a id="Dynamic_Url" href=""><img class="card-img-top" id="Images" src="./assets/shop1.jpg" alt="Could Not Load"></a>
+                            <button type="button" class="btn preview" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye" aria-hidden="true"></i> Shop Preview</button>
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
             <div class="col-md-2"></div>
@@ -48,16 +48,16 @@
     <!-- Shop Preview -->
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog modal-lg" role="document" id="dynamicAlloc">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="m-title">Shop Name</h5>
+                    <h5 class="m-title" id="modName">Shop Name</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-12 col-md-6"> <img class="mod-image img-fluid" src="./assets/shop1.jpg"> </div>
+                            <div class="col-12 col-md-6"> <img class="mod-image img-fluid" src="./assets/shop1.jpg" id="modImage"> </div>
                             <div class="col-md-6 col-12">
                                 <p class="highlight"> Description: </p>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed facilisis lacus. Integer vitae ligula dignissim, aliquam mi eget, aliquet massa. Etiam vel quam non turpis faucibus convallis et id lectus. Ut elementum, magna at consequat tincidunt, est massa volutpat leo, vel pharetra dolor lacus id odio. Aliquam lobortis odio ut libero maximus dignissim. Pellentesque euismod nibh sit amet quam ullamcorper laoreet. </p>
@@ -101,7 +101,92 @@
     <!--tether-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <!--bootstrap-->
-    <script src="./assets/js/3.js"></script>
+    <script id="modifiable">
+        /*var Ser_comLoadDat = [{
+                "Name": "Auto Marg"
+                , "Dynamic_Url": "rkxVUpY5rZ"
+                , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
+}, {
+                "Name": "Vasant Marg"
+                , "Dynamic_Url": "rkxVUpY5rZ"
+                , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium- flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
+}, {
+                "Name": "Marg Marg"
+                , "Dynamic_Url": "rkxVUpY5rZ"
+                , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium- flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
+}, {
+                "Name": "Raghu Marg"
+                , "Dynamic_Url": "rkxVUpY5rZ"
+                , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
+}, {
+                "Name": "Dayan Marg"
+                , "Dynamic_Url": "rkxVUpY5rZ"
+                , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium- flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
+}, {
+                "Name": "Nhp Marg"
+                , "Dynamic_Url": "rkxVUpY5rZ"
+                , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium- flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
+    }
+
+];*/
+        //Shop Allocation
+        var dynamicAlloc = document.getElementById('dynamicAlloc');
+        var dynamicTag = document.getElementById('DynamicTag');
+        var mName = document.getElementById('modName');
+        var mImage = document.getElementById('modImage');
+        //check if common variable is present or not
+        if (typeof Ser_comLoadDat != 'undefined') {
+            executeComUserFunc();
+        }
+        //DYNAMIC SHOP ARRANGEMENT
+        function executeComUserFunc() {
+            var countObj = Ser_comLoadDat.length;
+            for (let i in Ser_comLoadDat) {
+                var currentObj = Ser_comLoadDat[i];
+                var objectKeys = Object.keys(currentObj);
+                for (let j in objectKeys) {
+                    var currentKey = objectKeys[j];
+                    var currentTag = dynamicTag.querySelector('#' + currentKey);
+                    feedTags(currentTag, currentObj[currentKey], function (newCurrentTag) {});
+                }
+                if (i == 0) {
+                    dynamicTag = dynamicTag.cloneNode(true);
+                }
+                else {
+                    dynamicAlloc.appendChild(dynamicTag);
+                    dynamicTag = dynamicTag.cloneNode(true);
+                }
+            }
+        }
+
+        function feedTags(currentTag, tagValue, callback) {
+            if (currentTag.tagName == 'IMG') {
+                var tagValueArr = tagValue.split(',');
+                if (Array.isArray(tagValueArr)) {
+                    //currently using only first url of shop images
+                    currentTag.setAttribute('src', tagValueArr[0]);
+                    mImage.setAttribute('src', tagValueArr[0]);
+                    callback(currentTag);
+                    return;
+                }
+                currentTag.setAttribute('src', tagValue);
+                callback(currentTag);
+            }
+            else if (currentTag.tagName == 'A') {
+                var createWebUrl = document.location.origin + '/' + 'dynamicShop' + '/' + tagValue
+                currentTag.setAttribute('href', createWebUrl);
+                callback(currentTag);
+            }
+            else if (currentTag.tagName == 'DIV' || currentTag.tagName == 'P' || currentTag.tagName == 'H5') {
+                currentTag.innerHTML = tagValue;
+                mName.innerHTML = tagValue;
+                callback(currentTag);
+            }
+            else {
+                callback("tag not found.");
+            }
+        }
+    </script>
 </body>
 
 </html>
