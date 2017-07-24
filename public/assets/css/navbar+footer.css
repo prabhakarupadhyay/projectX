@@ -10,18 +10,42 @@
 
 .navbar
 {
-    background: #002a5b;
+    background: rgba(0,42, 91, 0.8);
+    padding:0px;
+    
 }
 
-.navbar-nav
+.navbar-brand img
 {
-    float: right;
+    width: auto;
+    height: 80px;
 }
 
-.navbar-brand
+.nav-right a
 {
+    font-size: 50px;
+    padding: 0px;
+    margin: 0px;
+    font-variant: small-caps;
+    text-decoration:none !important;
     color: white;
+    padding: 5px;
+    transition: background 1s, color 1s, border-radius 1s;
 }
+
+.nav-right a:hover
+{
+    background: white;
+    border-radius: 5px;
+    color: rgba(0,42, 91, 0.8);
+}
+
+
+.navbottom
+{
+    background: rgb(2, 117, 216);
+}
+
 
 /* Footer */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
@@ -163,3 +187,30 @@ footer {
 	color:#FFF;  
 	font-size:12px;
 }
+
+.navbottom-right a, .navbottom-left a{
+    background: #002a5b;
+    text-decoration: none;
+    color: white !important;
+    margin: 0px;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.5s;
+}
+
+.navbottom-right a:hover, .navbottom-left a:hover{
+    background: #4dd0e1;
+}
+
+.userIcon
+{
+    display: none;
+}
+
+.userIcon-active
+{
+    display: inline;
+}
+

@@ -1,282 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html>
+
+<head>
+    <link rel="shortcut icon" type="image/png" href="./assets/images/favicon.png">
+    <title>Home</title>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="free notes online">
-    <meta name="author" content="one developer">
-      
-    <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="911031615494-l9u7nqmq7oe8da6674k0g164ln4j16f6.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/home.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/navbar+footer.css">
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani|Crushed" rel="stylesheet"> </head>
 
-    <title>Free Notes Online </title>
-
-      
-   <!-- BOOTSTRAP CORE STYLE CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
-
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-
-    <!-- Static navbar -->
-    <div class="navbar navbar-inverse navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="http://freenotesonline-adseeker.rhcloud.com/">FREE NOTES ONLINE</a>
+<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <!-- Top NavBar -->
+    <nav class="navbar navbar-toggleable-md">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+        <div class="container">
+            <div class="col-4">
+                <a class="navbar-brand" href="#"><img src="./assets/images/modsfuseLogo.png"></a>
+            </div>
+            <div class="col-4"> </div>
+            <div class="col-4 nav-right text-right"> <a href="#"> login <i class="fa fa-user-circle" aria-hidden="true"></i></a> </div>
         </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a>Notes</a></li>
-            <li><div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" hidden="true"></div>
-              
-                <a href="/auth/google">login via google</a>
-              
-              </li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 main-content">
+                <!-- The Carousel -->
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active"> <img class="d-block img-fluid" src="./assets/images/index/slide0.png" alt="First slide"> </div>
+                        <div class="carousel-item" role="listbox"> <img class="d-block img-fluid" src="./assets/images/index/slide1.png" alt="Second slide"> </div>
+                        <div class="carousel-item" role="listbox"> <img class="d-block img-fluid" src="./assets/images/index/slide2.png" alt="Third slide"> </div>
+                        <div class="carousel-item" role="listbox"> <img class="d-block img-fluid" src="./assets/images/index/slide3.png" alt="Fourth Image"> </div>
+                    </div>
+                </div>
+                <div class="banner">
+                    <div class="featured">
+                        <h1>FEATURED SHOPS</h1>
+                        <div class="row" id="dynamicAlloc">
+                            <div class=" col-12 col-md-4" id="DynamicTag">
+                                <div class="card" style="width: 20rem;">
+                                    <div class="card-header" id="Name"> Shop Name </div> 
+                                    <a id="Dynamic_Url" href=""><img class="card-img-top" id = "Images" src="./assets/shop1.jpg" alt="Could Not Load"></a> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h1>NAME</h1>
+                    <h2 class="slogan"><i>ipsum quia dolor sit amet, consectetur, adipisci velit...</i></h2>
+                    <p class="intro"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+                    <button type="button" class="btn btn-lg btn1">Get Started</button>
+                </div>
+            </div>
+        </div>
     </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 footerleft ">
+                    <div class="logofooter"><img src="./assets/images/modsfuseLogo.png" style="height: 65px; width: 200px;"></div>
+                    <p> some brief intro and slogan.</p>
+                    <p><i class="fa fa-map-pin"></i> Adress</p>
+                    <p><i class="fa fa-phone"></i> Phone (India) : +91 9999 878 398</p>
+                    <p><i class="fa fa-envelope"></i> E-mail : email@email.com</p>
+                </div>
+                <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                    <h6 class="heading7">GENERAL LINKS</h6>
+                    <ul class="footer-ul">
+                        <li><a href="#"> Privacy Policy</a></li>
+                        <li><a href="#"> Terms &amp; Conditions</a></li>
+                        <li><a href="#"> Return Policy</a></li>
+                        <li><a href="#"> Frequently Ask Questions</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                    <h6 class="heading7">LATEST POST</h6>
+                    <div class="post">
+                        <p>Some Post Data<span>March 13,2017</span></p>
+                        <p>Some Post Data<span>March 13,2017</span></p>
+                        <p>Some Post Data<span>March 13,2017</span></p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                    <h6 class="heading7">SOCIAL MEDIA</h6>
+                    <blockquote class="blockquote">
+                        <blockquote cite="https://www.facebook.com/facebook"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote>
+                        <blockquote cite="https://www.twitter.com/"><a href="https://www.twitter.com/">Twitter</a></blockquote>
+                        <blockquote cite="https://www.instagram.com/"><a href="https://www.instagram.com/">Instagram</a></blockquote>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--Footer2-->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>© 2017 - All Rights with Project X</p>
+                </div>
+                <div class="col-md-6">
+                    <ul class="bottom_ul">
+                        <li><a href="http://enactus.org/">projectx.org</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="http://enactus.org/blog/">Blog</a></li>
+                        <li><a href="#">Faq's</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">Site Map</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <!--jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <!--tether-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <!--bootstrap-->
+    <script src="./assets/js/index.js" id="modifiable"></script>
+</body>
 
-	<!-- +++++ Welcome Section +++++ -->
-	<div id="ww">
-	    <div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2 centered">
-					
-					<h1><a href="./searchnotes.html" style="color:#333;">Get Free Notes</a></h1>
-					<p>Hello everybody. This website is a contribution of a student who would always find it difficult to get free and effective notes. Free Notes Online consist of all kind of notes made by students studying courses that can be downloaded for free.</p>
-					<p>Please, contact us on<a href="https://www.facebook.com/onedeveloper.1/"> on Facebook</a> or email to help us expand this website anyone who is willing to contribute his/her notes.</p>
-				
-				</div><!-- /col-lg-8 -->
-			</div><!-- /row -->
-	    </div> <!-- /container -->
-	</div><!-- /ww -->
-            
-	
-	<!-- +++++ Footer Section +++++ -->
-	
-	<div id="footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4">
-					<h4>My Email</h4>
-					<p>
-						onlinefreenotes@gmail.com
-					</p>
-				</div><!-- /col-lg-4 -->
-				
-				<div class="col-lg-4">
-					<h4>follow us</h4>
-					<p>
-						<a href="https://www.facebook.com/onedeveloper.1/">Facebook</a><br/>
-					</p>
-				</div><!-- /col-lg-4 -->
-				
-				<div class="col-lg-4">
-					<h4>About OneDeveloper</h4>
-					<p>OneDeveloper is an organisation working hard to make websites,app,games etc.</p>
-				</div><!-- /col-lg-4 -->
-			
-			</div>
-		
-		</div>
-	</div>
-	
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-      <script>
-      
-          (function($){
-
-    $.fn.extend({ 
-
-        hoverZoom: function(settings) {
- 
-            var defaults = {
-                overlay: true,
-                overlayColor: '#2e9dbd',
-                overlayOpacity: 0.9,
-                zoom: 25,
-                speed: 300
-            };
-             
-            var settings = $.extend(defaults, settings);
-         
-            return this.each(function() {
-            
-                var s = settings;
-                var hz = $(this);
-                var image = $('img', hz);
-
-                image.load(function() {
-                    
-                    if(s.overlay === true) {
-                        $(this).parent().append('<div class="zoomOverlay" />');
-                        $(this).parent().find('.zoomOverlay').css({
-                            opacity:0, 
-                            display: 'block', 
-                            backgroundColor: s.overlayColor
-                        }); 
-                    }
-                
-                    var width = $(this).width();
-                    var height = $(this).height();
-                
-                    $(this).fadeIn(1000, function() {
-                        $(this).parent().css('background-image', 'none');
-                        hz.hover(function() {
-                            $('img', this).stop().animate({
-                                height: height + s.zoom,
-                                marginLeft: -(s.zoom),
-                                marginTop: -(s.zoom)
-                            }, s.speed);
-                            if(s.overlay === true) {
-                                $(this).parent().find('.zoomOverlay').stop().animate({
-                                    opacity: s.overlayOpacity
-                                }, s.speed);
-                            }
-                        }, function() {
-                            $('img', this).stop().animate({
-                                height: height,
-                                marginLeft: 0,
-                                marginTop: 0
-                            }, s.speed);
-                            if(s.overlay === true) {
-                                $(this).parent().find('.zoomOverlay').stop().animate({
-                                    opacity: 0
-                                }, s.speed);
-                            }
-                        });
-                    });
-                });    
-            });
-        }
-    });
-})(jQuery);
-          
-          
-          
-           $(function() {
-        
-        	
-            $('.blue').hoverZoom({
-                overlayColor: '#3498db',
-                zoom: 0
-            });
-            
-            $('.green').hoverZoom({
-                overlayColor: '#1abc9c',
-                zoom: 0
-            });
-            
-            $('.pink').hoverZoom({
-                overlayColor: '#bd2e75',
-                zoom: 0
-            });
-            
-            $('.black').hoverZoom({
-                overlayColor: '#2f2f2f',
-                zoom: 0
-            });
-            
-            $('.alizarin').hoverZoom({
-                overlayColor: '#e74c3c',
-                zoom: 0
-            });
-            
-            /* USAGE
-            
-            $('#pink').hoverZoom({
-                overlay: true, // false to turn off (default true)
-                overlayColor: '#2e9dbd', // overlay background color
-                overlayOpacity: 0.7, // overlay opacity
-                zoom: 25, // amount to zoom (px)
-                speed: 300 // speed of the hover
-            });
-            
-            */
-            
-        }); 
-
-        
-      </script>
-      
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-     <!-- BOOTSTRAP SCRIPTS  -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>    
-
-      <script id="modifiable">
-          
-          function onSignIn(googleUser) {
-              console.log('goooooooooooooooooo');
-              var id_token = googleUser.getAuthResponse().id_token;
-              var xhr = new XMLHttpRequest();
-              xhr.open('POST', 'http://localhost:8080/GsignIn');
-              xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-              xhr.send('https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=' + id_token);    
-              var profile = googleUser.getBasicProfile();
-              console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-       
-              console.log('Full Name: ' + profile.getName());
-    
-              console.log('Given Name: ' + profile.getGivenName());
-        
-              console.log('Family Name: ' + profile.getFamilyName());
-    
-              console.log("Image URL: " + profile.getImageUrl());
-        
-              console.log("Email: " + profile.getEmail());
-              //socket.emit('initialize',{name:profile.getName()});
-             
-              
-          }
-          
-          if (typeof Ser_logUserDat != 'undefined'){
-              
-          var splitToken = Object.keys(Ser_logUserDat[0]);      
-          /*
-          
-          
-          setTimeout(function(){
-              
-//              var userInfoObj = {
-                    Token : splitToken,
-//                  Name : "prabhakar marshall",
-//                  Address : "d 21 gk",
-//                  Number : "123456789"   
-//              }
-//              userInfoObj[splitToken[0]] = Ser_logUserDat[0][splitToken[0]];
-//          
-//              var firstName = splitToken[0].split('_')[0];
-//              
-//              if(firstName == 'User'){
-//                  socket.emit('UserData',userInfoObj);
-//              }else{
-//                   socket.emit('ShopOwnerData',userInfoObj);
-//              }
-//              
-          
-          },4000);*/
-          
-          }      
-      
-      </script>
-      
-  </body>
 </html>

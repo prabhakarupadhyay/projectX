@@ -64,7 +64,7 @@
           "SQL_USER",
           "SQL_PASSWORD",
           "SQL_DATABASE",
-          "INSTANCE_CONNECTION_NAME"
+          "INSTANCE_CONNECTION_NAME",
           "MEMCACHE_URL"
         ],
         "msg": "Last 10 visits:",

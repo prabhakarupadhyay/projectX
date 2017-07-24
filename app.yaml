@@ -27,11 +27,17 @@ env_variables:
   INSTANCE_CONNECTION_NAME: 'titanium-flash-171510:us-central1:cloudsql007'
   SQL_CLIENT: 'mysql' # either 'pg' or 'mysql' (all lowercase)
   
-    MEMCACHE_URL: 'memcached-11094.c1.us-central1-2.gce.cloud.redislabs.com:11094'
+  # If you are using the App Engine Memcache service (currently in alpha),
+  # uncomment this section and comment out the other Memcache variables.
+  # USE_GAE_MEMCACHE: 1
+  MEMCACHE_URL: 'memcached-11094.c1.us-central1-2.gce.cloud.redislabs.com:11094'
+  #127.0.0.1:11211
+  #memcached-11094.c1.us-central1-2.gce.cloud.redislabs.com:11094
   # If you are using a Memcached server with SASL authentiation enabled,
   # fill in these values with your username and password.
   MEMCACHE_USERNAME: 'root'
   MEMCACHE_PASSWORD: 'nadhukar123'
+  
 # [END env]
 
 # [START cloudsql_settings]

@@ -1,71 +1,90 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
-
-@font-face {
-    font-family: airstrike;
-    src: url('fonts/airstrike/airstrike.ttf') format('truetype');
-}
-
-body
-{
-    background: url(/IMG_1116930.jpg) #212121;
-    background-position: center;
+@import url('https://fonts.googleapis.com/css?family=Crushed');
+body {
+    background-image: url(/assets/images/bkground.jpg);
     background-size: cover;
-    background-blend-mode:overlay;
+    background-repeat: repeat-y;
+    background-position: center;
 }
 
-.main-content
-{
-    top:10px;
-    background: rgba(0,0,0,1);
+.main-content {
+    top: 10px;
+    padding: 0;
+    background: rgba(0,42, 91, 0.8);
     min-height: 600px;
     text-align: center;
     vertical-align: middle;
     color: white;
+    margin-bottom: 100px;
 }
 
-.main-content h1{
-    font-family: airstrike;
-    background: #f57c00;
-    margin-bottom: 30px;
+
+.main-content h1 {
+    font-family: 'Crushed', cursive;
+    background: #0275d8;
+    margin: 0 0 30px 0;
 }
 
-form
-{
-    background: #424242;
+form {
+    background: rgba(0, 21, 33, 1);
+    ;
     padding: 20px;
 }
 
-form .btn{
-    background: #f57c00;
+form .btn {
+    background: #0275d8;
+    color: white;
+    transition: all 0.7s ease;
+    -o-transition: all 0.7s ease;
+    -moz-transition: all 0.7s ease;
+    -webkit-transition: all 0.7s ease;
+}
+
+form .btn:hover,
+form .btn:active {
+    cursor: pointer;
+    background: rgba(10, 52, 100, 1);
+}
+
+.form-control {
+    background: rgba(10, 42, 91, 1);
     color: white;
 }
-label
-{
+
+.form-control:focus {
+    background: rgba(10, 42, 91, 1);
+    color: white;
+}
+
+label {
     font-family: 'Rajdhani', sans-serif;
     font-size: 15px;
     font-weight: 800;
 }
-.btn1
-{
-    font-variant: small-caps;
-    background: #ffb300;
-}
 
-
-.navbottom-link
-{
-    
+.navbottom-link {
     width: 100px;
     text-align: center;
     transition: background 0.5s;
+    border-radius: 72px / 145px;
 }
 
-.navbottom-link:hover
-{
-    background: #f57c00;
+.navbottom-link:hover {
+    background:  rgba(0,42, 91, 0.8);
     width: 100px;
     text-align: center;
     color: white;
 }
 
+.notif {
+    background: #0275d8;
+}
+
+.space {
+    padding: 20px;
+}
+
+.nav-item h5 {
+    color: white;
+}
 

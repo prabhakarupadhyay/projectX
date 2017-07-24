@@ -57,19 +57,19 @@ var cloudApiCreds = require("./MyFirstProject-34650eef0b12.json");
 
 
 
-var sessionConfig = {
-  resave: false,
-  saveUninitialized: false,
-  secret: config.session.sessionSecret,
-  signed: true
-};
-
-
-if (process.env.NODE_ENV === 'production' && process.env.MEMCACHE_URL) {
-  sessionConfig.store = new MemcachedStore({
-    hosts: [process.env.MEMCACHE_URL]
-  });
-}
+//var sessionConfig = {
+//  resave: false,
+//  saveUninitialized: false,
+//  secret: config.session.sessionSecret,
+//  signed: true
+//};
+//
+//
+//if (process.env.NODE_ENV === 'production' && process.env.MEMCACHE_URL) {
+//  sessionConfig.store = new MemcachedStore({
+//    hosts: [process.env.MEMCACHE_URL]
+//  });
+//}
 
 
 /*
@@ -79,7 +79,6 @@ express middlewares
 *
 *
 */
-var timeSession = 1000*60*60*24*30;//30 days
 app.set('trust proxy', true);
 
 //app.set('views', path.join(__dirname, 'views'));
@@ -90,7 +89,13 @@ app.use(logger('dev'));
 app.use(cookieParser(config.session.sessionSecret));
 app.use(bodyParser.urlencoded({ extended: true  }));
 app.use(bodyParser.json());
-app.use(session(sessionConfig));
+//app.use(session(sessionConfig));
+app.use(require('express-session')({
+    secret: config.session.sessionSecret,
+    saveUninitialized: true, // saved new sessions
+    resave: false,
+    cookie : {httpOnly: true, maxAge: 86400000 } // configure when sessions expires
+}));
 app.use("/assets",express.static(path.join(__dirname, 'public/assets')));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -122,7 +127,7 @@ global.requestNormalWait = true;
 var cache = {};
 //var dirName = __dirname + "/public";
 
-var htmlFiles = ['./public/index1.html','./public/private/secretWindow/myadmin.html','./public/dynamic.html']
+var htmlFiles = ['./public/index.html','./public/private/secretWindow/myadmin.html','./public/dynamic.html']
 
 
 /*
@@ -146,14 +151,14 @@ if(typeof server_ip_address ==='undefined'){
 */
 
 //global sql 
-var options = {
-
-  client: process.env.SQL_CLIENT,
-  user: process.env.SQL_USER,
-  password: process.env.SQL_PASSWORD,
-  database:  process.env.SQL_DATABASE
-    
-}
+//var options = {
+//
+//  client: process.env.SQL_CLIENT,
+//  user: process.env.SQL_USER,
+//  password: process.env.SQL_PASSWORD,
+//  database:  process.env.SQL_DATABASE
+//    
+//}
 
 
 
@@ -169,26 +174,26 @@ var options = {
 //    
 //}
 
-if (process.env.INSTANCE_CONNECTION_NAME && process.env.NODE_ENV === 'production') {
-
-    if (process.env.SQL_CLIENT === 'mysql') {
-    
-        options.socketPath = `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`;
-
-    }
-  
-}
-
-var pool = mysql.createPool(options);
-//var pool = mysql.createPool({
-//    host:     'localhost',
-//    user:     'root',
-//    password: 'nadhukar123',
-//    port:     '3306',
-//    database: 'database3',
-//    connectionLimit : 500
-//    });
-//            
+//if (process.env.INSTANCE_CONNECTION_NAME && process.env.NODE_ENV === 'production') {
+//
+//    if (process.env.SQL_CLIENT === 'mysql') {
+//    
+//        options.socketPath = `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`;
+//
+//    }
+//  
+//}
+//
+//var pool = mysql.createPool(options);
+var pool = mysql.createPool({
+    host:     'localhost',
+    user:     'root',
+    password: 'nadhukar123',
+    port:     '3306',
+    database: 'database3',
+    connectionLimit : 500
+    });
+            
 
 /*
  *
@@ -196,21 +201,21 @@ var pool = mysql.createPool(options);
 *
 */
 //global bucket
-var cloudBucket = process.env.CLOUD_BUCKET;
-var storage = Storage({
-  projectId: process.env.PROJECT_ID,
-    keyFilename: "./MyFirstProject-34650eef0b12.json"
-});
-var bucket = storage.bucket(cloudBucket);
-
-
-//local connection with the cloud storage
-//var cloudBucket = 'titanium-flash-171510.appspot.com';
+//var cloudBucket = process.env.CLOUD_BUCKET;
 //var storage = Storage({
-//  projectId: 'titanium-flash-171510',
+//  projectId: process.env.PROJECT_ID,
 //    keyFilename: "./MyFirstProject-34650eef0b12.json"
 //});
 //var bucket = storage.bucket(cloudBucket);
+
+
+//local connection with the cloud storage
+var cloudBucket = 'titanium-flash-171510.appspot.com';
+var storage = Storage({
+  projectId: 'titanium-flash-171510',
+    keyFilename: "./MyFirstProject-34650eef0b12.json"
+});
+var bucket = storage.bucket(cloudBucket);
 
 
 /*
@@ -220,17 +225,17 @@ var bucket = storage.bucket(cloudBucket);
 */
 
 //global datastore
+//var datastore = Datastore({
+//  projectId: process.env.PROJECT_ID,
+//    keyFilename: "./MyFirstProject-34650eef0b12.json"
+//});
+
+
 var datastore = Datastore({
-  projectId: process.env.PROJECT_ID,
+  projectId: 'titanium-flash-171510',
     keyFilename: "./MyFirstProject-34650eef0b12.json"
 });
 
-
-//var datastore = Datastore({
-//  projectId: 'titanium-flash-171510',
-//    keyFilename: "./MyFirstProject-34650eef0b12.json"
-//});
-//
 
 
 /*
@@ -360,6 +365,8 @@ app.get('/', function (req, res) {
             eventEmit.once(pgName+'_trigger',function(pageData){
                 if(requestNormalWait != true){
                     exportProcessUrl(res,absPath,pageData);        
+                }else{
+                    res.end("could not find the resources. please load again.");
                 }
             });     
         }

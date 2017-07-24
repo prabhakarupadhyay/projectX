@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div class="featured">
+1
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+
+<script>
+var Ser_comLoadDat = [{
+        "Name": "Auto Marg"
+        , "Dynamic_Url": "rkxVUpY5rZ"
+        , "Images": "shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
+}, {
+        "Name": "Vasant Marg"
+        , "Dynamic_Url": "rkxVUpY5rZ"
+        , "Images": "shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium- flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
+    }
+];
+var $featured = $('.featured');
+    
+
+$featured[0].innerHTML = '<h1>FEATURED SHOPS</h1>';
+    
+if (typeof Ser_comLoadDat != 'undefined') {
+    executeComUserFunc();
+}
+//DYNAMIC SHOP ARRANGEMENT
+function executeComUserFunc() {
+    var countObj = Ser_comLoadDat.length;
+    for (let i in Ser_comLoadDat) {
+        var Name = Ser_comLoadDat[i].Name;
+        var DynamicUrl = Ser_comLoadDat[i].Dynamic_Url;
+        var Images = Ser_comLoadDat[i].Images;
+        Images = Images.split(',');
+        $featured[0].innerHTML += 
+            '<div class=" col-12 col-md-4">'
+                + '<div class="card" style="width: 20rem;">'+'<div class="card-header">' +
+                Name + '</div>' + '<img class="card-img-top" src=' + Images[0] +' alt="Card image cap">' + '</div>' + '</div>';
+    }
+}
+</script>
+
+</body>
+</html>

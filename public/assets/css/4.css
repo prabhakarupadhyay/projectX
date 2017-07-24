@@ -3,16 +3,18 @@
 
 @import url('https://fonts.googleapis.com/css?family=Crushed');
 
-body
-{
-    background:#212121;
+body {
+    background-image: url(/assets/images/bkground.jpg);
+    background-size: cover;
+    background-repeat: repeat-y;
+    background-position: center;
 }
 
 .main-content
 {
     top:10px;
     padding: 0px;
-    background: rgba(0,0,0,1);
+    background: rgba(0,42, 91, 0.8);
     min-height: 600px;
     text-align: center;
     vertical-align: middle;
@@ -44,14 +46,12 @@ body
     width: 100px;
     text-align: center;
     transition: background 0.5s;
+    border-radius: 72px / 145px;
 }
 
-.navbottom-link:hover
-{
-    background: #0275d8;
+.navbottom-link:hover {
+    background:  rgba(0,42, 91, 0.8);
     width: 100px;
     text-align: center;
     color: white;
 }
-
-

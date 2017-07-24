@@ -1,0 +1,42 @@
+.alert{
+    color: white;
+}
+.noty-holder{
+    padding-bottom: 100px;
+}
+
+.alert-read{
+    background: rgba(10,52,100,1);
+}
+
+.alert-read:hover{
+    cursor: pointer;
+}
+
+.alert-unread{
+    background: #0275d8;
+}
+
+.alert-unread:hover{
+    cursor: pointer;
+}
+
+.notif
+{
+    background: rgba(0,0,0,0.5);
+}
+
+.notif-head
+{
+    color: white;
+    text-align: center;
+}
+.notif-body
+{
+    background: rgba(0,0,0,0);
+}
+
+.notif-foot
+{
+    text-align: center;
+}

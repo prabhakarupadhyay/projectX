@@ -3,7 +3,7 @@ var srch = document.getElementById('search');
 srch.addEventListener('click', geocode);
 
 
-function initMap(coords) {
+/*function initMap(coords) {
     var options = {
         zoom: 13, //2 - 14
         center: (!coords?{
@@ -21,7 +21,7 @@ function initMap(coords) {
     }
 
     addMarker(coords);
-}
+}*/
 
 function geocode() {
     loc = document.getElementById('location').value;
@@ -40,7 +40,8 @@ function geocode() {
             lat: lat
             , lng: lng
         };
-        initMap(coords);
+        
+        console.log(lat); console.log(lng);
         
         document.getElementById('location').value = formattedAddress;
         
@@ -49,4 +50,26 @@ function geocode() {
     });
     
 }
+
+//Detecting Through GPS
+function geoFindMe() {
+        if (!navigator.geolocation) {
+            console.log("Geolocation is not supported by your browser");
+            return;
+        }
+
+        function success(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            console.log("Latitude: " + latitude);
+            console.log("Longitude: " + longitude);
+        }
+
+        function error() {
+            console.log("Unable to retrieve your location");
+        }
+        navigator.geolocation.getCurrentPosition(success, error);
+    }
+
+
 

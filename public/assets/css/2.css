@@ -1,19 +1,23 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 @import url('https://fonts.googleapis.com/css?family=Crushed');
 body {
-    background: #212121;
+    background-image: url(/assets/images/bkground.jpg);
+    background-size: cover;
+    background-repeat: repeat-y;
+    background-position: center;
 }
 
 .main-content {
     top: 10px;
     padding: 0;
-    background: rgba(0, 0, 0, 1);
+    background: rgba(0,42, 91, 0.8);
     min-height: 600px;
     text-align: center;
     vertical-align: middle;
     color: white;
-    margin-bottom: 100px;
+    
 }
+
 
 .main-content h1 {
     font-family: 'Crushed', cursive;
@@ -23,8 +27,8 @@ body {
 
 form {
     background: rgba(0, 21, 33, 1);
-    ;
     padding: 20px;
+    margin-bottom: 100px;
 }
 
 form .btn {
@@ -66,7 +70,7 @@ label {
 }
 
 .navbottom-link:hover {
-    background: #0275d8;
+    background:  rgba(0,42, 91, 0.8);
     width: 100px;
     text-align: center;
     color: white;
@@ -84,11 +88,10 @@ label {
     color: white;
 }
 
-.fa {
-    font-size: 25px;
+
+.gps-footer {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
 }
 
-#map {
-    height: 400px;
-    width: 100%;
-}

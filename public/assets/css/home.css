@@ -1,32 +1,39 @@
 body
 {
-    background: #424242;
+    background-image: url(/assets/images/bkground.jpg);
+    background-size: contain;
+    background-repeat: repeat-y;
+    background-position: center;
 }
 
 .main-content
 {
-    top:0px;
-    background: rgba(0,0,0,0.6);
+    
     text-align: center;
     vertical-align: middle;
     padding: 0;
     color: white;
+    background: rgba(0,42, 91, 0.8);
 }
-
 
 .btn1
 {
     font-variant: small-caps;
-    background: #002a5b;
+    background: #62a3bf;
     color: aliceblue;
     cursor: pointer;
 }
 
+.carousel-inner
+{
+    background:rgba(0,0,0,0.4);
+    padding: 10px;
+}
 
 .full-screen {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
 }
 
 .banner
@@ -34,14 +41,9 @@ body
     padding-bottom: 50px;
     padding-top: 50px;
     font-family: 'Rajdhani', sans-serif;
+    border: none;
 }
 
-.banner-img
-{
-    height: 50%;
-    width: 90%;
-    margin-bottom: 50px;
-}
 .slogan 
 {
     color: white;
@@ -51,5 +53,42 @@ body
     padding-left: 20px;
     padding-right: 20px;
     font-size: 20px;
+}
+
+/*Shop Listing*/
+.featured h1
+{
+    font-family: 'Crushed', cursive;
+    background: #0275d8;
+    margin: 0 0 30px 0;
+}
+.featured
+{
+   padding: 20px; 
+    background: rgba(1,1,1,0.2);
+    
+}
+
+.card
+{
+    background: #0275d8;
+    display: table;
+    margin: 0 auto;
+    padding: 10px;
+}
+.card-img-top
+{
+    height: 200px;
+}
+
+.card-header
+{
+    background: rgba(10,42,91,1);
+    font-size: 25px;
+}
+
+.card-block
+{
+    text-align: center;
 }
 

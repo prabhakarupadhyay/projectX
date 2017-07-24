@@ -33,6 +33,8 @@ exports.auth = function(req,res,absPath,pool){
                         console.log('adminPage');
                         if(requestNormalWait != true){
                             exportProcessUrl(res,absPath,pageData);        
+                        }else{
+                             res.end("could not find the resources. please load again.");
                         }
                     });
                     operations.loadAdminPanelDat(pool,pgName);
