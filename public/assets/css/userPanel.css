@@ -8,6 +8,7 @@
 {
     color: white;
     text-align: center;
+    font-family: arial;
 }
 
 .user-head button
@@ -33,4 +34,19 @@
 {
     background: white;
     color: black;
+}
+
+.upbtn{
+    background: #0275d8;
+    color: white;
+    transition: all 0.7s ease;
+    -o-transition: all 0.7s ease;
+    -moz-transition: all 0.7s ease;
+    -webkit-transition: all 0.7s ease;
+}
+
+.upbtn:hover,
+.upbtn:active {
+    cursor: pointer;
+    background: rgba(10, 52, 100, 1);
 }

@@ -21,25 +21,29 @@
     height: 80px;
 }
 
-.nav-right a
+.nav-right a img
 {
-    font-size: 50px;
-    padding: 0px;
-    margin: 0px;
-    font-variant: small-caps;
-    text-decoration:none !important;
+    transition: height 0.5s;
+}
+
+.nav-right a img:hover
+{
+    height: 53px;
+}
+
+.userpic 
+{
+     height: 60px;
+     border-radius: 50%;
+}
+
+.username 
+{
+    display: inline;
     color: white;
-    padding: 5px;
-    transition: background 1s, color 1s, border-radius 1s;
+    font-size: 20px;
+    padding: 10px;
 }
-
-.nav-right a:hover
-{
-    background: white;
-    border-radius: 5px;
-    color: rgba(0,42, 91, 0.8);
-}
-
 
 .navbottom
 {

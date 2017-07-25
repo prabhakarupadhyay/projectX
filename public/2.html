@@ -27,7 +27,7 @@
                 <a class="navbar-brand" href="#"><img src="./assets/images/modsfuseLogo.png"></a>
             </div>
             <div class="col-4"> </div>
-            <div class="col-4 nav-right text-right"> <a href="#"> login <i class="fa fa-user-circle" aria-hidden="true"></i></a> </div>
+            <div class="col-4 nav-right text-right" id = "UserView"> <a href="#"><img height = "50px" src = "assets/images/gsignin.png"></a> </div>
         </div>
     </nav>
     <div class="container main-content">
@@ -42,7 +42,7 @@
                             <div class="col-10">
                                 <p id="out"></p>
                                 <input class="form-control" type="text" value="enter your location" id="location"> </div>
-                            <div class="col-2" style = "padding-top: 15px;">
+                            <div class="col-2" style="padding-top: 15px;">
                                 <button class="btn" onclick="geoFindMe(); return false;"><i class="fa fa-dot-circle-o" aria-hidden="true"></i></button>
                             </div>
                         </div>
@@ -59,41 +59,42 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content user">
                 <div class="modal-header user-head">
-                   <div style="text-align: center; width: 100%"><h5 class="m-title">USER PANEL</h5></div>
+                    <div style="text-align: center; width: 100%">
+                        <h5 class="m-title">USER PANEL</h5></div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></button>
                 </div>
                 <div class="modal-body user-body">
-                        <form class="container-fluid userform">
-                            <div class="form-group row">
-                                <label for="name" class="col-2 userlabel">Name: </label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control userinput" id="name" placeholder=""> </div>
+                    <form class="container-fluid userform">
+                        <div class="form-group row">
+                            <label for="name" class="col-2 userlabel">Name: </label>
+                            <div class="col-10">
+                                <input type="text" class="form-control userinput" id="Name" placeholder=""> </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="state" class="col-2 userlabel">State: </label>
+                            <div class="col-2">
+                                <input type="text" class="form-control userinput" id="State" placeholder=""> </div>
+                            <label for="city" class="col-2 userlabel">City: </label>
+                            <div class="col-2">
+                                <input type="text" class="form-control userinput" id="City" placeholder=""> </div>
+                            <label for="state" class="col-2 userlabel">Zip-Code: </label>
+                            <div class="col-2">
+                                <input type="number" class="form-control userinput" id="Zipcode" placeholder=""> </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="address" class="col-2 userlabel">Address: </label>
+                            <div class="col-10">
+                                <textarea class="form-control userinput" id="Address" rows="2"></textarea>
                             </div>
-                            <div class="form-group row">
-                                <label for="state" class="col-2 userlabel">State: </label>
-                                <div class="col-2">
-                                    <input type="text" class="form-control userinput" id="state" placeholder=""> </div>
-                                <label for="city" class="col-2 userlabel">City: </label>
-                                <div class="col-2">
-                                    <input type="text" class="form-control userinput" id="city" placeholder=""> </div>
-                                <label for="state" class="col-2 userlabel">Zip-Code: </label>
-                                <div class="col-2">
-                                    <input type="number" class="form-control userinput" id="zipcode" placeholder=""> </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="address" class="col-2 userlabel">Address: </label>
-                                <div class="col-10">
-                                    <textarea class="form-control userinput" id="address" rows="2"></textarea>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group row">
-                                <label for="number" class="col-2 userlabel">Number: </label>
-                                <div class="col-10">
-                                    <input type="number" class="form-control userinput" id="number">
-                                </div>
-                            </div>
-                            <div style="text-align: center"><button type="submit" class="btn">Save Changes</button></div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="number" class="col-2 userlabel">Number: </label>
+                            <div class="col-10">
+                                <input type="number" class="form-control userinput" id="Number"> </div>
+                        </div>
+                        <div style="text-align: center">
+                            <button type="submit" class="btn">Save Changes</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -125,16 +126,6 @@
                         <div class="alert alert-unread alert-dismissible fade show" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
                         <div class="alert alert-unread alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                        <div class="alert alert-unread alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                        <div class="alert alert-unread alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                        <div class="alert alert-unread alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                        <div class="alert alert-unread alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                        <div class="alert alert-read alert-dismissible fade show" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
                     </div>
                 </div>
@@ -171,6 +162,126 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <!--bootstrap-->
     <script src="./assets/js/notif.js"></script>
+    <script id="modifiable">
+    
+        //***For Testing*** var Ser_logUserDat = [{"User_Email_Name": "Science Maniac","User_Picture":"./assets/images/user.jpg"}]
+        if (typeof Ser_logUserDat != 'undefined') {
+            executeLogUserFunc();
+            //loadUserData();
+        }
+        
+        
+        function loadUserData() {
+            userview = document.getElementById('UserView');
+            for (let i in Ser_logUserDat) {
+                var username = Ser_logUserDat[i].User_Email_Name;
+                var userpic = Ser_logUserDat[i].User_Picture;
+                userview.innerHTML = '<img class = "userpic" src = ' + userpic + '>';
+                userview.innerHTML += '<h1 class = "username">' + username +'</h1>'; 
+            }   
+            
+        }
+
+        function executeLogUserFunc() {
+            var getLoginKeys = Object.keys(Ser_logUserDat[0]);
+            var splitLoginKeys = getLoginKeys[0].split('_')[0];
+            //pass this to authorize the firebase on user login(after which it is deleted)      
+            var idTokenName = splitLoginKeys + "_IdToken";
+            //pass this value with every socket resquest to the server       
+            var accessToken = splitLoginKeys + "_AccessToken";
+            var callOnce = true;
+            var FireBaseUser = null;
+            //user creds for firebase 
+            var configFirebase = {
+                apiKey: "AIzaSyCB3xwPLgUI6O4AQQQYxW8PaZWsAcrXRq0"
+                , authDomain: "titanium-flash-171510.firebaseapp.com"
+                , databaseURL: "https://titanium-flash-171510.firebaseio.com"
+                , projectId: "titanium-flash-171510"
+                , storageBucket: "titanium-flash-171510.appspot.com"
+                , messagingSenderId: "284593292198"
+                , "gcm_sender_id": "103953800507"
+            };
+            firebase.initializeApp(configFirebase);
+            var unsubscribe = firebase.auth().onAuthStateChanged(function (firebaseUser) {
+                unsubscribe();
+                //check if user is logged in to firebase or not
+                if (isUserEqual(firebaseUser) == false || Ser_logUserDat[0][idTokenName] != null) {
+                    var credential = firebase.auth.GoogleAuthProvider.credential(Ser_logUserDat[0][idTokenName]);
+                    // Sign in with credential from the Google user.
+                    firebase.auth().signInWithCredential(credential).then(function (result) {
+                        //user successfully logged in to firebase
+                        //listen to change in socket events
+                        listeToSockets(result);
+                    }).catch(function (error) {
+                        //prompt user to login again
+                    });
+                }
+                else {
+                    //user already signed in
+                    listeToSockets(firebaseUser);
+                }
+            });
+
+            function listeToSockets(firebaseUser) {
+                FireBaseUser = firebaseUser.uid;
+                //listen to changes at specific socket id
+                firebase.database().ref('Channels/Sockets/' + firebaseUser.uid).on('value', function (socketResponse) {
+                    //delete id_token in database once the user is logged in
+                    if (Ser_logUserDat[0][idTokenName] != null && callOnce == true) {
+                        callOnce = false;
+                        //call once the user is authorized
+                        delIdToken(firebaseUser, accessToken, Ser_logUserDat[0][accessToken], idTokenName);
+                    }
+                    //get the results/values/response/data of the socket data request
+                    console.log(socketResponse.val());
+                    //remove the data from the firebase db to free the space once the data is recieved
+                    firebase.database().ref('Channels/Sockets/' + firebaseUser.uid).remove();
+                });
+            }
+
+            function delIdToken(firebaseUser, keyName, keyValue, keyNameToDelete) {
+                var makeObj = {
+                        Event_Name: "deleteTokValue"
+                        , Array_info: [keyName, keyValue, keyNameToDelete]
+                    }
+                    //pass data to server at specific socket id(different for every user) to delete id_token(not to be confused with accessToken)
+                firebase.database().ref('Channels/Sockets/' + firebaseUser.uid).set(makeObj);
+            }
+
+            function isUserEqual(firebaseUser) {
+                if (firebaseUser) {
+                    var providerData = firebaseUser.providerData;
+                    console.log(firebase.auth.GoogleAuthProvider.PROVIDER_ID);
+                    for (var i = 0; i < providerData.length; i++) {
+                        console.log(providerData[i].providerId);
+                        if (providerData[i].providerId === firebase.auth.GoogleAuthProvider.PROVIDER_ID) {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+            if (FireBaseUser != null) {
+                var userInfoObj = {
+                        Name: document.getElementById('Name').value
+                        , State: document.getElementById('State').value
+                        , City: document.getElementById('City').value
+                        , Zipcode: document.getElementById('Zipcode').value
+                        , Address: document.getElementById('Address').value
+                        , Number: document.getElementById('Number').value
+                    }
+                    //push access token name and value to the object
+                userInfoObj[accessToken] = Ser_logUserDat[0][accessToken];
+                if (splitLoginKeys == 'User') {
+                    userInfoObj.Event_Name = "UserData";
+                }
+                else {
+                    userInfoObj.Event_Name = "ShopOwnerData";
+                }
+                firebase.database().ref('Channels/Sockets/' + FireBaseUser).set(userInfoObj);
+            }
+        }
+    </script>
 </body>
 
 </html>
