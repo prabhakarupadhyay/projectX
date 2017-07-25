@@ -271,10 +271,12 @@
             }
         }
         
-               //***For Testing*** var Ser_logUserDat = [{"User_Email_Name": "Science Maniac","User_Picture":"./assets/images/user.jpg"}]
+               //***For Testing*** 
+        var Ser_logUserDat = [{"User_Email_Name": "Science Maniac","User_Picture":"./assets/images/user.jpg"}];
+        //var Ser_logUserDat = [{"Shop_User_Email_Name": "Shop Owner","Shop_User_Picture":"./assets/images/user.jpg"}];
         if (typeof Ser_logUserDat != 'undefined') {
-            executeLogUserFunc();
-            //loadUserData();
+            //executeLogUserFunc();
+            loadUserData();
         }
         
         
@@ -283,8 +285,10 @@
             for (let i in Ser_logUserDat) {
                 var username = Ser_logUserDat[i].User_Email_Name;
                 var userpic = Ser_logUserDat[i].User_Picture;
-                userview.innerHTML = '<img class = "userpic" src = ' + userpic + '>';
-                userview.innerHTML += '<h1 class = "username">' + username +'</h1>'; 
+                var shopname = Ser_logUserDat[i].Shop_User_Email_Name;
+                var shoppic = Ser_logUserDat[i].Shop_User_Picture;
+                userview.innerHTML = '<img class = "userpic" src = ' + (userpic || shoppic) + '>';
+                userview.innerHTML += '<h1 class = "username">' + (username || shopname) +'</h1>'; 
             }   
             
         }
