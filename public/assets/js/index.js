@@ -24,24 +24,6 @@ $('.carousel').carousel({
     , pause: "false"
 });
 //Shop Allocation
-//for testing purposes
-/*
-var Ser_comLoadDat = [{
-        "Name": "Auto Marg"
-        , "Dynamic_Url": "rkxVUpY5rZ"
-        , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
-}, {
-        "Name": "Vasant Marg"
-        , "Dynamic_Url": "rkxVUpY5rZ"
-        , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium- flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
-}, {
-        "Name": "Marg Marg"
-        , "Dynamic_Url": "rkxVUpY5rZ"
-        , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium- flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
-    }
-
-];
-*/
 
 /*
 var $featured = $('.featured');

@@ -60,30 +60,31 @@ body
 {
     font-family: 'Crushed', cursive;
     background: #0275d8;
-    margin: 0 0 30px 0;
+    width: 100%;
+    margin-bottom: 30px;
 }
+
 .featured
 {
-   padding: 20px; 
-    background: rgba(1,1,1,0.2);
-    
+    background: #002a5b;
+    padding-bottom: 30px;
 }
 
 .card
 {
     background: #0275d8;
     display: table;
-    margin: 0 auto;
-    padding: 10px;
+    margin: 2px auto;
 }
 .card-img-top
 {
     height: 200px;
+    width: 100%;
 }
 
 .card-header
 {
-    background: rgba(10,42,91,1);
+    background: rgba(1,1,1,0.7);
     font-size: 25px;
 }
 
