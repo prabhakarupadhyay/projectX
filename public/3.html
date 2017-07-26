@@ -39,8 +39,9 @@
                         <div class="card" style="width: 20rem;">
                             <div class="card-header" id="Name"> Shop Name </div>
                             <a id="Dynamic_Url" href=""><img class="card-img-top" id="Images" src="./assets/shop1.jpg" alt="Could Not Load"></a>
-                            <button type="button" class="btn preview" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye" aria-hidden="true"></i> Shop Preview</button>
+                            <button type="button" class="btn preview" data-toggle="modal" data-target="#myModal" onclick="previewButton(this)"><i class="fa fa-eye" aria-hidden="true"></i> Shop Preview</button>
                         </div>
+                        <div id="modalData" hidden="true"></div>
                     </div>
                 </div>
             </div>
@@ -50,30 +51,30 @@
     <!-- Shop Preview -->
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document" id="dynamicAlloc">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="m-title" id="modName">Shop Name</h5>
+                    <h5 class="m-title" id="Name">Shop Name</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-12 col-md-6"> <img class="mod-image img-fluid" src="./assets/shop1.jpg" id="modImage"> </div>
+                            <div class="col-12 col-md-6"> <img class="mod-image img-fluid" src="./assets/shop1.jpg" id="Images"> </div>
                             <div class="col-md-6 col-12">
                                 <p class="highlight"> Description: </p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed facilisis lacus. Integer vitae ligula dignissim, aliquam mi eget, aliquet massa. Etiam vel quam non turpis faucibus convallis et id lectus. Ut elementum, magna at consequat tincidunt, est massa volutpat leo, vel pharetra dolor lacus id odio. Aliquam lobortis odio ut libero maximus dignissim. Pellentesque euismod nibh sit amet quam ullamcorper laoreet. </p>
+                                <p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed facilisis lacus. Integer vitae ligula dignissim, aliquam mi eget, aliquet massa. Etiam vel quam non turpis faucibus convallis et id lectus. Ut elementum, magna at consequat tincidunt, est massa volutpat leo, vel pharetra dolor lacus id odio. Aliquam lobortis odio ut libero maximus dignissim. Pellentesque euismod nibh sit amet quam ullamcorper laoreet. </p>
                                 <p class="highlight">Contact: </p>
                                 <div class="no-space">
-                                    <p> Email - abc@xyx.com</p>
-                                    <p> Phone No - 33333333</p>
+                                    <p>Email<p id="Email"> abc@xyx.com</p></p>
+                                    <p>Phone No<p id="Number"> 33333333</p></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn">Go to Shop</button>
+                    <a id="Dynamic_Url"><button type="button" class="btn">Go to Shop</button></a>
                 </div>
             </div>
         </div>
@@ -186,42 +187,49 @@
     <!--bootstrap-->
     <script src = "assets/js/notif.js"></script>
     <script id="modifiable">
-        /*var Ser_comLoadDat = [{
+        var Ser_comLoadDat = [{
                         "Name": "Auto Marg"
                         , "Dynamic_Url": "rkxVUpY5rZ"
                         , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
+                        ,description:"auto marg description..........."
+                        ,Email:"autoMarg@gmail.com"
+                        ,Number:"8080886868"
         }, {
                         "Name": "Vasant Marg"
                         , "Dynamic_Url": "rkxVUpY5rZ"
                         , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium- flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
+                        ,description:"Vasant marg description..........."
+                        ,Email:"VasantMarg@gmail.com"
+                        ,Number:"8090909886868"                        
         }, {
                         "Name": "Marg Marg"
                         , "Dynamic_Url": "rkxVUpY5rZ"
                         , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium- flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
+                        ,description:"Marg marg description..........."
+                        ,Email:"MargMarg@gmail.com"
+                        ,Number:"866609886868"               
+            
         }, {
                         "Name": "Raghu Marg"
                         , "Dynamic_Url": "rkxVUpY5rZ"
                         , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
-        }, {
-                        "Name": "Dayan Marg"
-                        , "Dynamic_Url": "rkxVUpY5rZ"
-                        , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium- flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
-        }, {
-                        "Name": "Nhp Marg"
-                        , "Dynamic_Url": "rkxVUpY5rZ"
-                        , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium- flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
-            }
+                        ,description:"Raghu marg description..........."
+                        ,Email:"RaghuMarg@gmail.com"
+                        ,Number:"8666000000868"              
+        }
 
-        ];*/
+        ];
         //Shop Allocation
         var dynamicAlloc = document.getElementById('dynamicAlloc');
         var dynamicTag = document.getElementById('DynamicTag');
-        var mName = document.getElementById('modName');
-        var mImage = document.getElementById('modImage');
+        var myModal = document.getElementById('myModal');
+        
+        
         //check if common variable is present or not
         if (typeof Ser_comLoadDat != 'undefined') {
             executeComUserFunc();
         }
+        
         //DYNAMIC SHOP ARRANGEMENT
         function executeComUserFunc() {
             var countObj = Ser_comLoadDat.length;
@@ -231,8 +239,22 @@
                 for (let j in objectKeys) {
                     var currentKey = objectKeys[j];
                     var currentTag = dynamicTag.querySelector('#' + currentKey);
-                    feedTags(currentTag, currentObj[currentKey], function (newCurrentTag) {});
+                    if(currentTag != null){
+                
+                        if(currentTag.id == 'Dynamic_Url' || currentTag.id == 'Name'){
+                            var modalStore = dynamicTag.querySelector('#modalData');
+                            modalStore.innerHTML += '"'+currentKey+'":"'+currentObj[currentKey]+'",';           
+                        }
+                        
+                        feedTags(currentTag, currentObj[currentKey], function (newCurrentTag) {});
+            
+                    }else{
+                        //resolve for Modal data(shop view)
+                        var modalStore = dynamicTag.querySelector('#modalData');
+                        modalStore.innerHTML += '"'+currentKey+'":"'+currentObj[currentKey]+'",';
+                    }
                 }
+                
                 if (i == 0) {
                     dynamicTag = dynamicTag.cloneNode(true);
                 }
@@ -242,14 +264,44 @@
                 }
             }
         }
+        
+        
+        
+        
+        
+        
+        function previewButton(e){
+            
+            //find parent tag from shop preview button
+            var myParent = e.parentNode;
+            while(myParent.id != 'DynamicTag'){
+                myParent = myParent.parentNode;
+            }
+            //fetch value from the hidden element containing modal data 
+            var modalDat = myParent.querySelector('#modalData').innerHTML;
+            var newModalDat = modalDat.substring(0, modalDat.length-1);
+            var objStr = '{'+ newModalDat+'}';
+            var datJsonObj = JSON.parse(objStr);
+            
+            var breakKeys = Object.keys(datJsonObj);
+            for(let i in breakKeys){
+                var currentTag = myModal.querySelector('#' + breakKeys[i]);
+                feedTags(currentTag, datJsonObj[breakKeys[i]], function (newCurrentTag) {});
+            }
+        
+        }
 
+        
+        
+     
+        
+        
         function feedTags(currentTag, tagValue, callback) {
             if (currentTag.tagName == 'IMG') {
                 var tagValueArr = tagValue.split(',');
                 if (Array.isArray(tagValueArr)) {
                     //currently using only first url of shop images
                     currentTag.setAttribute('src', tagValueArr[0]);
-                    mImage.setAttribute('src', tagValueArr[0]);
                     callback(currentTag);
                     return;
                 }
@@ -263,7 +315,6 @@
             }
             else if (currentTag.tagName == 'DIV' || currentTag.tagName == 'P' || currentTag.tagName == 'H5') {
                 currentTag.innerHTML = tagValue;
-                mName.innerHTML = tagValue;
                 callback(currentTag);
             }
             else {
