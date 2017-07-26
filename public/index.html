@@ -24,30 +24,34 @@
                 <a class="navbar-brand" href="#"><img src="./assets/images/modsfuseLogo.png"></a>
             </div>
             <div class="col-4"> </div>
-            <div class="col-4 nav-right text-right" id = "UserView"> <a href="#"><img height = "50px" src = "assets/images/gsignin.png"></a> </div>
+            <div class="col-4 nav-right text-right" id="UserView">
+                <a href="#"><img height="50px" src="assets/images/gsignin.png"></a>
+            </div>
         </div>
     </nav>
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 main-content">
                 <!-- The Carousel -->
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div data-ride="carousel" class="carousel carousel-fade" id="carousel-example-captions">
                     <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                        <li data-slide-to="0" data-target="#carousel-example-captions"></li>
+                        <li data-slide-to="1" data-target="#carousel-example-captions" class=""></li>
+                        <li data-slide-to="2" data-target="#carousel-example-captions" class=""></li>
+                        <li data-slide-to="3" data-target="#carousel-example-captions" class=""></li>
                     </ol>
-                    <div class="carousel-inner" role="listbox">
+                    <div role="listbox" class="carousel-inner">
                         <div class="carousel-item active"> <img class="d-block img-fluid" src="./assets/images/index/slide0.png" alt="First slide"> </div>
                         <div class="carousel-item" role="listbox"> <img class="d-block img-fluid" src="./assets/images/index/slide1.png" alt="Second slide"> </div>
                         <div class="carousel-item" role="listbox"> <img class="d-block img-fluid" src="./assets/images/index/slide2.png" alt="Third slide"> </div>
                         <div class="carousel-item" role="listbox"> <img class="d-block img-fluid" src="./assets/images/index/slide3.png" alt="Fourth Image"> </div>
                     </div>
+                    <a data-slide="prev" role="button" href="#carousel-example-captions" class="left carousel-control"> <span aria-hidden="true" class="icon-prev"></span> <span class="sr-only">Previous</span> </a>
+                    <a data-slide="next" role="button" href="#carousel-example-captions" class="right carousel-control"> <span aria-hidden="true" class="icon-next"></span> <span class="sr-only">Next</span> </a>
                 </div>
                 <div class="banner">
                     <div class="featured">
-                       <h1>FEATURED SHOPS</h1>
+                        <h1>FEATURED SHOPS</h1>
                         <div class="row" id="dynamicAlloc">
                             <div class=" col-12 col-md-3" id="DynamicTag">
                                 <div class="card" style="width: 20rem;">
@@ -57,10 +61,12 @@
                             </div>
                         </div>
                     </div>
-                    <h1>NAME</h1>
-                    <h2 class="slogan"><i>ipsum quia dolor sit amet, consectetur, adipisci velit...</i></h2>
-                    <p class="intro"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-                    <button type="button" class="btn btn-lg btn1">Get Started</button>
+                    <div style="padding-top: 50px; padding-bottom: 50px;">
+                        <img src="./assets/images/modsfuseLogo.png">
+                        <h2 class="slogan"><i>ipsum quia dolor sit amet, consectetur, adipisci velit...</i></h2>
+                        <p class="intro"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+                        <button type="button" class="btn btn-lg btn1">Get Started</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -132,20 +138,23 @@
     <!--bootstrap-->
     <script src="./assets/js/index.js"></script>
     <script id="modifiable">
-       /* var Ser_comLoadDat = [{
-                        "Name": "Auto Marg"
-                        , "Dynamic_Url": "rkxVUpY5rZ"
-                        , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
-        }, {
-                        "Name": "Vasant Marg"
-                        , "Dynamic_Url": "rkxVUpY5rZ"
-                        , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium- flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
-        }, {
-                        "Name": "Marg Marg"
-                        , "Dynamic_Url": "rkxVUpY5rZ"
-                        , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium- flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
-        }];*/
-                              
+        var Ser_comLoadDat = [{
+                                                "Name": "Auto Marg"
+                                                , "Dynamic_Url": "rkxVUpY5rZ"
+                                                , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
+                                }, {
+                                                "Name": "Vasant Marg"
+                                                , "Dynamic_Url": "rkxVUpY5rZ"
+                                                , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium- flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
+                                }, {
+                                                "Name": "Marg Marg"
+                                                , "Dynamic_Url": "rkxVUpY5rZ"
+                                                , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium- flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
+                                }, {
+                                                "Name": "Marg Marg"
+                                                , "Dynamic_Url": "rkxVUpY5rZ"
+                                                , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium- flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
+                                }];
         //Shop Allocation
         var dynamicAlloc = document.getElementById('dynamicAlloc');
         var dynamicTag = document.getElementById('DynamicTag');
@@ -201,13 +210,12 @@
                 callback("tag not found.");
             }
         }
-        
         //***For Testing*** var Ser_logUserDat = [{"User_Email_Name": "Science Maniac","User_Picture":"./assets/images/user.jpg"}]
         if (typeof Ser_logUserDat != 'undefined') {
             executeLogUserFunc();
             //loadUserData();
         }
-        
+
         function loadUserData() {
             userview = document.getElementById('UserView');
             for (let i in Ser_logUserDat) {
@@ -216,9 +224,8 @@
                 var shopname = Ser_logUserDat[i].Shop_User_Email_Name;
                 var shoppic = Ser_logUserDat[i].Shop_User_Picture;
                 userview.innerHTML = '<img class = "userpic" src = ' + (userpic || shoppic) + '>';
-                userview.innerHTML += '<h1 class = "username">' + (username || shopname) +'</h1>'; 
-            }   
-            
+                userview.innerHTML += '<h1 class = "username">' + (username || shopname) + '</h1>';
+            }
         }
 
         function executeLogUserFunc() {

@@ -40,3 +40,18 @@
 {
     text-align: center;
 }
+
+.notif-foot button{
+    background: #0275d8;
+    color: white;
+    transition: all 0.7s ease;
+    -o-transition: all 0.7s ease;
+    -moz-transition: all 0.7s ease;
+    -webkit-transition: all 0.7s ease;
+}
+
+.notif-foot button:hover,
+.notif-foot button:active {
+    cursor: pointer;
+    background: rgba(10, 52, 100, 1);
+}

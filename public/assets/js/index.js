@@ -1,28 +1,31 @@
-var $item = $('.carousel .carousel-item');
-var $ban = $('.banner');
+var $item = $('.carousel .carousel-inner');
 var $wHeight = $(window).height();
-$item.eq(0).addClass('active');
-$item.height($wHeight - 100);
+$item.height($wHeight - 120);
 $item.addClass('full-screen');
-$ban.addClass('full-screen');
-$ban.height($wHeight - 100);
-$('.carousel img').each(function () {
-    var $src = $(this).attr('src');
-    var $color = $(this).attr('data-color');
-    $(this).parent().css({
-        'background-image': 'url(' + $src + ')'
-        , 'background-color': $color
-    });
-    $(this).remove();
-});
+$ban.height($wHeight - 120);
+
 $(window).on('resize', function () {
     $wHeight = $(window).height();
-    $item.height($wHeight - 100);
+    $item.height($wHeight - 120);
 });
+
+
 $('.carousel').carousel({
-    interval: 6000
+    interval: 3000
     , pause: "false"
 });
+
+
+
+
+
+
+
+
+
+
+
+
 //Shop Allocation
 
 /*

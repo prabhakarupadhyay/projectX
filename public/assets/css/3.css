@@ -2,45 +2,32 @@
 
 @import url('https://fonts.googleapis.com/css?family=Crushed');
 
-body {
-    background-image: url(/assets/images/bkground.jpg);
-    background-size: cover;
-    background-repeat: repeat-y;
-    background-position: center;
+html
+{
+    height: 100%;
+}
+body
+{
+    background:linear-gradient(#184088,#19325b,#0b1829,#19325b,#184088);
+    overflow-x: hidden;
 }
 
-.main-content
-{
-    top:10px;
+.main-content {
+    top: 5px;
     padding: 0;
-    background: rgba(0,42, 91, 0.8);
+    background: linear-gradient(black, #0e1f3b);
     min-height: 600px;
     text-align: center;
+    vertical-align: middle;
     color: white;
-    margin-bottom: 50px;
-}
-
-.main-content h1{
-    font-family: 'Crushed', cursive;
-    background: #0275d8;
-    margin: 0 0 30px 0;
-}
-
-
-.navbottom-link
-{
     
-    width: 100px;
-    text-align: center;
-    transition: background 0.5s;
-    border-radius: 72px / 145px;
 }
 
-.navbottom-link:hover {
-    background:  rgba(0,42, 91, 0.8);
-    width: 100px;
-    text-align: center;
-    color: white;
+
+.main-content h1 {
+    font-family: 'Crushed', cursive;
+    background: linear-gradient(#0b1829, #193561);
+    margin: 0 0 30px 0;
 }
 
 .card
@@ -76,17 +63,6 @@ body {
     margin-bottom: 5px;
     margin-top: 5px;
 }
-.stars
-{
-    margin: 0;
-    padding: 0;
-}
-
-.stars p
-{
-    display: inline-block;
-}
-
 /* Shop Preview*/
 .modal-content
 {
@@ -130,3 +106,4 @@ body {
     font-weight: 800;
     font-size: 20px;
 }
+

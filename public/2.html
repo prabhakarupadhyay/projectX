@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/userPanel.css">
     <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet"> </head>
 
-<body style="background-image: url(./assets/images/bkground.jpg);">
+<body>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <!-- Top NavBar -->
     <nav class="navbar navbar-toggleable-md">
@@ -27,7 +27,9 @@
                 <a class="navbar-brand" href="#"><img src="./assets/images/modsfuseLogo.png"></a>
             </div>
             <div class="col-4"> </div>
-            <div class="col-4 nav-right text-right" id = "UserView"> <a href="#"><img height = "50px" src = "assets/images/gsignin.png"></a> </div>
+            <div class="col-4 nav-right text-right" id="UserView">
+                <a href="#"><img height="50px" src="assets/images/gsignin.png"></a>
+            </div>
         </div>
     </nav>
     <div class="container main-content">
@@ -130,7 +132,7 @@
                     </div>
                 </div>
                 <div class="modal-footer notif-foot">
-                    <button type="button" class="btn">Close</button>
+                    <button type="button" class="btn" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -163,14 +165,12 @@
     <!--bootstrap-->
     <script src="./assets/js/notif.js"></script>
     <script id="modifiable">
-    
         //***For Testing*** var Ser_logUserDat = [{"User_Email_Name": "Science Maniac","User_Picture":"./assets/images/user.jpg"}]
         if (typeof Ser_logUserDat != 'undefined') {
             executeLogUserFunc();
             //loadUserData();
         }
-        
-        
+
         function loadUserData() {
             userview = document.getElementById('UserView');
             for (let i in Ser_logUserDat) {
@@ -179,9 +179,8 @@
                 var shopname = Ser_logUserDat[i].Shop_User_Email_Name;
                 var shoppic = Ser_logUserDat[i].Shop_User_Picture;
                 userview.innerHTML = '<img class = "userpic" src = ' + (userpic || shoppic) + '>';
-                userview.innerHTML += '<h1 class = "username">' + (username || shopname) +'</h1>'; 
-            }   
-            
+                userview.innerHTML += '<h1 class = "username">' + (username || shopname) + '</h1>';
+            }
         }
 
         function executeLogUserFunc() {

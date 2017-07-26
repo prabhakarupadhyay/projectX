@@ -1,16 +1,19 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 @import url('https://fonts.googleapis.com/css?family=Crushed');
-body {
-    background-image: url(/assets/images/bkground.jpg);
-    background-size: cover;
-    background-repeat: repeat-y;
-    background-position: center;
+html
+{
+    height: 100%;
+}
+body
+{
+    background:linear-gradient(#184088,#19325b,#0b1829,#19325b,#184088);
+    overflow-x: hidden;
 }
 
 .main-content {
-    top: 10px;
+    top: 5px;
     padding: 0;
-    background: rgba(0,42, 91, 0.8);
+    background: linear-gradient(black, #0e1f3b);
     min-height: 600px;
     text-align: center;
     vertical-align: middle;
@@ -21,7 +24,7 @@ body {
 
 .main-content h1 {
     font-family: 'Crushed', cursive;
-    background: #0275d8;
+    background: linear-gradient(#0b1829, #193561);
     margin: 0 0 30px 0;
 }
 
@@ -60,20 +63,6 @@ label {
     font-family: 'Rajdhani', sans-serif;
     font-size: 15px;
     font-weight: 800;
-}
-
-.navbottom-link {
-    width: 100px;
-    text-align: center;
-    transition: background 0.5s;
-    border-radius: 72px / 145px;
-}
-
-.navbottom-link:hover {
-    background:  rgba(0,42, 91, 0.8);
-    width: 100px;
-    text-align: center;
-    color: white;
 }
 
 .notif {
