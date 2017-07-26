@@ -29,7 +29,7 @@ body
 }
 
 form {
-    background: rgba(0, 21, 33, 1);
+    background: linear-gradient(#0b1829, #193561);
     padding: 20px;
     margin-bottom: 100px;
 }
@@ -46,11 +46,11 @@ form .btn {
 form .btn:hover,
 form .btn:active {
     cursor: pointer;
-    background: rgba(10, 52, 100, 1);
+    background: rgba(10, 42, 91, 1);
 }
 
 .form-control {
-    background: rgba(10, 42, 91, 1);
+    background: #0275d8;
     color: white;
 }
 

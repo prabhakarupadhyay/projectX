@@ -60,6 +60,8 @@
     text-align: center;
     transition: background 0.5s;
     border-radius: 72px / 145px;
+    font-family: 'Crushed', cursive;
+    font-size: 18px;
 }
 
 .navbottom-link:hover {
