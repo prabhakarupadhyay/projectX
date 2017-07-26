@@ -240,11 +240,9 @@
                     var currentKey = objectKeys[j];
                     var currentTag = dynamicTag.querySelector('#' + currentKey);
                     if(currentTag != null){
-                
-                        if(currentTag.id == 'Dynamic_Url' || currentTag.id == 'Name'){
-                            var modalStore = dynamicTag.querySelector('#modalData');
-                            modalStore.innerHTML += '"'+currentKey+'":"'+currentObj[currentKey]+'",';           
-                        }
+                        
+                        var modalStore = dynamicTag.querySelector('#modalData');
+                        modalStore.innerHTML += '"'+currentKey+'":"'+currentObj[currentKey]+'",';           
                         
                         feedTags(currentTag, currentObj[currentKey], function (newCurrentTag) {});
             
