@@ -10,7 +10,7 @@
 
 .navbar
 {
-    background: linear-gradient(#0b1829, #0e1f3b);
+    background: #002a5b;
     padding-top, padding-bottom:10px;
     
 }
@@ -130,8 +130,8 @@ footer {
 }
 
 .footer-ul li a:hover {
-	transition: color 0.2s linear 0s, background 0.2s linear 0s; 
 	color:#ff670f; 
+    text-decoration: none;
 }
 
 .social:hover {
@@ -139,7 +139,13 @@ footer {
      -moz-transform: scale(1.1);
      -o-transform: scale(1.1);
  }
+
+footer .blockquote a, footer .blockquote a:hover
+{
+    text-decoration: none;
+}
  
+
  .icon-ul { 
  	list-style-type:none !important; 
  	margin:0px; 

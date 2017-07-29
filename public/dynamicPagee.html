@@ -9,14 +9,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="./assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/accslider.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/dynamicPage.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/navbar+footer.css">
-    <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Merienda|Yellowtail" rel="stylesheet">
+    <link rel = "stylesheet" type = "text/css" href = "./assets/dist/css/lightbox.min.css">
+    <!--Fonts-->
+    <link rel="stylesheet" type="text/css" href="./assets/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani|Lato" rel="stylesheet">
     <style>
         iframe {
-            width: 600px;
+            width: 100%;
             height: 400px;
         }
     </style>
@@ -27,46 +29,338 @@
 <body>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <!-- Top NavBar -->
-    <!-- Top NavBar -->
     <nav class="navbar navbar-toggleable-md">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-        <div class="container">
-            <div class="col-4">
+        <div class="container-fluid" style="margin: 0px !important; width:100%;">
+            <div class="col-4" style="float: left">
                 <a class="navbar-brand" href="#"><img src="./assets/images/modsfuseLogo.png"></a>
             </div>
             <div class="col-4"> </div>
-            <div class="col-4 nav-right text-right"> <a href="#"> login <i class="fa fa-user-circle" aria-hidden="true"></i></a> </div>
+            <div class="col-4 nav-right text-right" style="float: right" id="UserView">
+                <a href="#"><img height="50px" src="assets/images/gsignin.png"></a>
+            </div>
         </div>
     </nav>
     <div class="container main-content">
-        <h1>DYNAMIC PAGE</h1>
-        <!-- Insert an empty iframe -->
-        <iframe src="" id="api-frame" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+        <div id="carouselShop" class="carousel slide shop-carousel" data-ride="carousel">
+            <div class="carousel-inner image-set" role="listbox" style="height: 400px; width:100%">
+                <a class="carousel-item active" href="./assets/images/shp1.jpg" data-lightbox="image-set" style="height: inherit; width: inherit"><img class="d-block img-fluid shop-img " style="background-image: url(./assets/images/shp1.jpg)"></a>
+                <a class="carousel-item" href="./assets/images/shp2.jpg" data-lightbox="image-set" style="height: inherit; width: inherit"><img class="d-block img-fluid shop-img " style="background-image: url(./assets/images/shp2.jpg)"></a>
+                <a class="carousel-item" href="./assets/images/shp3.jpg" data-lightbox="image-set" style="height: inherit; width: inherit"><img class="d-block img-fluid shop-img " style="background-image: url(./assets/images/shp3.jpg)"></a>
+            </div>
+            <a class="carousel-control-prev" href="#carouselShop" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
+            <a class="carousel-control-next" href="#carouselShop" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+        </div>
+        <div>
+            <h1>Crave Design</h1>
+            <div class="container-fluid" style="width: 100%; font-family: Rajdhani">
+                <div class="row" style="width: 100%">
+                    <div class="col-md-4">
+                        <p class="address"><strong><i class="fa fa-home" aria-hidden="true"></i> Address: </strong>Opp Pillar No.190, Near Arjunghar Metro Station, Mehrauli Gurgaon Road, New Delhi, Delhi 110047</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="email"><strong><i class="fa fa-envelope" aria-hidden="true"></i> Email: </strong>piyush_peace@hotmail.com</p>
+                        <p class="website"><strong><i class="fa fa-globe" aria-hidden="true"></i> Website: </strong>http://www.mhtwheels.com/</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="contact"><strong><i class="fa fa-phone" aria-hidden="true"></i> Contact: </strong>098919 19081</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid" style="width: 100%; font-family: Rajdhani; text-align: center">
+                <p><strong>Description: </strong>
+                    <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed facilisis lacus. Integer vitae ligula dignissim, aliquam mi eget, aliquet massa. Etiam vel quam non turpis faucibus convallis et id lectus. Ut elementum, magna at consequat tincidunt, est massa volutpat leo, vel pharetra dolor lacus id odio. Aliquam lobortis odio ut libero maximus dignissim. Pellentesque euismod nibh sit amet quam ullamcorper laoreet. </p>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-7">
+                        <h2 style="font-family: Rajdhani;">Cars Available: </h2>
+                        <ul class="dock">
+                            <li>Swift</li>
+                            <li>Alto</li>
+                            <li>Zen</li>
+                        </ul>
+                        <iframe src="" id="api-frame" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+                    </div>
+                    <div class="col-md-5">
+                        <h2 style="font-family: Rajdhani; text-align: right">Parts Available: </h2>
+                        <div id="parts-container">
+                            <ul class="faq">
+                                <li class="category">Spoilers</li>
+                                <li class="sub-category">
+                                    <div id="parts-container">
+                                        <ul class="faq">
+                                            <li class="category model">Model1</li>
+                                            <li class="sub-category model-holder"><a href="./assets/images/dynamicPage/spoiler1.jpg" data-lightbox="spoiler-set"><img src = "./assets/images/dynamicPage/spoiler1.jpg"></a></li>
+                                            <li class="category model" >Model2</li>
+                                            <li class="sub-category model-holder"><a href="./assets/images/dynamicPage/spoiler-2.jpg" data-lightbox="spoiler-set"><img src = "./assets/images/dynamicPage/spoiler-2.jpg"></a></li>
+                                            <li class="category model">Model3</li>
+                                            <li class="sub-category model-holder"><a href="./assets/images/dynamicPage/spoiler3.jpg" data-lightbox="spoiler-set"><img src = "./assets/images/dynamicPage/spoiler3.jpg"></a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="category">Rims</li>
+                                <li class="sub-category">
+                                    <ul class="faq">
+                                            <li class="category model">Model1</li>
+                                            <li class="sub-category model-holder"><img src = "./assets/images/dynamicPage/spoiler1.jpg"></li>
+                                            <li class="category model">Model2</li>
+                                            <li class="sub-category model-holder"><img src = "./assets/images/dynamicPage/spoiler1.jpg"></li>
+                                            <li class="category model">Model3</li>
+                                            <li class="sub-category model-holder"><img src = "./assets/images/dynamicPage/spoiler1.jpg"></li>
+                                        </ul>
+                                </li>
+                                <li class="category">Tyres</li>
+                                <li class="sub-category">
+                                    <ul class="faq">
+                                            <li class="category model">Model1</li>
+                                            <li class="sub-category model-holder"><img src = "./assets/images/dynamicPage/spoiler1.jpg"></li>
+                                            <li class="category model">Model2</li>
+                                            <li class="sub-category model-holder"><img src = "./assets/images/dynamicPage/spoiler1.jpg"></li>
+                                            <li class="category model">Model3</li>
+                                            <li class="sub-category model-holder"><img src = "./assets/images/dynamicPage/spoiler1.jpg"></li>
+                                        </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class = "container-fluid" style="text-align: center; padding-top: 20px; padding-bottom: 30px;">
+                    <button type="button" class="btn">Book Appointment Now</button>
+                </div>
+        </div>
+        <!-- USER PANEL -->
+        <div class="modal fade" id="UserPanel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content user">
+                    <div class="modal-header user-head">
+                        <div style="text-align: center; width: 100%">
+                            <h5 class="m-title">USER PANEL</h5></div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></button>
+                    </div>
+                    <div class="modal-body user-body">
+                        <form class="container-fluid userform">
+                            <div class="form-group row">
+                                <label for="name" class="col-2 userlabel">Name: </label>
+                                <div class="col-10">
+                                    <input type="text" class="form-control userinput" id="Name" placeholder=""> </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="state" class="col-2 userlabel">State: </label>
+                                <div class="col-2">
+                                    <input type="text" class="form-control userinput" id="State" placeholder=""> </div>
+                                <label for="city" class="col-2 userlabel">City: </label>
+                                <div class="col-2">
+                                    <input type="text" class="form-control userinput" id="City" placeholder=""> </div>
+                                <label for="state" class="col-2 userlabel">Zip-Code: </label>
+                                <div class="col-2">
+                                    <input type="number" class="form-control userinput" id="Zipcode" placeholder=""> </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="address" class="col-2 userlabel">Address: </label>
+                                <div class="col-10">
+                                    <textarea class="form-control userinput" id="Address" rows="2"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="number" class="col-2 userlabel">Number: </label>
+                                <div class="col-10">
+                                    <input type="number" class="form-control userinput" id="Number"> </div>
+                            </div>
+                            <div style="text-align: center">
+                                <button type="submit" class="btn">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--USER PANEL ENDS-->
+        <!-- NOTIFICATION -->
+        <div class="modal fade" id="Notification" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content notif">
+                    <div class="modal-header notif-head">
+                        <h5 class="m-title">NOTIFICATIONS</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                    </div>
+                    <div class="modal-body notif-body">
+                        <div class="container noty-holder">
+                            <div class="alert alert-read alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
+                            <div class="alert alert-unread alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
+                            <div class="alert alert-unread alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
+                            <div class="alert alert-unread alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
+                            <div class="alert alert-read alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
+                            <div class="alert alert-read alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
+                            <div class="alert alert-unread alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
+                            <div class="alert alert-unread alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer notif-foot">
+                        <button type="button" class="btn" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <!-- NOTIFICATION ENDS-->
     <!-- bottom nav -->
     <div class="navbottom-content container"> </div>
     <nav class="navbar navbar-toggleable-md fixed-bottom container navbottom">
-        <div class="col-4"></div>
+        <div class="col-4 navbottom-left"> <a data-toggle="modal" data-target="#UserPanel"><i class="fa fa-user" aria-hidden="true"></i></a>
+            <h3 class="userIcon">User Panel</h3></div>
         <div class="col-4">
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav">
-                    <li class="nav-item active"> <a class="nav-link navbottom-link" href="#">Home</a> </li>
-                    <li class="nav-item"> <a class="nav-link navbottom-link" href="#">About</a> </li>
-                    <li class="nav-item"> <a class="nav-link navbottom-link" href="#">Shop</a> </li>
+                    <li class="nav-item active"> <a class="nav-link navbottom-link" href="#">HOME</a> </li>
+                    <li class="nav-item"> <a class="nav-link navbottom-link" href="#">ABOUT</a> </li>
+                    <li class="nav-item"> <a class="nav-link navbottom-link" href="#">SHOP</a> </li>
                 </ul>
             </div>
         </div>
-        <div class="col-4"></div>
+        <div class="col-4 navbottom-right" style="text-align: right"> <a data-toggle="modal" data-target="#Notification"><i class="fa fa-bell" aria-hidden="true"></i></a> </div>
     </nav>
     <!-- bottom nav -->
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./assets/js/jquery-3.1.1.min.js"></script>
     <!--jquery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <!--tether-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <!--bootstrap-->
-    <script type="text/javascript" src = "./assets/js/dynamicPage.js"></script>
+    <script type="text/javascript" src="./assets/js/dynamicPage.js"></script>
+    <script src="./assets/js/notif.js"></script>
+    <script src="./assets/js/accslider.js"></script>
+    <script src = "./assets/dist/js/lightbox-plus-jquery.min.js"></script>
+    <script id="modifiable">
+        $('.carousel').carousel('pause');
+            //***For Testing*** var Ser_logUserDat = [{"User_Email_Name": "Science Maniac","User_Picture":"./assets/images/user.jpg"}]
+        if (typeof Ser_logUserDat != 'undefined') {
+            executeLogUserFunc();
+            //loadUserData();
+        }
+
+        function loadUserData() {
+            userview = document.getElementById('UserView');
+            for (let i in Ser_logUserDat) {
+                var username = Ser_logUserDat[i].User_Email_Name;
+                var userpic = Ser_logUserDat[i].User_Picture;
+                var shopname = Ser_logUserDat[i].Shop_User_Email_Name;
+                var shoppic = Ser_logUserDat[i].Shop_User_Picture;
+                userview.innerHTML = '<img class = "userpic" src = ' + (userpic || shoppic) + '>';
+                userview.innerHTML += '<h1 class = "username">' + (username || shopname) + '</h1>';
+            }
+        }
+
+        function executeLogUserFunc() {
+            var getLoginKeys = Object.keys(Ser_logUserDat[0]);
+            var splitLoginKeys = getLoginKeys[0].split('_')[0];
+            //pass this to authorize the firebase on user login(after which it is deleted)      
+            var idTokenName = splitLoginKeys + "_IdToken";
+            //pass this value with every socket resquest to the server       
+            var accessToken = splitLoginKeys + "_AccessToken";
+            var callOnce = true;
+            var FireBaseUser = null;
+            //user creds for firebase 
+            var configFirebase = {
+                apiKey: "AIzaSyCB3xwPLgUI6O4AQQQYxW8PaZWsAcrXRq0"
+                , authDomain: "titanium-flash-171510.firebaseapp.com"
+                , databaseURL: "https://titanium-flash-171510.firebaseio.com"
+                , projectId: "titanium-flash-171510"
+                , storageBucket: "titanium-flash-171510.appspot.com"
+                , messagingSenderId: "284593292198"
+                , "gcm_sender_id": "103953800507"
+            };
+            firebase.initializeApp(configFirebase);
+            var unsubscribe = firebase.auth().onAuthStateChanged(function (firebaseUser) {
+                unsubscribe();
+                //check if user is logged in to firebase or not
+                if (isUserEqual(firebaseUser) == false || Ser_logUserDat[0][idTokenName] != null) {
+                    var credential = firebase.auth.GoogleAuthProvider.credential(Ser_logUserDat[0][idTokenName]);
+                    // Sign in with credential from the Google user.
+                    firebase.auth().signInWithCredential(credential).then(function (result) {
+                        //user successfully logged in to firebase
+                        //listen to change in socket events
+                        listeToSockets(result);
+                    }).catch(function (error) {
+                        //prompt user to login again
+                    });
+                }
+                else {
+                    //user already signed in
+                    listeToSockets(firebaseUser);
+                }
+            });
+
+            function listeToSockets(firebaseUser) {
+                FireBaseUser = firebaseUser.uid;
+                //listen to changes at specific socket id
+                firebase.database().ref('Channels/Sockets/' + firebaseUser.uid).on('value', function (socketResponse) {
+                    //delete id_token in database once the user is logged in
+                    if (Ser_logUserDat[0][idTokenName] != null && callOnce == true) {
+                        callOnce = false;
+                        //call once the user is authorized
+                        delIdToken(firebaseUser, accessToken, Ser_logUserDat[0][accessToken], idTokenName);
+                    }
+                    //get the results/values/response/data of the socket data request
+                    console.log(socketResponse.val());
+                    //remove the data from the firebase db to free the space once the data is recieved
+                    firebase.database().ref('Channels/Sockets/' + firebaseUser.uid).remove();
+                });
+            }
+
+            function delIdToken(firebaseUser, keyName, keyValue, keyNameToDelete) {
+                var makeObj = {
+                        Event_Name: "deleteTokValue"
+                        , Array_info: [keyName, keyValue, keyNameToDelete]
+                    }
+                    //pass data to server at specific socket id(different for every user) to delete id_token(not to be confused with accessToken)
+                firebase.database().ref('Channels/Sockets/' + firebaseUser.uid).set(makeObj);
+            }
+
+            function isUserEqual(firebaseUser) {
+                if (firebaseUser) {
+                    var providerData = firebaseUser.providerData;
+                    console.log(firebase.auth.GoogleAuthProvider.PROVIDER_ID);
+                    for (var i = 0; i < providerData.length; i++) {
+                        console.log(providerData[i].providerId);
+                        if (providerData[i].providerId === firebase.auth.GoogleAuthProvider.PROVIDER_ID) {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+            if (FireBaseUser != null) {
+                var userInfoObj = {
+                        Name: document.getElementById('Name').value
+                        , State: document.getElementById('State').value
+                        , City: document.getElementById('City').value
+                        , Zipcode: document.getElementById('Zipcode').value
+                        , Address: document.getElementById('Address').value
+                        , Number: document.getElementById('Number').value
+                    }
+                    //push access token name and value to the object
+                userInfoObj[accessToken] = Ser_logUserDat[0][accessToken];
+                if (splitLoginKeys == 'User') {
+                    userInfoObj.Event_Name = "UserData";
+                }
+                else {
+                    userInfoObj.Event_Name = "ShopOwnerData";
+                }
+                firebase.database().ref('Channels/Sockets/' + FireBaseUser).set(userInfoObj);
+            }
+        }
+    </script>
 </body>
 
 </html>

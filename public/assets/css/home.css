@@ -12,7 +12,7 @@
 .btn1
 {
     font-variant: small-caps;
-    background: #62a3bf;
+    background:rgba(0,42, 91, 1);
     color: aliceblue;
     cursor: pointer;
 }
@@ -22,8 +22,19 @@
     font-family: 'Rajdhani', sans-serif;
     border: none;
     background: linear-gradient(#0b1829, #143369);
-    padding-bottom: 20px;
 }
+
+.sub-banner
+{
+    padding-top: 50px; 
+    padding-bottom: 50px; 
+    background-image: url(/assets/images/bkground2.jpg);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 
 .slogan 
 {
