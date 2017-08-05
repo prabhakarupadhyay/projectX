@@ -2,7 +2,6 @@ var $item = $('.carousel .carousel-inner');
 var $wHeight = $(window).height();
 $item.height($wHeight - 120);
 $item.addClass('full-screen');
-$ban.height($wHeight - 120);
 
 $(window).on('resize', function () {
     $wHeight = $(window).height();

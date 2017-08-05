@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html>
-
-<head>
+<html lang="en">
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Admin Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MODS FUSION">
+    <meta name="author" content="one developer">
+      
+
+
+    <title>MODS FUSION ADMIN</title>
     <style>
         body {
             font-size: 25px;
             font-variant: small-caps;
-            font-family: sans-serif;
+            font-family: sans-serif serif;
         }
         
         #AdminForm {
@@ -39,13 +41,37 @@
             font-variant: small-caps;
             color: aliceblue;
         }
+        
+        
+        #fixedDiv{
+            background-color: yellow;
+            position: fixed;
+            width: 30%;
+            height: 30%;
+            bottom: 10px;
+            right:10px;
+            font-family: serif;
+            font-size: 1.4em;
+            text-align: center;
+            word-wrap: break-word;
+            overflow-y: scroll;
+        }
+        
     </style>
-</head>
 
-<body>
+   <!-- BOOTSTRAP CORE STYLE CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+  </head>
+
+  <body>
+
+
     <!--Form Starts-->
     <form id="AdminForm">
-        <h1>Shop Admin Form</h1> Shop User Name:
+        <h1>MODS FUSION</h1><h2>SHOP DETAILS</h2> Shop User Email:
         <br>
         <input type="text" id="Shop_User_Email">
         <br> Shop Number:
@@ -57,6 +83,12 @@
         <br> Address:
         <br>
         <input type="text" id="Address">
+        <br> Lat:
+        <br>
+        <input type="text" id="Lat">
+        <br> lon:
+        <br>
+        <input type="text" id="Lon">
         <br> Number:
         <br>
         <input type="text" id="Number">
@@ -65,36 +97,285 @@
         <input type="text" id="Email">
         <br> Description:
         <br>
-        <input type="text" id="description">
+        <textarea rows="4" cols="100" id="description"></textarea>
         <br><br>
         <input type="button" id="submit" value="Submit"> </form>
-    <!--Form Ends -->
-    <script id="modifiable">
-     
-        var SubmitButton = document.getElementById("submit");
-        SubmitButton.addEventListener('click',submitForm);
-        function submitForm(oFormElement) {
-            //shop images
-            var xhr = new XMLHttpRequest();
-            xhr.onload = function () {
-                console.log(xhr.responseText);
-            }
-            xhr.open(oFormElement.method, oFormElement.action, true);
-            xhr.send(new FormData(oFormElement));
-            ///shop info
-            let shopInfo = {
-                Shop_User_Email: document.getElementById(Shop_User_Email)
-                , Shop_Number: document.getElementById(Shop_Number)
-                , Name: document.getElementById(Name)
-                , Address: document.getElementById(Address)
-                , Number: document.getElementById(Number)
-                , Email: document.getElementById(Email)
-                , description: document.getElementById(description)
-            }
-            //socket.emit('ShopData', shopInfo);
-            return false; // Markus had to return true
-        }
-    </script>
-</body>
 
+      
+      
+      
+      
+      <br><br><br>
+          <form id="postForm">
+        <h2>FILE UPLOAD DATA(works on change)</h2> Shop User Email:
+        <br>
+        <input type="text" id="Shop_User_Email">
+        <br> Shop Number:
+        <br>
+        <input type="text" id="Shop_Number">
+        <br> Name:
+        <br>
+        <input type="text" id="Name">
+        <br> URL(starts like this -- /adminUpload_SHOPS_IMAGE   OR    /adminUpload_CARS_SWIFT_IMAGE):
+        <br>
+        <input type="text" id="Action">
+      </form>
+	                
+      <form method="POST" action="/adminUpload_CARS_SWIFT_TEX_IMAGE" enctype="multipart/form-data" id="form1"  onsubmit="return submitForm(this);">
+          File: <input type="file" name="fileUpload" id="files">
+          <input type="submit" value="send" id="sub1">   
+      </form>
+      
+      
+      
+      
+      
+      
+      <br><br><br>
+      
+                <form id="carsForm">
+        <h2>CARS AVAILABLE</h2> Shop User Email:
+        <br>
+        <input type="text" id="Shop_User_Email">
+        <br> Shop Number:
+        <br>
+        <input type="text" id="Shop_Number">
+        <br> Car Names(seperated by commas , all in capital)
+        <br>
+        <input type="text" id="Car_Names">
+                    <br>
+        <input type="button" id="submit2" value="Submit2">             
+      </form>
+      
+      
+      
+      
+            <br><br><br>
+      
+                <form id="modelLink">
+        <h2>MODEL LINK(SKETCHFAB - ONLY THE LINK(HTTPS://.....))</h2> Model Link:
+        <br>
+        <input type="text" id="modLink">
+        <br>PATH FOR DATASTORE(JUST LIKE FILE UPLOAD URL SECTION(WITHOUT /adminUpload) LIKE CARS_SWIFT_LINK)
+        <br>
+        <input type="text" id="storedPath">
+                    <br>
+        <input type="button" id="submit3" value="Submit3">             
+      </form>
+      
+      
+
+      <div id="fixedDiv">RESPONSE AREA  (or checkout console)</div>
+    
+    
+    
+    <div id="footer" style="height:150px;position:relative;top:60px;border-bottom-style: hidden;">
+        <p style="text-align: center; font-size:4em;">
+        my admin panel
+        </p>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    
+      <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+    
+    <script id="modifiable">
+        
+
+        
+        var submit = document.getElementById("submit");
+        var submit2 = document.getElementById("submit2");
+        var submit3 = document.getElementById("submit3");
+        var postForm = document.getElementById("postForm");
+        var form1 = document.getElementById("form1");
+        
+        
+        var modLink = document.getElementById("modLink");
+        var storedPath = document.getElementById("storedPath");
+        var fixedDiv = document.getElementById("fixedDiv");
+        
+        
+        
+        
+        /********
+        *
+        *
+        USING FIREBASE CLOUD MESSAGE IN PLACE OF SOCKETS
+        *
+        *
+        **********/ 
+        
+        var configFirebase = {
+            apiKey: "AIzaSyCB3xwPLgUI6O4AQQQYxW8PaZWsAcrXRq0",
+            authDomain: "titanium-flash-171510.firebaseapp.com",
+            databaseURL: "https://titanium-flash-171510.firebaseio.com",
+            projectId: "titanium-flash-171510",
+            storageBucket: "titanium-flash-171510.appspot.com",
+            messagingSenderId: "284593292198",
+            "gcm_sender_id": "103953800507"
+        };
+  
+        firebase.initializeApp(configFirebase);
+        
+            firebase.database().ref('Channels/AdminSockets').on('value', function(adminResponse) {
+                //listen to response from server for every event
+                console.log(adminResponse.val());
+                if(adminResponse.val() != null){
+                  
+                    if(typeof adminResponse.val() == 'object'){
+                        fixedDiv.innerHTML = JSON.stringify(adminResponse.val());
+                    }else{
+                        fixedDiv.innerHTML = adminResponse.val().toString();
+                    }
+                }
+                   
+                firebase.database().ref('Channels/AdminSockets').remove();
+            
+            });   
+        
+        
+                         var shopInfo = {
+                             Event_Name:"ShopData",
+                             Shop_User_Email: "commona007@gmail.com",
+                             Shop_Number:"1",
+                             Name : "auto Marg",
+                             Address : "malvya nagar 41",
+                             Number : "908080808",
+                             Email : 'AutoMarg@gmail.com',
+                             Lat : '28.592834',
+                             Lon : '77.813809',
+                             description: 'about the shop..................'
+                         };        
+        
+        
+        submit.onclick = function(e){
+            
+            var thisForm = e.target.parentNode;
+            
+            for(var i=0;i < thisForm.elements.length; i++){
+                if(thisForm.elements[i].tagName == 'INPUT' || thisForm.elements[i].tagName == 'TEXTAREA'){
+                     if(thisForm.elements[i].type != 'button'){
+                             for(var j in shopInfo){
+                                 if(j == thisForm.elements[i].id){
+                                     shopInfo[j] = thisForm.elements[i].value;
+                                     
+                                 }
+                             }
+          
+                         
+                     }
+                }                
+            }
+            firebase.database().ref('Channels/AdminSockets').set(shopInfo);
+        }
+        
+        
+      
+        
+        
+    ///post info
+              let postInfo = {
+                  Event_Name:"ShopData",
+                  Shop_User_Email: "commona007@gmail.com",
+                  Shop_Number:"1",
+                  Name : "auto Marg",
+              };
+                          
+        
+        
+        postForm.onchange = function(e){
+            for(var i in postInfo){
+                
+                if(i == e.target.id){
+                    postInfo[i] = e.target.value;
+                }
+            }
+            if(e.target.id == 'Action'){
+                form1.action = e.target.value;
+            }
+        }
+        
+        
+function submitForm(oFormElement)
+{
+   // shop images
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function(){ console.log(xhr.responseText); }
+  xhr.open (oFormElement.method, oFormElement.action, true);
+  xhr.send (new FormData (oFormElement));
+  
+             
+          firebase.database().ref('Channels/AdminSockets').set(postInfo);
+    
+    return false; // Markus had to return true
+    
+}
+        
+        
+        
+              var shopCars = {
+                Event_Name:"availableCars",
+                Shop_User_Email: "commona007@gmail.com",
+                Shop_Number:"1",
+                Car_Names:["SWIFT","I20"]
+              }    
+      
+              
+
+        submit2.onclick = function(e){
+            
+            var thisForm = e.target.parentNode;
+            
+            for(var i=0;i < thisForm.elements.length; i++){
+                if(thisForm.elements[i].tagName == 'INPUT'){
+                     if(thisForm.elements[i].type != 'button'){
+                             for(var j in shopCars){
+                                 if(j == thisForm.elements[i].id){
+                                     if(j == 'Car_Names'){
+                                         
+                                         let carsArr = thisForm.elements[i].value;
+                                         let splitArr = carsArr.split(',');
+                                         shopCars[j] = splitArr;
+                                         
+                                     }else{
+                                         shopCars[j] = thisForm.elements[i].value;
+                                     }
+                                     
+                                 }
+                             }
+                         
+                     }
+                }                
+            }            
+            firebase.database().ref('Channels/AdminSockets').set(shopCars);  
+        }
+                         
+        
+
+          var modelWeb = {
+              Event_Name:"modelLinkWeb",
+              req:{
+                  file:{
+                      storedPath:'CARS_SWIFT_LINK',
+                      cloudStoragePublicUrl:'https://sketchfab.com/models/a94560a66da247afa01ac3f6c26c2fb0/embed'
+                  }
+              }  
+          }
+               
+
+          
+          
+          submit3.onclick = function(){
+              
+              modelWeb.req.file.storedPath = storedPath.value;
+              modelWeb.req.file.cloudStoragePublicUrl = modLink.value;
+              firebase.database().ref('Channels/AdminSockets').set(modelWeb);     
+          }     
+        
+   
+      
+      
+      </script>
+    
+</body>
 </html>

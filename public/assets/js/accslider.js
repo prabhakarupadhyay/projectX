@@ -1,9 +1,9 @@
-//Accordian
-var action="click";
+
+             var action="click";
 var speed="500";
 
 $(document).ready(function(){
-	$('li.category').on(action,function(){
+	$('li.category').click(function(){
 		$(this).next()
 			.slideToggle(speed)
 				.siblings('li.sub-category')

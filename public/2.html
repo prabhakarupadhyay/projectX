@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/notif.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/userPanel.css">
     <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet"> </head>
-
+    
 <body>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <!-- Top NavBar -->
@@ -24,11 +24,11 @@
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
         <div class="container">
             <div class="col-4">
-                <a class="navbar-brand" href="#"><img src="./assets/images/modsfuseLogo.png"></a>
+                <a class="navbar-brand" href="https://titanium-flash-171510.appspot.com/"><img src="./assets/images/modsfuseLogo.png"></a>
             </div>
-            <div class="col-4"> </div>
+            <div class="col-4"></div>
             <div class="col-4 nav-right text-right" id="UserView">
-                <a href="#"><img height="50px" src="assets/images/gsignin.png"></a>
+                <a href="/auth/google"><img height="50px" src="assets/images/gsignin.png"></a>
             </div>
         </div>
     </nav>
@@ -37,7 +37,7 @@
         <div class="row">
             <div class="col-2"></div>
             <div class="col-8">
-                <form>
+                <form action="/searchShops" method="get" onsubmit="return geocode(this);">
                     <div class="form-group" id="location-form">
                         <label for="location" class="col-form-label">Enter Your Location: </label>
                         <div class="row">
@@ -50,7 +50,9 @@
                         </div>
                     </div>
                     <br>
-                    <button type="button" class="btn" id="search"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <button type="submit" class="btn" id="search"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <input type="text" name="latitude" id="latitude" value="" hidden="true">
+                    <input type="text" name="longitude" id="longitude" value="" hidden="true">
                 </form>
             </div>
             <div class="col-2"></div>
@@ -66,7 +68,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></button>
                 </div>
                 <div class="modal-body user-body">
-                    <form class="container-fluid userform">
+                    <form class="container-fluid userform" id="formPanel">
                         <div class="form-group row">
                             <label for="name" class="col-2 userlabel">Name: </label>
                             <div class="col-10">
@@ -92,10 +94,10 @@
                         <div class="form-group row">
                             <label for="number" class="col-2 userlabel">Number: </label>
                             <div class="col-10">
-                                <input type="number" class="form-control userinput" id="Number"> </div>
+                                <input type="number" class="form-control userinput" id="Number"></div>
                         </div>
                         <div style="text-align: center">
-                            <button type="submit" class="btn">Save Changes</button>
+                            <button type="submit" class="btn" id="submitPanel">Save Changes</button>
                         </div>
                     </form>
                 </div>
@@ -109,25 +111,11 @@
             <div class="modal-content notif">
                 <div class="modal-header notif-head">
                     <h5 class="m-title">NOTIFICATIONS</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body notif-body">
                     <div class="container noty-holder">
                         <div class="alert alert-read alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                        <div class="alert alert-unread alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                        <div class="alert alert-unread alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                        <div class="alert alert-unread alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                        <div class="alert alert-read alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                        <div class="alert alert-read alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                        <div class="alert alert-unread alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                        <div class="alert alert-unread alert-dismissible fade show" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
                     </div>
                 </div>
@@ -141,7 +129,7 @@
     <!-- bottom nav -->
     <div class="navbottom-content container"> </div>
     <nav class="navbar navbar-toggleable-md fixed-bottom container navbottom">
-        <div class="col-4 navbottom-left"> <a data-toggle="modal" data-target="#UserPanel"><i class="fa fa-user" aria-hidden="true"></i></a>
+        <div class="col-4 navbottom-left"><a id="userTray" data-toggle="modal" data-target="#UserPanel" style="visibility:hidden;"><i class="fa fa-user" aria-hidden="true"></i></a>
             <h3 class="userIcon">User Panel</h3></div>
         <div class="col-4">
             <div class="collapse navbar-collapse" id="navbarText">
@@ -155,8 +143,11 @@
         <div class="col-4 navbottom-right" style="text-align: right"> <a data-toggle="modal" data-target="#Notification"><i class="fa fa-bell" aria-hidden="true"></i></a> </div>
     </nav>
     <!-- bottom nav -->
+
     <!-- Scripts -->
-    <script src="./assets/js/2.js"></script>
+    <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyC9xurRiTwaVtktWTYIvvyd2v8Nk5B2uD8&ver=3.exp"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+    <!--firebase-->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <!--jquery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
@@ -164,22 +155,57 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <!--bootstrap-->
     <script src="./assets/js/notif.js"></script>
-    <script id="modifiable">
+    <script src="./assets/js/2.js"></script>
+ <script id="modifiable">
+     
+     
+     var userTray = document.getElementById('userTray');
+     var submitPanel = document.getElementById('submitPanel');
+     var formPanel = document.getElementById('formPanel');
+    
+     
         //***For Testing*** var Ser_logUserDat = [{"User_Email_Name": "Science Maniac","User_Picture":"./assets/images/user.jpg"}]
         if (typeof Ser_logUserDat != 'undefined') {
             executeLogUserFunc();
-            //loadUserData();
-        }
-
+            loadUserData();
+        }     
+     
+     
+        
         function loadUserData() {
-            userview = document.getElementById('UserView');
-            for (let i in Ser_logUserDat) {
-                var username = Ser_logUserDat[i].User_Email_Name;
-                var userpic = Ser_logUserDat[i].User_Picture;
-                var shopname = Ser_logUserDat[i].Shop_User_Email_Name;
-                var shoppic = Ser_logUserDat[i].Shop_User_Picture;
-                userview.innerHTML = '<img class = "userpic" src = ' + (userpic || shoppic) + '>';
-                userview.innerHTML += '<h1 class = "username">' + (username || shopname) + '</h1>';
+            
+            var userview = document.getElementById('UserView');
+            var username = Ser_logUserDat[0]["User_Email_Name"];
+            var userpic = Ser_logUserDat[0]["User_Picture"];
+            var shopname = Ser_logUserDat[0]["Shop_User_Email_Name"];
+            var shoppic = Ser_logUserDat[0]["Shop_User_Picture"];
+            userview.innerHTML = '<img class = "userpic" src = ' + (userpic || shoppic) + '>';        
+            userview.innerHTML += '<h1 class = "username">' + (username || shopname) +'</h1>'; 
+            userTray.style.visibility = "visible";
+            
+            if(Ser_logUserDat[1] != undefined){
+                
+                for(var i=0;i < formPanel.elements.length; i++){
+            
+                    if(formPanel.elements[i].tagName == 'INPUT' || formPanel.elements[i].tagName == 'TEXTAREA'){
+                 
+                        if(formPanel.elements[i].type != 'button'){
+                
+                            for(var j in Ser_logUserDat[1]){
+                        
+                                if(j == formPanel.elements[i].id){
+                            
+                                    if(j == 'Number' || j == 'Zipcode'){
+                                       formPanel.elements[i].value = Ser_logUserDat[1][j]; 
+                                    }else{
+                                        formPanel.elements[i].value = Ser_logUserDat[1][j];  
+                                    }
+                                    
+                                }  
+                            }   
+                        }
+                    }                
+                } 
             }
         }
 
@@ -224,7 +250,7 @@
             });
 
             function listeToSockets(firebaseUser) {
-                FireBaseUser = firebaseUser.uid;
+                 FireBaseUser = firebaseUser.uid;
                 //listen to changes at specific socket id
                 firebase.database().ref('Channels/Sockets/' + firebaseUser.uid).on('value', function (socketResponse) {
                     //delete id_token in database once the user is logged in
@@ -262,16 +288,45 @@
                 }
                 return false;
             }
-            if (FireBaseUser != null) {
-                var userInfoObj = {
-                        Name: document.getElementById('Name').value
-                        , State: document.getElementById('State').value
-                        , City: document.getElementById('City').value
-                        , Zipcode: document.getElementById('Zipcode').value
-                        , Address: document.getElementById('Address').value
-                        , Number: document.getElementById('Number').value
-                    }
+            
+
                     //push access token name and value to the object
+
+                       var userInfoObj = {
+                        Name: ''
+                        , State: ''
+                        , City: ''
+                        , Zipcode: ''
+                        , Address: ''
+                        , Number: ''
+                    }            
+          
+
+                 submitPanel.onclick = function(e){
+                var submitButton = e.target.parentNode;
+                var thisForm = submitButton.parentNode;
+                for(var i=0;i < thisForm.elements.length; i++){
+            
+                    if(thisForm.elements[i].tagName == 'INPUT' || thisForm.elements[i].tagName == 'TEXTAREA'){
+                 
+                        if(thisForm.elements[i].type != 'button'){
+                
+                            for(var j in userInfoObj){
+                        
+                                if(j == thisForm.elements[i].id){
+                            
+                                    if(j == 'Number' || j == 'Zipcode'){
+                                        userInfoObj[j] = thisForm.elements[i].value.toString();
+                                    }else{
+                                        userInfoObj[j] = thisForm.elements[i].value;   
+                                    }
+                                    
+                                }  
+                            }   
+                        }
+                    }                
+                } 
+                          
                 userInfoObj[accessToken] = Ser_logUserDat[0][accessToken];
                 if (splitLoginKeys == 'User') {
                     userInfoObj.Event_Name = "UserData";
@@ -280,7 +335,10 @@
                     userInfoObj.Event_Name = "ShopOwnerData";
                 }
                 firebase.database().ref('Channels/Sockets/' + FireBaseUser).set(userInfoObj);
-            }
+                     submitButton.children[0].innerHTML = "Saved";
+                     submitButton.children[0].disabled = true;
+                return false;
+            } 
         }
     </script>
 </body>

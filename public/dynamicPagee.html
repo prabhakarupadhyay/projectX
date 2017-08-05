@@ -3,7 +3,7 @@
 
 <head>
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">
-    <title>About Us</title>
+    <title>Mods Fusion</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -33,94 +33,68 @@
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
         <div class="container-fluid" style="margin: 0px !important; width:100%;">
             <div class="col-4" style="float: left">
-                <a class="navbar-brand" href="#"><img src="./assets/images/modsfuseLogo.png"></a>
+                <a class="navbar-brand" href="https://titanium-flash-171510.appspot.com/"><img src="./assets/images/modsfuseLogo.png"></a>
             </div>
             <div class="col-4"> </div>
             <div class="col-4 nav-right text-right" style="float: right" id="UserView">
-                <a href="#"><img height="50px" src="assets/images/gsignin.png"></a>
+                <a href="/auth/google"><img height="50px" src="assets/images/gsignin.png"></a>
             </div>
         </div>
     </nav>
-    <div class="container main-content">
+    <div id="dynamicAlloc1" class="container main-content">
         <div id="carouselShop" class="carousel slide shop-carousel" data-ride="carousel">
-            <div class="carousel-inner image-set" role="listbox" style="height: 400px; width:100%">
-                <a class="carousel-item active" href="./assets/images/shp1.jpg" data-lightbox="image-set" style="height: inherit; width: inherit"><img class="d-block img-fluid shop-img " style="background-image: url(./assets/images/shp1.jpg)"></a>
-                <a class="carousel-item" href="./assets/images/shp2.jpg" data-lightbox="image-set" style="height: inherit; width: inherit"><img class="d-block img-fluid shop-img " style="background-image: url(./assets/images/shp2.jpg)"></a>
-                <a class="carousel-item" href="./assets/images/shp3.jpg" data-lightbox="image-set" style="height: inherit; width: inherit"><img class="d-block img-fluid shop-img " style="background-image: url(./assets/images/shp3.jpg)"></a>
+            <div id="dynamicAlloc2" class="carousel-inner image-set" role="listbox" style="height: 400px; width:100%">
+                <a id="dynamicBanner" class="carousel-item active" href="" data-lightbox="image-set" style="height: inherit; width: inherit"><img id="Images" class="d-block img-fluid shop-img " src=""></a>
             </div>
             <a class="carousel-control-prev" href="#carouselShop" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
             <a class="carousel-control-next" href="#carouselShop" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
         </div>
         <div>
-            <h1>Crave Design</h1>
+            <h1 id="Name">Crave Design</h1>
             <div class="container-fluid" style="width: 100%; font-family: Rajdhani">
                 <div class="row" style="width: 100%">
                     <div class="col-md-4">
-                        <p class="address"><strong><i class="fa fa-home" aria-hidden="true"></i> Address: </strong>Opp Pillar No.190, Near Arjunghar Metro Station, Mehrauli Gurgaon Road, New Delhi, Delhi 110047</p>
+                        <strong><i class="fa fa-home" aria-hidden="true"></i> Address: </strong><p id="Address" class="address">Opp Pillar No.190, Near Arjunghar Metro Station, Mehrauli Gurgaon Road, New Delhi, Delhi 110047</p>
                     </div>
                     <div class="col-md-4">
-                        <p class="email"><strong><i class="fa fa-envelope" aria-hidden="true"></i> Email: </strong>piyush_peace@hotmail.com</p>
-                        <p class="website"><strong><i class="fa fa-globe" aria-hidden="true"></i> Website: </strong>http://www.mhtwheels.com/</p>
+                        <strong><i class="fa fa-envelope" aria-hidden="true"></i> Email: </strong><p id="Email" class="email">piyush_peace@hotmail.com</p>
+                        <strong><i class="fa fa-globe" aria-hidden="true"></i> Website: </strong><p class="website">not available</p>
                     </div>
                     <div class="col-md-4">
-                        <p class="contact"><strong><i class="fa fa-phone" aria-hidden="true"></i> Contact: </strong>098919 19081</p>
+                        <strong><i class="fa fa-phone" aria-hidden="true"></i> Contact: </strong><p class="contact" id="Numbers">098919 19081</p>
                     </div>
                 </div>
             </div>
             <div class="container-fluid" style="width: 100%; font-family: Rajdhani; text-align: center">
-                <p><strong>Description: </strong>
-                    <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed facilisis lacus. Integer vitae ligula dignissim, aliquam mi eget, aliquet massa. Etiam vel quam non turpis faucibus convallis et id lectus. Ut elementum, magna at consequat tincidunt, est massa volutpat leo, vel pharetra dolor lacus id odio. Aliquam lobortis odio ut libero maximus dignissim. Pellentesque euismod nibh sit amet quam ullamcorper laoreet. </p>
+                <strong>Description: </strong><p id="description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed facilisis lacus. Integer vitae ligula dignissim, aliquam mi eget, aliquet massa. Etiam vel quam non turpis faucibus convallis et id lectus. Ut elementum, magna at consequat tincidunt, est massa volutpat leo, vel pharetra dolor lacus id odio. Aliquam lobortis odio ut libero maximus dignissim. Pellentesque euismod nibh sit amet quam ullamcorper laoreet. </p>
             </div>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-7">
                         <h2 style="font-family: Rajdhani;">Cars Available: </h2>
-                        <ul class="dock">
-                            <li>Swift</li>
-                            <li>Alto</li>
-                            <li>Zen</li>
+                        <ul id="dynamicAlloc3" class="dock">
+                            <li id="dynamicCars"></li>
                         </ul>
-                        <iframe src="" id="api-frame" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+                        
+                        <iframe id="api-frame" src="" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
                     </div>
                     <div class="col-md-5">
                         <h2 style="font-family: Rajdhani; text-align: right">Parts Available: </h2>
                         <div id="parts-container">
-                            <ul class="faq">
-                                <li class="category">Spoilers</li>
+                            <ul class="faq" id="dynamicAlloc4">
+                                <ul class="dynamicParts">
+                                <li class="category" id="partType"></li>
                                 <li class="sub-category">
-                                    <div id="parts-container">
-                                        <ul class="faq">
-                                            <li class="category model">Model1</li>
-                                            <li class="sub-category model-holder"><a href="./assets/images/dynamicPage/spoiler1.jpg" data-lightbox="spoiler-set"><img src = "./assets/images/dynamicPage/spoiler1.jpg"></a></li>
-                                            <li class="category model" >Model2</li>
-                                            <li class="sub-category model-holder"><a href="./assets/images/dynamicPage/spoiler-2.jpg" data-lightbox="spoiler-set"><img src = "./assets/images/dynamicPage/spoiler-2.jpg"></a></li>
-                                            <li class="category model">Model3</li>
-                                            <li class="sub-category model-holder"><a href="./assets/images/dynamicPage/spoiler3.jpg" data-lightbox="spoiler-set"><img src = "./assets/images/dynamicPage/spoiler3.jpg"></a></li>
-                                        </ul>
-                                    </div>
+                                    <ul class="faq" id="subDynamicParts">
+                                        <div>
+                                            <li class="category model" id="partName"></li>
+                                            <li class="sub-category model-holder" id="partUrl"><a href="./assets/images/dynamicPage/spoiler1.jpg" data-lightbox="spoiler-set"><img src = "./assets/images/dynamicPage/spoiler1.jpg"></a></li>
+                                        </div> 
+
+                                    </ul>
                                 </li>
-                                <li class="category">Rims</li>
-                                <li class="sub-category">
-                                    <ul class="faq">
-                                            <li class="category model">Model1</li>
-                                            <li class="sub-category model-holder"><img src = "./assets/images/dynamicPage/spoiler1.jpg"></li>
-                                            <li class="category model">Model2</li>
-                                            <li class="sub-category model-holder"><img src = "./assets/images/dynamicPage/spoiler1.jpg"></li>
-                                            <li class="category model">Model3</li>
-                                            <li class="sub-category model-holder"><img src = "./assets/images/dynamicPage/spoiler1.jpg"></li>
-                                        </ul>
-                                </li>
-                                <li class="category">Tyres</li>
-                                <li class="sub-category">
-                                    <ul class="faq">
-                                            <li class="category model">Model1</li>
-                                            <li class="sub-category model-holder"><img src = "./assets/images/dynamicPage/spoiler1.jpg"></li>
-                                            <li class="category model">Model2</li>
-                                            <li class="sub-category model-holder"><img src = "./assets/images/dynamicPage/spoiler1.jpg"></li>
-                                            <li class="category model">Model3</li>
-                                            <li class="sub-category model-holder"><img src = "./assets/images/dynamicPage/spoiler1.jpg"></li>
-                                        </ul>
-                                </li>
+                                </ul>
                             </ul>
                         </div>
                     </div>
@@ -140,7 +114,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></button>
                     </div>
                     <div class="modal-body user-body">
-                        <form class="container-fluid userform">
+                        <form class="container-fluid userform" id="formPanel">
                             <div class="form-group row">
                                 <label for="name" class="col-2 userlabel">Name: </label>
                                 <div class="col-10">
@@ -169,7 +143,7 @@
                                     <input type="number" class="form-control userinput" id="Number"> </div>
                             </div>
                             <div style="text-align: center">
-                                <button type="submit" class="btn">Save Changes</button>
+                                <button type="submit" class="btn" id="submitPanel">Save Changes</button>
                             </div>
                         </form>
                     </div>
@@ -189,20 +163,6 @@
                         <div class="container noty-holder">
                             <div class="alert alert-read alert-dismissible fade show" role="alert">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                            <div class="alert alert-unread alert-dismissible fade show" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                            <div class="alert alert-unread alert-dismissible fade show" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                            <div class="alert alert-unread alert-dismissible fade show" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                            <div class="alert alert-read alert-dismissible fade show" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                            <div class="alert alert-read alert-dismissible fade show" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                            <div class="alert alert-unread alert-dismissible fade show" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                            <div class="alert alert-unread alert-dismissible fade show" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
                         </div>
                     </div>
                     <div class="modal-footer notif-foot">
@@ -216,7 +176,7 @@
     <!-- bottom nav -->
     <div class="navbottom-content container"> </div>
     <nav class="navbar navbar-toggleable-md fixed-bottom container navbottom">
-        <div class="col-4 navbottom-left"> <a data-toggle="modal" data-target="#UserPanel"><i class="fa fa-user" aria-hidden="true"></i></a>
+        <div class="col-4 navbottom-left"> <a id="userTray" data-toggle="modal" data-target="#UserPanel" style="visibility:hidden;"><i class="fa fa-user" aria-hidden="true"></i></a>
             <h3 class="userIcon">User Panel</h3></div>
         <div class="col-4">
             <div class="collapse navbar-collapse" id="navbarText">
@@ -231,6 +191,8 @@
     </nav>
     <!-- bottom nav -->
     <!-- Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+    <!--firebase-->
     <script type="text/javascript" src="./assets/js/jquery-3.1.1.min.js"></script>
     <!--jquery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
@@ -239,28 +201,328 @@
     <!--bootstrap-->
     <script type="text/javascript" src="./assets/js/dynamicPage.js"></script>
     <script src="./assets/js/notif.js"></script>
-    <script src="./assets/js/accslider.js"></script>
+    <script src="./assets/js/accslider.js" id="partsSlider"></script>
     <script src = "./assets/dist/js/lightbox-plus-jquery.min.js"></script>
     <script id="modifiable">
-        $('.carousel').carousel('pause');
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+//        
+//        var Ser_comLoadDat = [{"Name":"auto Marg","Email":"AutoMarg@gmail.com","description":"about the shop..................","Address":"malvya nagar 41","Images":"https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/auto Marg/shop_1/IMAGE_Xlogo.png,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/auto Marg/shop_1/IMAGE_logo.png","Numbers":"908080808"},[{"SWIFT":{"HEADLIGHTS":{"IMAGE_fuse.jpg":"https://storage.googleapis.com/titanium-flash-171510.appspot.com/CARS/SWIFT/PARTS/HEADLIGHTS/IMAGE_fuse.jpg","IMAGE_audi Q7.PNG":"https://storage.googleapis.com/titanium-flash-171510.appspot.com/CARS/SWIFT/IMAGE_audi Q7.PNG"},"SWIFT":{},"MAIN":{"LINK":"https://sketchfab.com/models/a94560a66da247afa01ac3f6c26c2fb0/embed","IMAGE_audi Q7.PNG":"https://storage.googleapis.com/titanium-flash-171510.appspot.com/CARS/SWIFT/IMAGE_audi Q7.PNG"},"TAILLIGHTS":{"IMAGE_aventodor.PNG":"https://storage.googleapis.com/titanium-flash-171510.appspot.com/CARS/SWIFT/PARTS/TAILLIGHTS/IMAGE_aventodor.PNG","IMAGE_audi Q7.PNG":"https://storage.googleapis.com/titanium-flash-171510.appspot.com/CARS/SWIFT/IMAGE_audi Q7.PNG"}}},{"ZEN":{"RIMS":{"IMAGE_fuse.jpg":"https://storage.googleapis.com/titanium-flash-171510.appspot.com/CARS/SWIFT/PARTS/HEADLIGHTS/IMAGE_fuse.jpg"},"ZEN":{},"MAIN":{"LINK":"https://sketchfab.com/models/a94560a66da247afa01ac3f6c26c2fb0/embed","IMAGE_audi Q7.PNG":"https://storage.googleapis.com/titanium-flash-171510.appspot.com/CARS/SWIFT/IMAGE_audi Q7.PNG"},"SPOILERS":{"IMAGE_aventodor.PNG":"https://storage.googleapis.com/titanium-flash-171510.appspot.com/CARS/SWIFT/IMAGE_audi Q7.PNG","IMAGE_audi Q7.PNG":"https://storage.googleapis.com/titanium-flash-171510.appspot.com/CARS/SWIFT/IMAGE_audi Q7.PNG"}}}]];
+//
+//        
+        
+        
+        
+        //Accordian
+
+        
+        
+        
+        
+        //Shop Allocation
+        var dynamicAlloc1 = document.getElementById('dynamicAlloc1');
+        var dynamicAlloc2 = document.getElementById('dynamicAlloc2');
+        var dynamicBanner = document.getElementById('dynamicBanner');
+        var dynamicAlloc3 = document.getElementById('dynamicAlloc3');
+        var dynamicCars = document.getElementById('dynamicCars');
+        var dynamicAlloc4 = document.getElementById('dynamicAlloc4');
+        
+        var partsSlider = document.getElementById('partsSlider');
+        
+        var apiframe = document.getElementById('api-frame');
+     var userTray = document.getElementById('userTray');
+     var submitPanel = document.getElementById('submitPanel');
+     var formPanel = document.getElementById('formPanel');         
+        var firstCallCarsFlag = true;
+        
+        
+        
+        dynamicAlloc3.onclick = function(e){
+            
+            if(e.target.tagName == 'LI' && e.target.id == 'dynamicCars'){
+                            
+                unbindClickListener();
+                var carNamez = e.target.innerHTML;
+                CurCarAndParts(carNamez,e.target.className); 
+                bindClickListener();
+            } 
+        }
+        
+        
+        //check if common variable is present or not
+        if (typeof Ser_comLoadDat != 'undefined') {
+            if(Ser_comLoadDat != 'Nothing to show........Please add some shops'){
+                executeComUserFunc();
+            }
+        
+        function executeComUserFunc() {
+            var countObj = Ser_comLoadDat.length;
+            for (let i in Ser_comLoadDat) {
+                
+                if(Array.isArray(Ser_comLoadDat[i])){
+                    
+                    var currentObj = Ser_comLoadDat[i];
+                    for(let k in currentObj){
+                        sortFeedCars(currentObj[k],k);
+                    }
+                    
+                }else{
+                    
+                    var currentObj = Ser_comLoadDat[i];
+                    var objectKeys = Object.keys(currentObj);
+                    for (let j in objectKeys) {
+                        var currentKey = objectKeys[j];
+                        var currentTag = dynamicAlloc1.querySelector('#' + currentKey);
+                        if(currentKey == 'Images'){
+                            sortFeedBanner(currentTag,currentObj[currentKey]);
+                        }else{
+                            
+                            feedTags(currentTag, currentObj[currentKey], function (newCurrentTag) {
+                                console.log(newCurrentTag);
+                            });                            
+                        }
+                    }
+                }
+            }
+        }
+        
+        
+        function unbindClickListener(){
+            
+            $(document).ready(function(){
+	$('li.category').unbind( "click" );
+});
+            
+        }
+        
+        
+        
+        function bindClickListener(){
+             var action="click";
+var speed="500";
+
+            $(document).ready(function(){
+	$('li.category').click(function(){
+		$(this).next()
+			.slideToggle(speed)
+				.siblings('li.sub-category')
+					.slideUp();
+		var img = $(this).children('img');
+		//Remove the 'rotate' class except the active 
+		$('img').not(img).removeClass('rotate');
+		//Toggle rotate class
+		img.toggleClass('rotate');
+	});
+});
+            
+        }
+        
+        
+        
+        function sortFeedCars(currentObj,currCount){
+            
+            let breakKeys = Object.keys(currentObj);  
+            feedTags(dynamicCars,breakKeys[0], function(res){});
+            dynamicCars.setAttribute('class',JSON.stringify(currentObj[breakKeys[0]]));
+            
+            if (currCount == 0) {
+                dynamicCars = dynamicCars.cloneNode(true); 
+                CurCarAndParts(breakKeys[0],JSON.stringify(currentObj[breakKeys[0]]));
+                firstCallCarsFlag = false;
+            }
+            else {
+                dynamicAlloc3.appendChild(dynamicCars);
+                dynamicCars = dynamicCars.cloneNode(true);
+            }              
+        }
+        
+        
+        
+        
+        function CurCarAndParts(carName,partsStr){
+            
+            var dynamicPartsArr = dynamicAlloc4.getElementsByClassName("dynamicParts");
+            var countPartsObj=0;
+            var partsObj = JSON.parse(partsStr);
+            var usableObj = {};
+            //console.log(partsObj);
+           
+           
+            for(var i in partsObj){
+                countPartsObj++;
+                if(i == carName){}else{
+                    
+                    if(i == 'MAIN'){
+                        feedTags(apiframe,partsObj[i].LINK, function(res){});
+                    }else{
+                        usableObj[i] = partsObj[i];
+ 
+                    }
+                }
+                
+                if(countPartsObj == Object.keys(partsObj).length){
+                    sortPartsElements(dynamicAlloc4,usableObj);
+                }
+            }
+            
+            var usableObjKeys = Object.keys(usableObj);
+            for(let j in usableObjKeys){
+                var currentTag = dynamicPartsArr[j];    
+                sortForParts(currentTag,usableObj[usableObjKeys[j]],usableObjKeys[j]);
+            } 
+        }
+
+
+        
+        function sortForParts(currentTag,partsObj,partName){
+            
+            var currentSubType = currentTag.querySelector('#partType');
+            feedTags(currentSubType,partName, function(res){});
+            var subDynamicParts = currentTag.querySelector('#subDynamicParts');
+            var jCount = 0;
+            sortPartsElements(subDynamicParts,partsObj);
+            var subDynamicPartsChild = subDynamicParts.children;    
+            
+            for(var j in partsObj){
+                var currentSubName = subDynamicPartsChild[jCount].querySelector('#partName');
+                var splitModelName = j.split('_').pop().split('.').shift();
+                var modelName = "Model_"+splitModelName;
+                feedTags(currentSubName,modelName, function(res){});
+                var currentSubUrl = subDynamicPartsChild[jCount].querySelector('#partUrl');
+                var anchorTG = currentSubUrl.firstChild;
+                feedTags(anchorTG,partsObj[j], function(res){});
+                feedTags(anchorTG.firstChild,partsObj[j], function(res){});
+                jCount++;
+            }      
+        }
+        
+     
+        
+        
+        function sortPartsElements(subDynamicParts,partsObj){
+            
+            var objElemCount = Object.keys(partsObj).length;
+            var tagElemCount = subDynamicParts.childElementCount;
+            if(objElemCount > tagElemCount){
+                var diff = objElemCount - tagElemCount;
+                var firstTag = subDynamicParts.children[0];
+                for(let c=0; c< diff; c++){
+                    var cloneSubTag = firstTag.cloneNode(true);
+                    subDynamicParts.appendChild(cloneSubTag);
+                }
+            }else if(objElemCount < tagElemCount){
+                var diff = tagElemCount - objElemCount;
+                for(let c=0; c< diff; c++){
+                    var tagDelete = subDynamicParts.children[c];
+                    subDynamicParts.removeChild(tagDelete);
+                }
+            }
+            
+        }
+        
+        
+        
+        function sortFeedBanner(currentTag,images){
+            
+            var imgArr = images.split(',');
+            
+            for(let i in imgArr){
+   
+                var currentImg = dynamicBanner.querySelector('#Images');   
+                feedTags(currentImg,imgArr[i], function(res){});
+                feedTags(dynamicBanner,imgArr[i], function(res){});
+  
+                if (i == 0) {
+                    dynamicBanner = dynamicBanner.cloneNode(true); 
+                    dynamicBanner.setAttribute('class','carousel-item');
+                }
+                else {
+                    dynamicAlloc2.appendChild(dynamicBanner);
+                    dynamicBanner = dynamicBanner.cloneNode(true);
+                    dynamicBanner.setAttribute('class','carousel-item');
+                    
+                }                
+            }
+        }
+        
+        
+
+        function feedTags(currentTag, tagValue, callback) {
+            if (currentTag.tagName == 'IMG' || currentTag.tagName == 'IFRAME') {
+                currentTag.setAttribute('src', tagValue);
+                callback(currentTag);
+            }else if(currentTag.tagName == 'A'){
+                currentTag.setAttribute('href', tagValue);
+                callback(currentTag);
+            }
+            else if (currentTag.tagName == 'DIV' || currentTag.tagName == 'P' || currentTag.tagName == 'H1' || currentTag.tagName == 'LI') {
+                currentTag.innerHTML = tagValue;
+                callback(currentTag);
+            }
+            else {
+                callback("tag not found.");
+            }
+        }
+        
+        
+        
+        
             //***For Testing*** var Ser_logUserDat = [{"User_Email_Name": "Science Maniac","User_Picture":"./assets/images/user.jpg"}]
         if (typeof Ser_logUserDat != 'undefined') {
             executeLogUserFunc();
-            //loadUserData();
+            loadUserData();
         }
 
         function loadUserData() {
-            userview = document.getElementById('UserView');
-            for (let i in Ser_logUserDat) {
-                var username = Ser_logUserDat[i].User_Email_Name;
-                var userpic = Ser_logUserDat[i].User_Picture;
-                var shopname = Ser_logUserDat[i].Shop_User_Email_Name;
-                var shoppic = Ser_logUserDat[i].Shop_User_Picture;
+            var userview = document.getElementById('UserView');
+                
+                var username = Ser_logUserDat[0]["User_Email_Name"];
+                var userpic = Ser_logUserDat[0]["User_Picture"];
+                var shopname = Ser_logUserDat[0]["Shop_User_Email_Name"];
+                var shoppic = Ser_logUserDat[0]["Shop_User_Picture"];
                 userview.innerHTML = '<img class = "userpic" src = ' + (userpic || shoppic) + '>';
-                userview.innerHTML += '<h1 class = "username">' + (username || shopname) + '</h1>';
-            }
+                userview.innerHTML += '<h1 class = "username">' + (username || shopname) +'</h1>';
+            
+                userTray.style.visibility = "visible";
+            
+            if(Ser_logUserDat[1] != undefined){
+                
+                for(var i=0;i < formPanel.elements.length; i++){
+            
+                    if(formPanel.elements[i].tagName == 'INPUT' || formPanel.elements[i].tagName == 'TEXTAREA'){
+                 
+                        if(formPanel.elements[i].type != 'button'){
+                
+                            for(var j in Ser_logUserDat[1]){
+                        
+                                if(j == formPanel.elements[i].id){
+                            
+                                    if(j == 'Number' || j == 'Zipcode'){
+                                       formPanel.elements[i].value = Ser_logUserDat[1][j]; 
+                                    }else{
+                                        formPanel.elements[i].value = Ser_logUserDat[1][j];  
+                                    }
+                                    
+                                }  
+                            }   
+                        }
+                    }                
+                } 
+            }            
+            
         }
 
+        
         function executeLogUserFunc() {
             var getLoginKeys = Object.keys(Ser_logUserDat[0]);
             var splitLoginKeys = getLoginKeys[0].split('_')[0];
@@ -301,6 +563,7 @@
                 }
             });
 
+
             function listeToSockets(firebaseUser) {
                 FireBaseUser = firebaseUser.uid;
                 //listen to changes at specific socket id
@@ -318,6 +581,7 @@
                 });
             }
 
+            
             function delIdToken(firebaseUser, keyName, keyValue, keyNameToDelete) {
                 var makeObj = {
                         Event_Name: "deleteTokValue"
@@ -326,6 +590,7 @@
                     //pass data to server at specific socket id(different for every user) to delete id_token(not to be confused with accessToken)
                 firebase.database().ref('Channels/Sockets/' + firebaseUser.uid).set(makeObj);
             }
+            
 
             function isUserEqual(firebaseUser) {
                 if (firebaseUser) {
@@ -340,16 +605,44 @@
                 }
                 return false;
             }
-            if (FireBaseUser != null) {
-                var userInfoObj = {
-                        Name: document.getElementById('Name').value
-                        , State: document.getElementById('State').value
-                        , City: document.getElementById('City').value
-                        , Zipcode: document.getElementById('Zipcode').value
-                        , Address: document.getElementById('Address').value
-                        , Number: document.getElementById('Number').value
-                    }
+
                     //push access token name and value to the object
+
+                       var userInfoObj = {
+                        Name: ''
+                        , State: ''
+                        , City: ''
+                        , Zipcode: ''
+                        , Address: ''
+                        , Number: ''
+                    }            
+          
+
+                 submitPanel.onclick = function(e){
+                var submitButton = e.target.parentNode;
+                var thisForm = submitButton.parentNode;
+                for(var i=0;i < thisForm.elements.length; i++){
+            
+                    if(thisForm.elements[i].tagName == 'INPUT' || thisForm.elements[i].tagName == 'TEXTAREA'){
+                 
+                        if(thisForm.elements[i].type != 'button'){
+                
+                            for(var j in userInfoObj){
+                        
+                                if(j == thisForm.elements[i].id){
+                            
+                                    if(j == 'Number' || j == 'Zipcode'){
+                                        userInfoObj[j] = thisForm.elements[i].value.toString();
+                                    }else{
+                                        userInfoObj[j] = thisForm.elements[i].value;   
+                                    }
+                                    
+                                }  
+                            }   
+                        }
+                    }                
+                } 
+                          
                 userInfoObj[accessToken] = Ser_logUserDat[0][accessToken];
                 if (splitLoginKeys == 'User') {
                     userInfoObj.Event_Name = "UserData";
@@ -358,7 +651,11 @@
                     userInfoObj.Event_Name = "ShopOwnerData";
                 }
                 firebase.database().ref('Channels/Sockets/' + FireBaseUser).set(userInfoObj);
-            }
+                     submitButton.children[0].innerHTML = "Saved";
+                     submitButton.children[0].disabled = true;
+                return false;
+            }             
+            
         }
     </script>
 </body>

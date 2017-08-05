@@ -8,7 +8,7 @@ var alertExpand = false;
                     alertExpand = false;
                 } else {
                     alertExpand = true;
-                    $(this).append($('<div class="noty-body">Dekh le ise bhi</div>'));
+                    $(this).append($('<div class="noty-body">Sorry,this section is still under development...</div>'));
                 }
             });
 

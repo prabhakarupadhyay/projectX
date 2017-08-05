@@ -1,6 +1,9 @@
 //listen for submit
-var srch = document.getElementById('search');
-srch.addEventListener('click', geocode);
+var inputLat = document.getElementById("latitude");
+var inputLon = document.getElementById("longitude");
+
+var latitude = '';
+var longitude = '';
 
 
 /*function initMap(coords) {
@@ -23,50 +26,100 @@ srch.addEventListener('click', geocode);
     addMarker(coords);
 }*/
 
-function geocode() {
+
+
+
+
+document.onchange = function(){
+    
+    if(document.getElementById('location').value == ''){
+        var latitude = '';
+        var longitude = '';
+    }
+    
+}
+
+var isWait;
+
+function geocode(oFormElement) {
+    
+    if(latitude == ''){
+        isWait = true;
     loc = document.getElementById('location').value;
+    if(loc != 'enter your location' && loc != ''){
     axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
         params: {
             address: loc
             , key: 'AIzaSyC9xurRiTwaVtktWTYIvvyd2v8Nk5B2uD8'
         }
     }).then(function (response) {
-        console.log(response)
+        isWait = false;
         var formattedAddress = response.data.results[0].formatted_address;
         //Geometry
-        lat = response.data.results[0].geometry.location.lat;
-        lng = response.data.results[0].geometry.location.lng;
-        coords = {
-            Lat: lat
-            , Lon: lng
-        };
-        
-        console.log(lat); console.log(lng);
+        latitude = response.data.results[0].geometry.location.lat;
+        longitude = response.data.results[0].geometry.location.lng;
         
         document.getElementById('location').value = formattedAddress;
         
     }).catch(function (error) {
         console.log(error);
     });
-    
+    }else{
+        return false;
+    }
+}else{
+      sendRequest(oFormElement);      
 }
+    if(isWait){
+        return false;
+    }
+}
+
+
+function sendRequest(oFormElement){
+    
+    inputLat.value = latitude;
+    inputLon.value = longitude;
+    var xhr = new XMLHttpRequest();
+    xhr.open (oFormElement.method, oFormElement.action);
+    xhr.send ();
+    latitude = '';    
+    longitude = '';
+    return true;
+}
+
+
 
 //Detecting Through GPS
 function geoFindMe() {
         if (!navigator.geolocation) {
-            console.log("Geolocation is not supported by your browser");
+            document.getElementById('location').value = "Geolocation is not supported by your browser";
             return;
         }
 
         function success(position) {
-            var latitude = position.coords.latitude;
-            var longitude = position.coords.longitude;
-            console.log("Latitude: " + latitude);
-            console.log("Longitude: " + longitude);
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+           
+            var google_map_position = new google.maps.LatLng( latitude, longitude );
+            var google_maps_geocoder = new google.maps.Geocoder();
+            
+            
+
+            google_maps_geocoder.geocode(
+                { 'latLng': google_map_position },
+                function( results, status ) {
+                   
+                    if ( status == google.maps.GeocoderStatus.OK && results[0] ) {
+                        document.getElementById('location').value = results[0].formatted_address;
+                    }
+                }
+            );
+            
         }
 
         function error() {
-            console.log("Unable to retrieve your location");
+            document.getElementById('location').value = "Unable to track your location.Please allow the gps tracker.";
         }
         navigator.geolocation.getCurrentPosition(success, error);
     }

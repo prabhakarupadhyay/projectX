@@ -23,10 +23,10 @@
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
         <div class="container">
             <div class="col-4">
-                <a class="navbar-brand" href="#"><img src="./assets/images/modsfuseLogo.png"></a>
+                <a class="navbar-brand" href="https://titanium-flash-171510.appspot.com/"><img src="./assets/images/modsfuseLogo.png"></a>
             </div>
             <div class="col-4"> </div>
-            <div class="col-4 nav-right text-right" id = "UserView"> <a href="#"><img height = "50px" src = "assets/images/gsignin.png"></a> </div>
+            <div class="col-4 nav-right text-right" id = "UserView"> <a href="/auth/google"><img height = "50px" src = "assets/images/gsignin.png"></a> </div>
         </div>
     </nav>
     <div class="container main-content">
@@ -38,10 +38,11 @@
                     <div class=" col-12 col-md-6" id="DynamicTag">
                         <div class="card" style="width: 20rem;">
                             <div class="card-header" id="Name"> Shop Name </div>
-                            <a id="Dynamic_Url" href=""><img class="card-img-top" id="Images" src="./assets/shop1.jpg" alt="Could Not Load"></a>
-                            <p id = "Distance" style = "margin: 0px;"><strong>Distance: </strong> 16 kms</p>
-                            <button type="button" class="btn preview" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye" aria-hidden="true"></i> Shop Preview</button>
+                            <a id="Dynamic_Url" href=""><img class="card-img-top" id="Images" src="./assets/shop1.jpg" alt="Could Not Load"></a><strong>Distance: </strong>
+                            <p id = "Distance" style = "margin: 0px;"> unknown </p>
+                            <button type="button" class="btn preview" data-toggle="modal" data-target="#myModal" onclick="previewButton(this)"><i class="fa fa-eye" aria-hidden="true"></i> Shop Preview</button>
                         </div>
+                        <div id="modalData" hidden="true"></div>
                     </div>
                 </div>
             </div>
@@ -51,32 +52,30 @@
     <!-- Shop Preview -->
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document" id="dynamicAlloc">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="m-title" id="modName">Shop Name</h5>
+                    <h5 class="m-title" id="Name">Shop Name</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-12 col-md-6"> <img class="mod-image img-fluid" src="./assets/shop1.jpg" id="modImage">
-                            <p id = "Distance" style = "text-align: center"><strong>Distance: </strong> 16 kms</p>
-                            </div>
+                            <div class="col-12 col-md-6"> <img class="mod-image img-fluid" src="./assets/shop1.jpg" id="Images"> </div>
                             <div class="col-md-6 col-12">
                                 <p class="highlight"> Description: </p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed facilisis lacus. Integer vitae ligula dignissim, aliquam mi eget, aliquet massa. Etiam vel quam non turpis faucibus convallis et id lectus. Ut elementum, magna at consequat tincidunt, est massa volutpat leo, vel pharetra dolor lacus id odio. Aliquam lobortis odio ut libero maximus dignissim. Pellentesque euismod nibh sit amet quam ullamcorper laoreet. </p>
+                                <p id="description">Short description about the shop.................................. </p>
                                 <p class="highlight">Contact: </p>
                                 <div class="no-space">
-                                    <p> Email - abc@xyx.com</p>
-                                    <p> Phone No - 33333333</p>
+                                    <p>Email<p id="Email"> abc@xyx.com</p></p>
+                                    <p>Phone No<p id="Numbers"> 8989898989</p></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn">Go to Shop</button>
+                    <a id="Dynamic_Url"><button type="button" class="btn">Go to Shop</button></a>
                 </div>
             </div>
         </div>
@@ -91,7 +90,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></button>
                 </div>
                 <div class="modal-body user-body">
-                    <form class="container-fluid userform">
+                    <form class="container-fluid userform" id="formPanel">
                         <div class="form-group row">
                             <label for="name" class="col-2 userlabel">Name: </label>
                             <div class="col-10">
@@ -120,7 +119,7 @@
                                 <input type="number" class="form-control userinput" id="Number"> </div>
                         </div>
                         <div style="text-align: center">
-                            <button type="submit" class="btn upbtn">Save Changes</button>
+                            <button type="submit" class="btn" id="submitPanel">Save Changes</button>
                         </div>
                     </form>
                 </div>
@@ -140,20 +139,6 @@
                     <div class="container noty-holder">
                         <div class="alert alert-read alert-dismissible fade show" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                        <div class="alert alert-unread alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                        <div class="alert alert-unread alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                        <div class="alert alert-unread alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                        <div class="alert alert-read alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                        <div class="alert alert-read alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                        <div class="alert alert-unread alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
-                        <div class="alert alert-unread alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
                     </div>
                 </div>
                 <div class="modal-footer notif-foot">
@@ -166,7 +151,7 @@
     <!-- bottom nav -->
     <div class="navbottom-content container"> </div>
     <nav class="navbar navbar-toggleable-md fixed-bottom container navbottom">
-        <div class="col-4 navbottom-left"> <a data-toggle="modal" data-target="#UserPanel"><i class="fa fa-user" aria-hidden="true"></i></a>
+        <div class="col-4 navbottom-left"> <a id="userTray" data-toggle="modal" data-target="#UserPanel" style="visibility:hidden;"><i class="fa fa-user" aria-hidden="true"></i></a>
             <h3 class="userIcon">User Panel</h3></div>
         <div class="col-4">
             <div class="collapse navbar-collapse" id="navbarText">
@@ -181,6 +166,8 @@
     </nav>
     <!-- bottom nav -->
     <!-- Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+    <!--firebase-->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <!--jquery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
@@ -189,42 +176,53 @@
     <!--bootstrap-->
     <script src = "assets/js/notif.js"></script>
     <script id="modifiable">
-        /*var Ser_comLoadDat = [{
-                        "Name": "Auto Marg"
-                        , "Dynamic_Url": "rkxVUpY5rZ"
-                        , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
-        }, {
-                        "Name": "Vasant Marg"
-                        , "Dynamic_Url": "rkxVUpY5rZ"
-                        , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium- flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
-        }, {
-                        "Name": "Marg Marg"
-                        , "Dynamic_Url": "rkxVUpY5rZ"
-                        , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium- flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
-        }, {
-                        "Name": "Raghu Marg"
-                        , "Dynamic_Url": "rkxVUpY5rZ"
-                        , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
-        }, {
-                        "Name": "Dayan Marg"
-                        , "Dynamic_Url": "rkxVUpY5rZ"
-                        , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium- flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
-        }, {
-                        "Name": "Nhp Marg"
-                        , "Dynamic_Url": "rkxVUpY5rZ"
-                        , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium- flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
-            }
-
-        ];*/
+//        var Ser_comLoadDat = [{
+//                        "Name": "Auto Marg"
+//                        , "Dynamic_Url": "rkxVUpY5rZ"
+//                        , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
+//                        ,description:"auto marg description..........."
+//                        ,Email:"autoMarg@gmail.com"
+//                        ,Number:"8080886868"
+//        }, {
+//                        "Name": "Vasant Marg"
+//                        , "Dynamic_Url": "rkxVUpY5rZ"
+//                        , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium- flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
+//                        ,description:"Vasant marg description..........."
+//                        ,Email:"VasantMarg@gmail.com"
+//                        ,Number:"8090909886868"                        
+//        }, {
+//                        "Name": "Marg Marg"
+//                        , "Dynamic_Url": "rkxVUpY5rZ"
+//                        , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium- flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
+//                        ,description:"Marg marg description..........."
+//                        ,Email:"MargMarg@gmail.com"
+//                        ,Number:"866609886868"               
+//            
+//        }, {
+//                        "Name": "Raghu Marg"
+//                        , "Dynamic_Url": "rkxVUpY5rZ"
+//                        , "Images": "./assets/shop1.jpg,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_audi Q7.PNG,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/Auto Marg/shop_1/IMAGE_Xlogo.png"
+//                        ,description:"Raghu marg description..........."
+//                        ,Email:"RaghuMarg@gmail.com"
+//                        ,Number:"8666000000868"              
+//        }
+//
+//        ];
         //Shop Allocation
         var dynamicAlloc = document.getElementById('dynamicAlloc');
         var dynamicTag = document.getElementById('DynamicTag');
-        var mName = document.getElementById('modName');
-        var mImage = document.getElementById('modImage');
+        var myModal = document.getElementById('myModal');
+     var userTray = document.getElementById('userTray');
+     var submitPanel = document.getElementById('submitPanel');
+     var formPanel = document.getElementById('formPanel');        
+        
+        
         //check if common variable is present or not
         if (typeof Ser_comLoadDat != 'undefined') {
-            executeComUserFunc();
-        }
+            if(Ser_comLoadDat != 'Nothing to show........Please add some shops'){
+                executeComUserFunc();
+            }
+            
         //DYNAMIC SHOP ARRANGEMENT
         function executeComUserFunc() {
             var countObj = Ser_comLoadDat.length;
@@ -234,8 +232,20 @@
                 for (let j in objectKeys) {
                     var currentKey = objectKeys[j];
                     var currentTag = dynamicTag.querySelector('#' + currentKey);
-                    feedTags(currentTag, currentObj[currentKey], function (newCurrentTag) {});
+                    if(currentTag != null){
+                        
+                        var modalStore = dynamicTag.querySelector('#modalData');
+                        modalStore.innerHTML += '"'+currentKey+'":"'+currentObj[currentKey]+'",';           
+                        
+                        feedTags(currentTag, currentObj[currentKey], function (newCurrentTag) {});
+            
+                    }else{
+                        //resolve for Modal data(shop view)
+                        var modalStore = dynamicTag.querySelector('#modalData');
+                        modalStore.innerHTML += '"'+currentKey+'":"'+currentObj[currentKey]+'",';
+                    }
                 }
+                
                 if (i == 0) {
                     dynamicTag = dynamicTag.cloneNode(true);
                 }
@@ -245,14 +255,44 @@
                 }
             }
         }
+        
+        
+        
+        
+        
+        
+        function previewButton(e){
+            
+            //find parent tag from shop preview button
+            var myParent = e.parentNode;
+            while(myParent.id != 'DynamicTag'){
+                myParent = myParent.parentNode;
+            }
+            //fetch value from the hidden element containing modal data 
+            var modalDat = myParent.querySelector('#modalData').innerHTML;
+            var newModalDat = modalDat.substring(0, modalDat.length-1);
+            var objStr = '{'+ newModalDat+'}';
+            console.log(objStr);
+            var datJsonObj = JSON.parse(objStr);
+            
+            var breakKeys = Object.keys(datJsonObj);
+            for(let i in breakKeys){
+                
+                var currentTag = myModal.querySelector('#' + breakKeys[i]);
+                if(currentTag != null){
+                    feedTags(currentTag, datJsonObj[breakKeys[i]], function (newCurrentTag) {});
+                }
+            }
+        }
 
+        
+        
         function feedTags(currentTag, tagValue, callback) {
             if (currentTag.tagName == 'IMG') {
                 var tagValueArr = tagValue.split(',');
                 if (Array.isArray(tagValueArr)) {
                     //currently using only first url of shop images
                     currentTag.setAttribute('src', tagValueArr[0]);
-                    mImage.setAttribute('src', tagValueArr[0]);
                     callback(currentTag);
                     return;
                 }
@@ -265,9 +305,12 @@
                 callback(currentTag);
             }
             else if (currentTag.tagName == 'DIV' || currentTag.tagName == 'P' || currentTag.tagName == 'H5') {
-                currentTag.innerHTML = tagValue;
-                mName.innerHTML = tagValue;
-                callback(currentTag);
+                if(currentTag.id == 'Distance'){
+                    currentTag.innerHTML = tagValue + " kms";
+                }else{
+                    currentTag.innerHTML = tagValue;
+                    callback(currentTag);
+                }
             }
             else {
                 callback("tag not found.");
@@ -275,25 +318,49 @@
         }
         
                //***For Testing*** 
-        var Ser_logUserDat = [{"User_Email_Name": "Science Maniac","User_Picture":"./assets/images/user.jpg"}];
+      //  var Ser_logUserDat = [{"User_Email_Name": "Science Maniac","User_Picture":"./assets/images/user.jpg"}];
         //var Ser_logUserDat = [{"Shop_User_Email_Name": "Shop Owner","Shop_User_Picture":"./assets/images/user.jpg"}];
         if (typeof Ser_logUserDat != 'undefined') {
-            //executeLogUserFunc();
+            executeLogUserFunc();
             loadUserData();
         }
         
         
         function loadUserData() {
-            userview = document.getElementById('UserView');
-            for (let i in Ser_logUserDat) {
-                var username = Ser_logUserDat[i].User_Email_Name;
-                var userpic = Ser_logUserDat[i].User_Picture;
-                var shopname = Ser_logUserDat[i].Shop_User_Email_Name;
-                var shoppic = Ser_logUserDat[i].Shop_User_Picture;
+            var userview = document.getElementById('UserView');
+                
+                var username = Ser_logUserDat[0]["User_Email_Name"];
+                var userpic = Ser_logUserDat[0]["User_Picture"];
+                var shopname = Ser_logUserDat[0]["Shop_User_Email_Name"];
+                var shoppic = Ser_logUserDat[0]["Shop_User_Picture"];
                 userview.innerHTML = '<img class = "userpic" src = ' + (userpic || shoppic) + '>';
                 userview.innerHTML += '<h1 class = "username">' + (username || shopname) +'</h1>'; 
-            }   
+                userTray.style.visibility = "visible";
             
+            if(Ser_logUserDat[1] != undefined){
+                
+                for(var i=0;i < formPanel.elements.length; i++){
+            
+                    if(formPanel.elements[i].tagName == 'INPUT' || formPanel.elements[i].tagName == 'TEXTAREA'){
+                 
+                        if(formPanel.elements[i].type != 'button'){
+                
+                            for(var j in Ser_logUserDat[1]){
+                        
+                                if(j == formPanel.elements[i].id){
+                            
+                                    if(j == 'Number' || j == 'Zipcode'){
+                                       formPanel.elements[i].value = Ser_logUserDat[1][j]; 
+                                    }else{
+                                        formPanel.elements[i].value = Ser_logUserDat[1][j];  
+                                    }
+                                    
+                                }  
+                            }   
+                        }
+                    }                
+                } 
+            }        
         }
 
         function executeLogUserFunc() {
@@ -375,16 +442,43 @@
                 }
                 return false;
             }
-            if (FireBaseUser != null) {
-                var userInfoObj = {
-                        Name: document.getElementById('Name').value
-                        , State: document.getElementById('State').value
-                        , City: document.getElementById('City').value
-                        , Zipcode: document.getElementById('Zipcode').value
-                        , Address: document.getElementById('Address').value
-                        , Number: document.getElementById('Number').value
-                    }
-                    //push access token name and value to the object
+
+            
+                       var userInfoObj = {
+                        Name: ''
+                        , State: ''
+                        , City: ''
+                        , Zipcode: ''
+                        , Address: ''
+                        , Number: ''
+                    }            
+          
+
+                 submitPanel.onclick = function(e){
+                var submitButton = e.target.parentNode;
+                var thisForm = submitButton.parentNode;
+                for(var i=0;i < thisForm.elements.length; i++){
+            
+                    if(thisForm.elements[i].tagName == 'INPUT' || thisForm.elements[i].tagName == 'TEXTAREA'){
+                 
+                        if(thisForm.elements[i].type != 'button'){
+                
+                            for(var j in userInfoObj){
+                        
+                                if(j == thisForm.elements[i].id){
+                            
+                                    if(j == 'Number' || j == 'Zipcode'){
+                                        userInfoObj[j] = thisForm.elements[i].value.toString();
+                                    }else{
+                                        userInfoObj[j] = thisForm.elements[i].value;   
+                                    }
+                                    
+                                }  
+                            }   
+                        }
+                    }                
+                } 
+                          
                 userInfoObj[accessToken] = Ser_logUserDat[0][accessToken];
                 if (splitLoginKeys == 'User') {
                     userInfoObj.Event_Name = "UserData";
@@ -393,7 +487,12 @@
                     userInfoObj.Event_Name = "ShopOwnerData";
                 }
                 firebase.database().ref('Channels/Sockets/' + FireBaseUser).set(userInfoObj);
-            }
+                     submitButton.children[0].innerHTML = "Saved";
+                     submitButton.children[0].disabled = true;
+                return false;
+            }             
+            
+            
         }
     </script>
 </body>

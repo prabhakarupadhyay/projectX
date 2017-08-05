@@ -57,19 +57,19 @@ var cloudApiCreds = require("./MyFirstProject-34650eef0b12.json");
 
 
 
-//var sessionConfig = {
-//  resave: false,
-//  saveUninitialized: false,
-//  secret: config.session.sessionSecret,
-//  signed: true
-//};
-//
-//
-//if (process.env.NODE_ENV === 'production' && process.env.MEMCACHE_URL) {
-//  sessionConfig.store = new MemcachedStore({
-//    hosts: [process.env.MEMCACHE_URL]
-//  });
-//}
+var sessionConfig = {
+  resave: false,
+  saveUninitialized: false,
+  secret: config.session.sessionSecret,
+  signed: true
+};
+
+
+if (process.env.NODE_ENV === 'production' && process.env.MEMCACHE_URL) {
+  sessionConfig.store = new MemcachedStore({
+    hosts: [process.env.MEMCACHE_URL]
+  });
+}
 
 
 /*
@@ -84,19 +84,19 @@ app.set('trust proxy', true);
 //app.set('views', path.join(__dirname, 'views'));
 //app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(favicon(__dirname + '/public/assets/images/favicon.png'));
 app.use(logger('dev'));
 app.use(cookieParser(config.session.sessionSecret));
 app.use(bodyParser.urlencoded({ extended: true  }));
 app.use(bodyParser.json());
-//app.use(session(sessionConfig));
-app.use(require('express-session')({
-    secret: config.session.sessionSecret,
-    saveUninitialized: true, // saved new sessions
-    resave: false,
-    cookie : {httpOnly: true, maxAge: 86400000 } // configure when sessions expires
-}));
-app.use("/assets",express.static(path.join(__dirname, 'public/assets')));
+app.use(session(sessionConfig));
+//app.use(require('express-session')({
+//    secret: config.session.sessionSecret,
+//    saveUninitialized: true, // saved new sessions
+//    resave: false,
+//    cookie : {httpOnly: true, maxAge: 86400000 } // configure when sessions expires
+//}));
+app.use(["/assets","/dynamicShop/assets"],express.static(path.join(__dirname, 'public/assets')));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -104,7 +104,7 @@ var Multer = require('multer');
 var multer = Multer({
   storage: Multer.MemoryStorage,
   limits: {
-    fileSize: 50 * 1024 * 1024 // no larger than 50mb
+    fileSize: 100 * 1024 * 1024 // no larger than 100mb
   }
 });
 
@@ -127,7 +127,7 @@ global.requestNormalWait = true;
 var cache = {};
 //var dirName = __dirname + "/public";
 
-var htmlFiles = ['./public/index.html','./public/private/secretWindow/myadmin.html','./public/dynamic.html']
+var htmlFiles = ['./public/index.html','./public/private/secretWindow/adminpanel.html','./public/dynamicPagee.html','./public/2.html','./public/3.html']
 
 
 /*
@@ -151,14 +151,14 @@ if(typeof server_ip_address ==='undefined'){
 */
 
 //global sql 
-//var options = {
-//
-//  client: process.env.SQL_CLIENT,
-//  user: process.env.SQL_USER,
-//  password: process.env.SQL_PASSWORD,
-//  database:  process.env.SQL_DATABASE
-//    
-//}
+var options = {
+
+  client: process.env.SQL_CLIENT,
+  user: process.env.SQL_USER,
+  password: process.env.SQL_PASSWORD,
+  database:  process.env.SQL_DATABASE
+    
+}
 
 
 
@@ -174,26 +174,23 @@ if(typeof server_ip_address ==='undefined'){
 //    
 //}
 
-//if (process.env.INSTANCE_CONNECTION_NAME && process.env.NODE_ENV === 'production') {
-//
-//    if (process.env.SQL_CLIENT === 'mysql') {
-//    
-//        options.socketPath = `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`;
-//
-//    }
-//  
-//}
-//
-//var pool = mysql.createPool(options);
-var pool = mysql.createPool({
-    host:     'localhost',
-    user:     'root',
-    password: 'nadhukar123',
-    port:     '3306',
-    database: 'database3',
-    connectionLimit : 500
-    });
-            
+if (process.env.INSTANCE_CONNECTION_NAME && process.env.NODE_ENV === 'production') {
+    if (process.env.SQL_CLIENT === 'mysql') {
+
+        options.socketPath = `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`;
+    }
+}
+
+var pool = mysql.createPool(options);
+//var pool = mysql.createPool({
+//    host:     'localhost',
+//    user:     'root',
+//    password: 'nadhukar123',
+//    port:     '3306',
+//    database: 'database3',
+//    connectionLimit : 500
+//    });
+//            
 
 /*
  *
@@ -201,21 +198,21 @@ var pool = mysql.createPool({
 *
 */
 //global bucket
-//var cloudBucket = process.env.CLOUD_BUCKET;
-//var storage = Storage({
-//  projectId: process.env.PROJECT_ID,
-//    keyFilename: "./MyFirstProject-34650eef0b12.json"
-//});
-//var bucket = storage.bucket(cloudBucket);
-
-
-//local connection with the cloud storage
-var cloudBucket = 'titanium-flash-171510.appspot.com';
+var cloudBucket = process.env.CLOUD_BUCKET;
 var storage = Storage({
-  projectId: 'titanium-flash-171510',
+  projectId: process.env.PROJECT_ID,
     keyFilename: "./MyFirstProject-34650eef0b12.json"
 });
 var bucket = storage.bucket(cloudBucket);
+
+
+//local connection with the cloud storage
+//var cloudBucket = 'titanium-flash-171510.appspot.com';
+//var storage = Storage({
+//  projectId: 'titanium-flash-171510',
+//    keyFilename: "./MyFirstProject-34650eef0b12.json"
+//});
+//var bucket = storage.bucket(cloudBucket);
 
 
 /*
@@ -225,16 +222,16 @@ var bucket = storage.bucket(cloudBucket);
 */
 
 //global datastore
-//var datastore = Datastore({
-//  projectId: process.env.PROJECT_ID,
-//    keyFilename: "./MyFirstProject-34650eef0b12.json"
-//});
-
-
 var datastore = Datastore({
-  projectId: 'titanium-flash-171510',
+  projectId: process.env.PROJECT_ID,
     keyFilename: "./MyFirstProject-34650eef0b12.json"
 });
+
+//
+//var datastore = Datastore({
+//  projectId: 'titanium-flash-171510',
+//    keyFilename: "./MyFirstProject-34650eef0b12.json"
+//});
 
 
 
@@ -290,9 +287,9 @@ app.use(function(req, res, next ) {
     }else{
         //check for dynamic shop request
         checkDynamicShopReq(req,function(isDynamic,dynamicUrl){
+            
             if(isDynamic){
                 //pass on dynamic shop html page
-                console.log("dynamic page here..........");
                 requestNormalWait = true;
                 operations.loadPageFourDat(req,res,pool,bucket,datastore,dynamicUrl,htmlFiles[2]);
             }else{
@@ -331,7 +328,7 @@ app.post('*',multer.single('fileUpload'),function(req,res) {
                     req.file.cloudStoragePublicUrl = response;
                     req.file.storedPath = totalPath;
                     res.write(message);
-                    res.write("\nwriting data in cloud DB..\n");
+                    res.write("\nwriting data in cloud DB/SQL..\n");
                     operations.StoreFilesDb(req,pool,datastore,function(DbResponse){
                         res.write(DbResponse);
                         res.end();
@@ -345,13 +342,15 @@ app.post('*',multer.single('fileUpload'),function(req,res) {
             });
         }else{
             
-                 res.write(fileType);
-                res.end();            
+            res.write(fileType);
+            res.end();            
         }
     
     });
 });
-        
+   
+
+
          
          
 app.get('/', function (req, res) {
@@ -360,7 +359,6 @@ app.get('/', function (req, res) {
     var absPath =  htmlFiles[0];
     operations.sortPageName(htmlFiles[0],function(pgName){
         if(pgName != undefined){
-            operations.loadPageOneDat(pool,pgName);
             
             eventEmit.once(pgName+'_trigger',function(pageData){
                 if(requestNormalWait != true){
@@ -368,7 +366,8 @@ app.get('/', function (req, res) {
                 }else{
                     res.end("could not find the resources. please load again.");
                 }
-            });     
+            }); 
+            operations.loadPageOneDat(pool,pgName);
         }
     });
 });
@@ -376,9 +375,52 @@ app.get('/', function (req, res) {
 
 
 
-app.get('/searchData', function (req, res) {
-    res.end("request proccessed............fuck yeah!!!!!!!!!!!");
+
+app.get('/locationSearch', function (req, res) {
+
+    requestNormalWait = true;
+    var absPath =  htmlFiles[3];
+    operations.sortPageName(htmlFiles[3],function(pgName){
+        if(pgName != undefined){
+            
+            eventEmit.once(pgName+'_trigger',function(pageData){
+                if(requestNormalWait != true){
+                    exportProcessUrl(res,absPath,pageData);        
+                }else{
+                    res.end("could not find the resources. please load again.");
+                }
+            });  
+            
+            operations.loadPageTwoDat(pool,pgName);
+        }
+    });
 });
+
+
+
+
+
+app.get('/searchShops', function (req, res) {
+    
+    requestNormalWait = true;
+    var absPath =  htmlFiles[4];
+    operations.sortPageName(htmlFiles[4],function(pgName){
+        if(pgName != undefined){
+            
+            eventEmit.once(pgName+'_trigger',function(pageData){
+                if(requestNormalWait != true){
+                    exportProcessUrl(res,absPath,pageData);        
+                }else{
+                    res.end("could not find the resources. please load again.");
+                }
+            });  
+            operations.loadPageThreeDat(pool,pgName,req.query);
+        }
+    });
+});
+
+
+
 
 
 //approvalPrompt : 'force'
@@ -491,7 +533,7 @@ function checkDynamicShopReq(req,callback){
         if(splitUrl[i] == "dynamicShop"){
            return callback(true,lastId);
         }else if(i == splitUrl.length-1){
-            console.log(i);
+           // console.log(i);
            return callback(false,lastId);  
         }
     }
