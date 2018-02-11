@@ -92,35 +92,36 @@
                 <div class="modal-body user-body">
                     <form class="container-fluid userform" id="formPanel">
                         <div class="form-group row">
-                            <label for="name" class="col-2 userlabel">Name: </label>
+                            <label for="name" class="col-2 userlabel">Name: *</label>
                             <div class="col-10">
-                                <input type="text" class="form-control userinput" id="Name" placeholder=""> </div>
+                                <input type="text" class="form-control userinput" id="Name" placeholder="" name="impField_Name" maxlength="90"> </div>
                         </div>
                         <div class="form-group row">
                             <label for="state" class="col-2 userlabel">State: </label>
                             <div class="col-2">
-                                <input type="text" class="form-control userinput" id="State" placeholder=""> </div>
+                                <input type="text" class="form-control userinput" id="State" placeholder="" maxlength="50"> </div>
                             <label for="city" class="col-2 userlabel">City: </label>
                             <div class="col-2">
-                                <input type="text" class="form-control userinput" id="City" placeholder=""> </div>
+                                <input type="text" class="form-control userinput" id="City" placeholder=""maxlength="100"> </div>
                             <label for="state" class="col-2 userlabel">Zip-Code: </label>
                             <div class="col-2">
-                                <input type="number" class="form-control userinput" id="Zipcode" placeholder=""> </div>
+                                <input type="number" class="form-control userinput" id="Zipcode" placeholder=""maxlength="20"> </div>
                         </div>
                         <div class="form-group row">
                             <label for="address" class="col-2 userlabel">Address: </label>
                             <div class="col-10">
-                                <textarea class="form-control userinput" id="Address" rows="2"></textarea>
+                                <textarea class="form-control userinput" id="Address" rows="2" maxlength="240"></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="number" class="col-2 userlabel">Number: </label>
+                            <label for="number" class="col-2 userlabel">Number: *</label>
                             <div class="col-10">
-                                <input type="number" class="form-control userinput" id="Number"> </div>
+                                <input type="number" class="form-control userinput" id="Number" name="impField_Number" maxlength="13"> </div>
                         </div>
                         <div style="text-align: center">
                             <button type="submit" class="btn" id="submitPanel">Save Changes</button>
                         </div>
+                        <p style="font-size : 11px;">* fields are imp for booking a call/whatsAppMsg</p>
                     </form>
                 </div>
             </div>
@@ -138,7 +139,7 @@
                 <div class="modal-body notif-body">
                     <div class="container noty-holder">
                         <div class="alert alert-read alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong>No Notification </div>
                     </div>
                 </div>
                 <div class="modal-footer notif-foot">
@@ -224,6 +225,7 @@
             }
         }
             
+        userTray.onclick = function(){loadUserData();}
         //DYNAMIC SHOP ARRANGEMENT
         function executeComUserFunc() {
             var countObj = Ser_comLoadDat.length;

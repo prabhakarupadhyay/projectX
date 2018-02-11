@@ -55,6 +55,7 @@
             text-align: center;
             word-wrap: break-word;
             overflow-y: scroll;
+            overflow-x:auto;
         }
         
     </style>
@@ -127,10 +128,6 @@
       </form>
       
       
-      
-      
-      
-      
       <br><br><br>
       
                 <form id="carsForm">
@@ -147,11 +144,24 @@
         <input type="button" id="submit2" value="Submit2">             
       </form>
       
-      
-      
-      
             <br><br><br>
       
+    
+        <h2>GET BOOKING INFO</h2>
+          <br>
+        <input type="button" id="submit4" value="Get Details">   
+      
+      <br><br>
+      
+      <div id="B_Main">
+          <p id="B_Shop_Name" style="font-weight: bold; font-size : 22px">
+          </p>
+          <p id="B_User_Info">
+          </p>
+      </div>
+      <div id="B_Main_Node"></div>
+      
+<!--
                 <form id="modelLink">
         <h2>MODEL LINK(SKETCHFAB - ONLY THE LINK(HTTPS://.....))</h2> Model Link:
         <br>
@@ -163,6 +173,8 @@
         <input type="button" id="submit3" value="Submit3">             
       </form>
       
+      
+-->
       
 
       <div id="fixedDiv">RESPONSE AREA  (or checkout console)</div>
@@ -186,6 +198,7 @@
         var submit = document.getElementById("submit");
         var submit2 = document.getElementById("submit2");
         var submit3 = document.getElementById("submit3");
+        var submit4 = document.getElementById("submit4");
         var postForm = document.getElementById("postForm");
         var form1 = document.getElementById("form1");
         
@@ -193,6 +206,8 @@
         var modLink = document.getElementById("modLink");
         var storedPath = document.getElementById("storedPath");
         var fixedDiv = document.getElementById("fixedDiv");
+        var B_Main = document.getElementById("B_Main");
+        var B_Main_Node = document.getElementById("B_Main_Node");
         
         
         
@@ -219,19 +234,47 @@
         
             firebase.database().ref('Channels/AdminSockets').on('value', function(adminResponse) {
                 //listen to response from server for every event
-                console.log(adminResponse.val());
+                
                 if(adminResponse.val() != null){
                   
                     if(typeof adminResponse.val() == 'object'){
-                        fixedDiv.innerHTML = JSON.stringify(adminResponse.val());
+                        if(adminResponse.val()[0] == "bookingSocket"){
+                            fixedDiv.innerHTML += JSON.stringify(adminResponse.val());
+                            addBookingElement(adminResponse.val());
+                        }else{
+                            fixedDiv.innerHTML = JSON.stringify(adminResponse.val());
+                            firebase.database().ref('Channels/AdminSockets').remove();
+                        }
+                        
                     }else{
                         fixedDiv.innerHTML = adminResponse.val().toString();
+                        firebase.database().ref('Channels/AdminSockets').remove();
                     }
                 }
-                   
-                firebase.database().ref('Channels/AdminSockets').remove();
             
-            });   
+            }); 
+        
+        
+        
+        
+        
+        
+        
+        
+        function addBookingElement(bookingArray){
+            //B_Main_Node B_Main
+            ////B_Shop_Name B_User_Info
+            var currNode = B_Main.cloneNode(true); 
+            var currShopNode = currNode.querySelector('#B_Shop_Name');
+            var currUserNode = currNode.querySelector('#B_User_Info');
+            currShopNode.innerHTML = bookingArray[1];
+            for(var i in bookingArray[3]){
+                currUserNode.innerHTML += bookingArray[2][i] +" : "+JSON.stringify(bookingArray[3][i]);
+                var  linebreak = document.createElement("br");
+                currUserNode.appendChild(linebreak);
+            }
+            B_Main_Node.appendChild(currNode);
+        }
         
         
                          var shopInfo = {
@@ -255,14 +298,11 @@
             for(var i=0;i < thisForm.elements.length; i++){
                 if(thisForm.elements[i].tagName == 'INPUT' || thisForm.elements[i].tagName == 'TEXTAREA'){
                      if(thisForm.elements[i].type != 'button'){
-                             for(var j in shopInfo){
-                                 if(j == thisForm.elements[i].id){
-                                     shopInfo[j] = thisForm.elements[i].value;
-                                     
-                                 }
-                             }
-          
-                         
+                         for(var j in shopInfo){
+                             if(j == thisForm.elements[i].id){
+                                 shopInfo[j] = thisForm.elements[i].value;   
+                             }   
+                         }               
                      }
                 }                
             }
@@ -270,7 +310,16 @@
         }
         
         
+        
+        submit4.onclick = function(e){
+            
+            var bookingObj = {
+                Event_Name:"getBookings"
+            }
+            firebase.database().ref('Channels/AdminSockets').set(bookingObj);
+        }
       
+        
         
         
     ///post info
@@ -351,27 +400,27 @@ function submitForm(oFormElement)
         }
                          
         
-
-          var modelWeb = {
-              Event_Name:"modelLinkWeb",
-              req:{
-                  file:{
-                      storedPath:'CARS_SWIFT_LINK',
-                      cloudStoragePublicUrl:'https://sketchfab.com/models/a94560a66da247afa01ac3f6c26c2fb0/embed'
-                  }
-              }  
-          }
-               
-
-          
-          
-          submit3.onclick = function(){
-              
-              modelWeb.req.file.storedPath = storedPath.value;
-              modelWeb.req.file.cloudStoragePublicUrl = modLink.value;
-              firebase.database().ref('Channels/AdminSockets').set(modelWeb);     
-          }     
-        
+//
+//          var modelWeb = {
+//              Event_Name:"modelLinkWeb",
+//              req:{
+//                  file:{
+//                      storedPath:'CARS_SWIFT_LINK',
+//                      cloudStoragePublicUrl:'https://sketchfab.com/models/a94560a66da247afa01ac3f6c26c2fb0/embed'
+//                  }
+//              }  
+//          }
+//               
+//          
+//          
+//          
+//          submit3.onclick = function(){
+//              
+//              modelWeb.req.file.storedPath = storedPath.value;
+//              modelWeb.req.file.cloudStoragePublicUrl = modLink.value;
+//              firebase.database().ref('Channels/AdminSockets').set(modelWeb);     
+//          }     
+//        
    
       
       

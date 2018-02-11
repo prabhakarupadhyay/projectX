@@ -46,6 +46,8 @@ var xmlReqHandler = require("./lib/xmlReqHandler.js");
 var createSql = require("./lib/sql tables/createSql.js");
 var sessionHandle = require('./lib/sessionHandler.js');
 var config = require('./lib/config.js');
+var injectHtml = require("./lib/injectHtml.js");
+var handleSql = require("./lib/sql tables/handleSql.js");
 //var config2 = require('./lib/config2.js');
 var operations = require("./lib/operations.js");
 var passportOauth = require("./lib/passport.js");
@@ -54,6 +56,7 @@ var Bucket = require("./lib/bucket.js");
 var firebaseHandler = require("./lib/firebaseHandler");
 var fireBaseCreds = require("./titanium-flash-171510-firebase-adminsdk-5ovgm-eac858c3c6.json");
 var cloudApiCreds = require("./MyFirstProject-34650eef0b12.json");
+
 
 
 
@@ -151,6 +154,7 @@ if(typeof server_ip_address ==='undefined'){
 */
 
 //global sql 
+/*
 var options = {
 
   client: process.env.SQL_CLIENT,
@@ -160,7 +164,7 @@ var options = {
     
 }
 
-
+*/
 
 
 //local cloud sql connection via proxy
@@ -174,6 +178,7 @@ var options = {
 //    
 //}
 
+/*
 if (process.env.INSTANCE_CONNECTION_NAME && process.env.NODE_ENV === 'production') {
     if (process.env.SQL_CLIENT === 'mysql') {
 
@@ -182,15 +187,17 @@ if (process.env.INSTANCE_CONNECTION_NAME && process.env.NODE_ENV === 'production
 }
 
 var pool = mysql.createPool(options);
-//var pool = mysql.createPool({
-//    host:     'localhost',
-//    user:     'root',
-//    password: 'nadhukar123',
-//    port:     '3306',
-//    database: 'database3',
-//    connectionLimit : 500
-//    });
-//            
+*/
+
+var pool = mysql.createPool({
+    host:     'localhost',
+    user:     'root',
+    password: 'nadhukar123',
+    port:     '3306',
+    database: 'database3',
+    connectionLimit : 500
+    });
+            
 
 /*
  *
@@ -198,21 +205,21 @@ var pool = mysql.createPool(options);
 *
 */
 //global bucket
-var cloudBucket = process.env.CLOUD_BUCKET;
-var storage = Storage({
-  projectId: process.env.PROJECT_ID,
-    keyFilename: "./MyFirstProject-34650eef0b12.json"
-});
-var bucket = storage.bucket(cloudBucket);
-
-
-//local connection with the cloud storage
-//var cloudBucket = 'titanium-flash-171510.appspot.com';
+//var cloudBucket = process.env.CLOUD_BUCKET;
 //var storage = Storage({
-//  projectId: 'titanium-flash-171510',
+//  projectId: process.env.PROJECT_ID,
 //    keyFilename: "./MyFirstProject-34650eef0b12.json"
 //});
 //var bucket = storage.bucket(cloudBucket);
+
+
+//local connection with the cloud storage
+var cloudBucket = 'titanium-flash-171510.appspot.com';
+var storage = Storage({
+  projectId: 'titanium-flash-171510',
+    keyFilename: "./MyFirstProject-34650eef0b12.json"
+});
+var bucket = storage.bucket(cloudBucket);
 
 
 /*
@@ -222,16 +229,16 @@ var bucket = storage.bucket(cloudBucket);
 */
 
 //global datastore
-var datastore = Datastore({
-  projectId: process.env.PROJECT_ID,
-    keyFilename: "./MyFirstProject-34650eef0b12.json"
-});
-
-//
 //var datastore = Datastore({
-//  projectId: 'titanium-flash-171510',
+//  projectId: process.env.PROJECT_ID,
 //    keyFilename: "./MyFirstProject-34650eef0b12.json"
 //});
+
+
+var datastore = Datastore({
+  projectId: 'titanium-flash-171510',
+    keyFilename: "./MyFirstProject-34650eef0b12.json"
+});
 
 
 
@@ -258,6 +265,16 @@ var fireDatabase = firebaseAdmin.database();
 ****/
 
 
+//fill the email stash
+handleSql.getAllData(pool,null,SchemaName.Stack.EmailSchema,function(jsonSHopEmails){
+    for(var i in jsonSHopEmails){
+        for(var j in jsonSHopEmails[i]){
+            priorityEmails.push(jsonSHopEmails[i][j]);  
+        } 
+    }
+    console.log(priorityEmails);
+});
+
 //create mysql tables
 createSql.createTables(pool);
 
@@ -279,7 +296,8 @@ app.use(function(req, res, next ) {
         var splitUrl = req.url.split('_');
         if(splitUrl[0] == '/adminUpload'){              
             next();
-        }else{
+        }
+        else{
             res.write('Post request error : Unable to detect the request');
             res.end();
         }
@@ -290,8 +308,10 @@ app.use(function(req, res, next ) {
             
             if(isDynamic){
                 //pass on dynamic shop html page
-                requestNormalWait = true;
-                operations.loadPageFourDat(req,res,pool,bucket,datastore,dynamicUrl,htmlFiles[2]);
+                var absPath =  htmlFiles[2];
+                operations.loadPageFourDat(req,pool,bucket,datastore,dynamicUrl,absPath,function(pageData){
+                    exportProcessUrl(res,absPath,pageData);   
+                });
             }else{
                 next(); 
             }
@@ -352,22 +372,15 @@ app.post('*',multer.single('fileUpload'),function(req,res) {
 
 
          
-         
+          
 app.get('/', function (req, res) {
     
-    requestNormalWait = true;
     var absPath =  htmlFiles[0];
     operations.sortPageName(htmlFiles[0],function(pgName){
         if(pgName != undefined){
-            
-            eventEmit.once(pgName+'_trigger',function(pageData){
-                if(requestNormalWait != true){
-                    exportProcessUrl(res,absPath,pageData);        
-                }else{
-                    res.end("could not find the resources. please load again.");
-                }
-            }); 
-            operations.loadPageOneDat(pool,pgName);
+            operations.loadPageOneDat(pool,pgName,req,function(pageData){
+                exportProcessUrl(res,absPath,pageData); 
+            });
         }
     });
 });
@@ -375,23 +388,15 @@ app.get('/', function (req, res) {
 
 
 
-
 app.get('/locationSearch', function (req, res) {
 
-    requestNormalWait = true;
     var absPath =  htmlFiles[3];
     operations.sortPageName(htmlFiles[3],function(pgName){
         if(pgName != undefined){
             
-            eventEmit.once(pgName+'_trigger',function(pageData){
-                if(requestNormalWait != true){
-                    exportProcessUrl(res,absPath,pageData);        
-                }else{
-                    res.end("could not find the resources. please load again.");
-                }
-            });  
-            
-            operations.loadPageTwoDat(pool,pgName);
+            operations.loadPageTwoDat(pool,pgName,req,function(pageData){
+                exportProcessUrl(res,absPath,pageData); 
+            });
         }
     });
 });
@@ -401,20 +406,14 @@ app.get('/locationSearch', function (req, res) {
 
 
 app.get('/searchShops', function (req, res) {
-    
-    requestNormalWait = true;
+
     var absPath =  htmlFiles[4];
     operations.sortPageName(htmlFiles[4],function(pgName){
         if(pgName != undefined){
-            
-            eventEmit.once(pgName+'_trigger',function(pageData){
-                if(requestNormalWait != true){
-                    exportProcessUrl(res,absPath,pageData);        
-                }else{
-                    res.end("could not find the resources. please load again.");
-                }
-            });  
-            operations.loadPageThreeDat(pool,pgName,req.query);
+           
+            operations.loadPageThreeDat(pool,pgName,req,function(pageData){
+                exportProcessUrl(res,absPath,pageData); 
+            });
         }
     });
 });
@@ -425,18 +424,17 @@ app.get('/searchShops', function (req, res) {
 
 //approvalPrompt : 'force'
 app.get('/auth/google',
-   passport.authenticate('google', { successRedirect: '/',accessType: 'offline',scope:
+   passport.authenticate('google', { successRedirect: '/',accessType: 'offline',scope : ['profile', 'email']}));
+
+/*scope:
     [ 'https://www.googleapis.com/auth/plus.login',
-  	  'https://www.googleapis.com/auth/plus.profile.emails.read']}));
-
-
+  	  'https://www.googleapis.com/auth/plus.profile.emails.read']*/
 app.get('/auth/google/callback',
         
         passport.authenticate('google', {
                     successRedirect : '/',
                     failureRedirect : '/'
             }),function(err,user){
-    cosole.log(user);
 });
 
 

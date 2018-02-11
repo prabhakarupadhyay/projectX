@@ -28,16 +28,11 @@ exports.auth = function(req,res,absPath,pool){
             operations.sortPageName(absPath,function(pgName){
                 if(pgName != undefined){
                     
-                       
-                    eventEmit.once(pgName+'_trigger',function(pageData){
+                    operations.loadAdminPanelDat(pool,pgName,req,function(pageData){
                         console.log('adminPage');
-                        if(requestNormalWait != true){
-                            exportProcessUrl(res,absPath,pageData);        
-                        }else{
-                             res.end("could not find the resources. please load again.");
-                        }
+                        exportProcessUrl(res,absPath,pageData);                         
                     });
-                    operations.loadAdminPanelDat(pool,pgName);
+                   
                 }
             });
             //make admin panel listen to specific admin sockets

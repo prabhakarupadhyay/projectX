@@ -11,17 +11,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./assets/css/accslider.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/dynamicPage.css">
+        <link rel="stylesheet" type="text/css" href="./assets/css/notif.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/userPanel.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/navbar+footer.css">
     <link rel = "stylesheet" type = "text/css" href = "./assets/dist/css/lightbox.min.css">
     <!--Fonts-->
     <link rel="stylesheet" type="text/css" href="./assets/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Rajdhani|Lato" rel="stylesheet">
-    <style>
-        iframe {
-            width: 100%;
-            height: 400px;
-        }
-    </style>
     <!-- Insert this script -->
     <script type="text/javascript" src="https://static.sketchfab.com/api/sketchfab-viewer-1.0.1.js"></script>
 </head>
@@ -50,7 +46,7 @@
             <a class="carousel-control-next" href="#carouselShop" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
         </div>
         <div>
-            <h1 id="Name">Crave Design</h1>
+            <h1 id="Name" style="font-family: ariel;">Crave Design</h1>
             <div class="container-fluid" style="width: 100%; font-family: Rajdhani">
                 <div class="row" style="width: 100%">
                     <div class="col-md-4">
@@ -72,15 +68,17 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-7">
-                        <h2 style="font-family: Rajdhani;">Cars Available: </h2>
+                        <h2 style="font-family: ariel;">Cars Available: </h2>
                         <ul id="dynamicAlloc3" class="dock">
                             <li id="dynamicCars"></li>
                         </ul>
                         
-                        <iframe id="api-frame" src="" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+<!--                        <iframe id="api-frame" src="" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>-->
+                        
+                        <div width = "100%" height = "500px" border = "2"><img  id="api-frame" src="audi.png" alt="Smiley face" height="400px" width="100%"></div>
                     </div>
                     <div class="col-md-5">
-                        <h2 style="font-family: Rajdhani; text-align: right">Parts Available: </h2>
+                        <h2 style="font-family: ariel; text-align: right">Parts Available: </h2>
                         <div id="parts-container">
                             <ul class="faq" id="dynamicAlloc4">
                                 <ul class="dynamicParts">
@@ -101,55 +99,63 @@
                 </div>
             </div>
             <div class = "container-fluid" style="text-align: center; padding-top: 20px; padding-bottom: 30px;">
-                    <button type="button" class="btn">Book Appointment Now</button>
-                </div>
+               <form>
+                   <div>
+                       <input type="radio" name="bookOption" value="whatsApp" checked> WhatsApp Msg
+                       <input type="radio" name="bookOption" value="call" style="margin-left:10px"> Call
+                   </div>  
+                   <button type="button" id="bookCallBtn" class="btn" style="font-family: georgia;margin-top:10px">Book a Call/WhatsappMsg</button>
+                   <p id="bookMessage" style="color:red; font-size:15px;margin-top:7px"></p>
+                </form>
+            </div>
         </div>
         <!-- USER PANEL -->
-        <div class="modal fade" id="UserPanel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content user">
-                    <div class="modal-header user-head">
-                        <div style="text-align: center; width: 100%">
-                            <h5 class="m-title">USER PANEL</h5></div>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></button>
-                    </div>
-                    <div class="modal-body user-body">
-                        <form class="container-fluid userform" id="formPanel">
-                            <div class="form-group row">
-                                <label for="name" class="col-2 userlabel">Name: </label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control userinput" id="Name" placeholder=""> </div>
+    <div class="modal fade" id="UserPanel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content user">
+                <div class="modal-header user-head">
+                    <div style="text-align: center; width: 100%">
+                        <h5 class="m-title">USER PANEL</h5></div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></button>
+                </div>
+                <div class="modal-body user-body">
+                    <form class="container-fluid userform" id="formPanel">
+                        <div class="form-group row">
+                            <label for="name" class="col-2 userlabel">Name: *</label>
+                            <div class="col-10">
+                                <input type="text" class="form-control userinput" id="Name" placeholder="" name="impField_Name" maxlength="90"> </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="state" class="col-2 userlabel">State: </label>
+                            <div class="col-2">
+                                <input type="text" class="form-control userinput" id="State" placeholder="" maxlength="50"> </div>
+                            <label for="city" class="col-2 userlabel">City: </label>
+                            <div class="col-2">
+                                <input type="text" class="form-control userinput" id="City" placeholder=""maxlength="100"> </div>
+                            <label for="state" class="col-2 userlabel">Zip-Code: </label>
+                            <div class="col-2">
+                                <input type="number" class="form-control userinput" id="Zipcode" placeholder=""maxlength="20"> </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="address" class="col-2 userlabel">Address: </label>
+                            <div class="col-10">
+                                <textarea class="form-control userinput" id="Address" rows="2" maxlength="240"></textarea>
                             </div>
-                            <div class="form-group row">
-                                <label for="state" class="col-2 userlabel">State: </label>
-                                <div class="col-2">
-                                    <input type="text" class="form-control userinput" id="State" placeholder=""> </div>
-                                <label for="city" class="col-2 userlabel">City: </label>
-                                <div class="col-2">
-                                    <input type="text" class="form-control userinput" id="City" placeholder=""> </div>
-                                <label for="state" class="col-2 userlabel">Zip-Code: </label>
-                                <div class="col-2">
-                                    <input type="number" class="form-control userinput" id="Zipcode" placeholder=""> </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="address" class="col-2 userlabel">Address: </label>
-                                <div class="col-10">
-                                    <textarea class="form-control userinput" id="Address" rows="2"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="number" class="col-2 userlabel">Number: </label>
-                                <div class="col-10">
-                                    <input type="number" class="form-control userinput" id="Number"> </div>
-                            </div>
-                            <div style="text-align: center">
-                                <button type="submit" class="btn" id="submitPanel">Save Changes</button>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="number" class="col-2 userlabel">Number: *</label>
+                            <div class="col-10">
+                                <input type="number" class="form-control userinput" id="Number" name="impField_Number" maxlength="13"> </div>
+                        </div>
+                        <div style="text-align: center">
+                            <button type="submit" class="btn" id="submitPanel">Save Changes</button>
+                        </div>
+                        <p style="font-size : 11px;">* fields are imp for booking a call/whatsAppMsg</p>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
         <!--USER PANEL ENDS-->
         <!-- NOTIFICATION -->
         <div class="modal fade" id="Notification" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -162,7 +168,7 @@
                     <div class="modal-body notif-body">
                         <div class="container noty-holder">
                             <div class="alert alert-read alert-dismissible fade show" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> You should check in on some of those fields below. </div>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> No Notification </div>
                         </div>
                     </div>
                     <div class="modal-footer notif-foot">
@@ -205,26 +211,8 @@
     <script src = "./assets/dist/js/lightbox-plus-jquery.min.js"></script>
     <script id="modifiable">
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-//        
-//        var Ser_comLoadDat = [{"Name":"auto Marg","Email":"AutoMarg@gmail.com","description":"about the shop..................","Address":"malvya nagar 41","Images":"https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/auto Marg/shop_1/IMAGE_Xlogo.png,https://storage.googleapis.com/titanium-flash-171510.appspot.com/SHOPS/auto Marg/shop_1/IMAGE_logo.png","Numbers":"908080808"},[{"SWIFT":{"HEADLIGHTS":{"IMAGE_fuse.jpg":"https://storage.googleapis.com/titanium-flash-171510.appspot.com/CARS/SWIFT/PARTS/HEADLIGHTS/IMAGE_fuse.jpg","IMAGE_audi Q7.PNG":"https://storage.googleapis.com/titanium-flash-171510.appspot.com/CARS/SWIFT/IMAGE_audi Q7.PNG"},"SWIFT":{},"MAIN":{"LINK":"https://sketchfab.com/models/a94560a66da247afa01ac3f6c26c2fb0/embed","IMAGE_audi Q7.PNG":"https://storage.googleapis.com/titanium-flash-171510.appspot.com/CARS/SWIFT/IMAGE_audi Q7.PNG"},"TAILLIGHTS":{"IMAGE_aventodor.PNG":"https://storage.googleapis.com/titanium-flash-171510.appspot.com/CARS/SWIFT/PARTS/TAILLIGHTS/IMAGE_aventodor.PNG","IMAGE_audi Q7.PNG":"https://storage.googleapis.com/titanium-flash-171510.appspot.com/CARS/SWIFT/IMAGE_audi Q7.PNG"}}},{"ZEN":{"RIMS":{"IMAGE_fuse.jpg":"https://storage.googleapis.com/titanium-flash-171510.appspot.com/CARS/SWIFT/PARTS/HEADLIGHTS/IMAGE_fuse.jpg"},"ZEN":{},"MAIN":{"LINK":"https://sketchfab.com/models/a94560a66da247afa01ac3f6c26c2fb0/embed","IMAGE_audi Q7.PNG":"https://storage.googleapis.com/titanium-flash-171510.appspot.com/CARS/SWIFT/IMAGE_audi Q7.PNG"},"SPOILERS":{"IMAGE_aventodor.PNG":"https://storage.googleapis.com/titanium-flash-171510.appspot.com/CARS/SWIFT/IMAGE_audi Q7.PNG","IMAGE_audi Q7.PNG":"https://storage.googleapis.com/titanium-flash-171510.appspot.com/CARS/SWIFT/IMAGE_audi Q7.PNG"}}}]];
-//
-//        
-        
-        
-        
+    
         //Accordian
-
         
         
         
@@ -234,16 +222,26 @@
         var dynamicAlloc2 = document.getElementById('dynamicAlloc2');
         var dynamicBanner = document.getElementById('dynamicBanner');
         var dynamicAlloc3 = document.getElementById('dynamicAlloc3');
-        var dynamicCars = document.getElementById('dynamicCars');
+        var dynamicCars   = document.getElementById('dynamicCars');
         var dynamicAlloc4 = document.getElementById('dynamicAlloc4');
         
         var partsSlider = document.getElementById('partsSlider');
         
-        var apiframe = document.getElementById('api-frame');
-     var userTray = document.getElementById('userTray');
-     var submitPanel = document.getElementById('submitPanel');
-     var formPanel = document.getElementById('formPanel');         
+        var apiframe    = document.getElementById('api-frame');
+        var userTray    = document.getElementById('userTray');
+        var submitPanel = document.getElementById('submitPanel');
+        var formPanel   = document.getElementById('formPanel');   
+        
+        
+        var bookCallBtn = document.getElementById('bookCallBtn');   
+        var bookOption  = document.getElementsByName('bookOption');   
+        var userNam     = document.getElementsByName('impField_Name');   
+        var userNum     = document.getElementsByName('impField_Number');   
+        var bookMessage = document.getElementById('bookMessage');   
+        
+        
         var firstCallCarsFlag = true;
+        var userLoggedIn = false;
         
         
         
@@ -259,6 +257,17 @@
         }
         
         
+        bookCallBtn.onclick = function(){
+            bookMessage.innerHTML = '';
+            if(userLoggedIn){
+            }else{
+                bookMessage.innerHTML = "Please login to enable booking";  
+            }
+        }
+        
+        
+        userTray.onclick = function(){loadUserData();}
+        
         //check if common variable is present or not
         if (typeof Ser_comLoadDat != 'undefined') {
             if(Ser_comLoadDat != 'Nothing to show........Please add some shops'){
@@ -271,10 +280,15 @@
             for (let i in Ser_comLoadDat) {
                 
                 if(Array.isArray(Ser_comLoadDat[i])){
-                    
                     var currentObj = Ser_comLoadDat[i];
-                    for(let k in currentObj){
+                    if(typeof currentObj[0] === 'object'){
+                        for(let k in currentObj){
                         sortFeedCars(currentObj[k],k);
+                        }
+                    }else{
+                        if(currentObj[0]!= "null"){
+                            bookingResponse(currentObj);
+                        }
                     }
                     
                 }else{
@@ -299,18 +313,15 @@
         
         
         function unbindClickListener(){
-            
             $(document).ready(function(){
-	$('li.category').unbind( "click" );
-});
-            
+                $('li.category').unbind( "click" );
+            });
         }
         
         
-        
         function bindClickListener(){
-             var action="click";
-var speed="500";
+            var action="click";
+            var speed="500";
 
             $(document).ready(function(){
 	$('li.category').click(function(){
@@ -327,6 +338,23 @@ var speed="500";
 });
             
         }
+        
+        
+        
+        
+        
+        function bookingResponse(currentObj){
+        
+            bookCallBtn.disabled = true;
+            bookMessage.style.color = 'green';
+            if(currentObj == "whatsApp"){
+                bookMessage.innerHTML = "We will contact you soon for this shop via "+currentObj[0]+" message.";}
+            else{
+                bookMessage.innerHTML = "We will contact you soon for this shop via "+currentObj[0];
+            }
+            
+        }
+        
         
         
         
@@ -364,10 +392,10 @@ var speed="500";
                 if(i == carName){}else{
                     
                     if(i == 'MAIN'){
-                        feedTags(apiframe,partsObj[i].LINK, function(res){});
+                        var mainObjKeys = Object.keys(partsObj[i]);
+                        feedTags(apiframe,partsObj[i][mainObjKeys[0]], function(res){});
                     }else{
                         usableObj[i] = partsObj[i];
- 
                     }
                 }
                 
@@ -566,6 +594,7 @@ var speed="500";
 
 
             function listeToSockets(firebaseUser) {
+                userLoggedIn = true;
                 FireBaseUser = firebaseUser.uid;
                 //listen to changes at specific socket id
                 firebase.database().ref('Channels/Sockets/' + firebaseUser.uid).on('value', function (socketResponse) {
@@ -609,17 +638,18 @@ var speed="500";
 
                     //push access token name and value to the object
 
-                       var userInfoObj = {
-                        Name: ''
-                        , State: ''
-                        , City: ''
-                        , Zipcode: ''
-                        , Address: ''
-                        , Number: ''
-                    }            
-          
-
-                 submitPanel.onclick = function(e){
+                
+            var userInfoObj = {
+                  Name: ''
+                , State: ''
+                , City: ''
+                , Zipcode: ''
+                , Address: ''
+                , Number: ''    
+            }            
+               
+            submitPanel.onclick = function(e){
+                if(userLoggedIn){
                 var submitButton = e.target.parentNode;
                 var thisForm = submitButton.parentNode;
                 for(var i=0;i < thisForm.elements.length; i++){
@@ -646,18 +676,70 @@ var speed="500";
                           
                 userInfoObj[accessToken] = Ser_logUserDat[0][accessToken];
                 if (splitLoginKeys == 'User') {
-                    userInfoObj.Event_Name = "UserData";
+                    userInfoObj.Event_Name = "UserData";   
                 }
                 else {
-                    userInfoObj.Event_Name = "ShopOwnerData";
+                    userInfoObj.Event_Name = "ShopOwnerData";   
                 }
                 firebase.database().ref('Channels/Sockets/' + FireBaseUser).set(userInfoObj);
-                     submitButton.children[0].innerHTML = "Saved";
-                     submitButton.children[0].disabled = true;
-                return false;
-            }             
+                submitButton.children[0].innerHTML = "Saved";   
+                submitButton.children[0].disabled = true;
+                return false;   
+           
+                }
+            }
             
+                   
+            bookCallBtn.onclick = function(){
+                bookMessage.innerHTML = '';
+                if(userLoggedIn){
+                    if(userNam[0].value != "" && userNum[0].value != ""){
+                        bookCallBtn.disabled = true;
+                        sendBooking(bookOption,function(ress){
+                            console.log(ress);
+                            bookMessage.style.color = 'green';
+                            bookMessage.innerHTML = ress;
+                            
+                        });
+                    }else{
+                        bookMessage.innerHTML = "Name/Number: Missing in User Panel";
+                        userTray.style.boxShadow = "2px 2px 15px white";
+                    }
+                }else{
+                    bookMessage.innerHTML = "Please login to enable booking";  
+                }
+            }
+            
+            
+            function sendBooking(bookOption,callback){
+                
+                var curPath = window.location.pathname;
+                var splitCurPath = curPath.split('/');
+                var userBookObj = {
+                    Dynamic_Url : splitCurPath[2],
+                }
+                userBookObj[accessToken] = Ser_logUserDat[0][accessToken];
+                for(var l in bookOption){
+                    if(bookOption[l].checked){               
+                        userBookObj['Book_Option'] = bookOption[l].value;
+                    }
+                }
+                if (splitLoginKeys == 'User') {
+                    userBookObj.Event_Name = "UserData";
+                    userBookObj.Event_Name2 = "UserDataBook";
+                    
+                }
+                else {
+                    userBookObj.Event_Name = "ShopOwnerData";   
+                    userBookObj.Event_Name2 = "ShopOwnerDataBook";   
+                }
+                
+                firebase.database().ref('Channels/Sockets/' + FireBaseUser).set(userBookObj);
+                callback("Booked.We will contact you soon for your requirements on behalf of this shop");
+            }    
         }
+        
+        
     </script>
 </body>
 
