@@ -33,7 +33,7 @@
     "passport": "*",
     "passport-google-oauth2": "*",
     "mime-types": "*",
-      "node-uuid":"*",
+      "uuid":"*",
       "coffeescript":"*",
     "path": "*",
     "mysql": "*",
