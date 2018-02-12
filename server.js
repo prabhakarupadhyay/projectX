@@ -185,11 +185,11 @@ var pool = mysql.createPool(options);
 */
 
 var pool = mysql.createPool({
-  host     : process.env.OPENSHIFT_MYSQL_DB_HOST,
-  user     : process.env.OPENSHIFT_MYSQL_DB_USERNAME,
-  password : process.env.OPENSHIFT_MYSQL_DB_PASSWORD,
-  port     : process.env.OPENSHIFT_MYSQL_DB_PORT,
-  database : process.env.OPENSHIFT_APP_NAME,
+  host     : "mysql",
+  user     : "modsfusion",
+  password : "nadhukar123",
+  port     : "3306",
+  database : "database",
     connectionLimit : 500
     });
             
