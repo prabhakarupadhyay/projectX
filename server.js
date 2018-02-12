@@ -8,7 +8,7 @@ var express = require('express');
 var app = express();
 var server = require("http").Server(app);
 var fs = require("fs");
-var mime = require("mime");
+var mime = require("mime-types");
 var async = require("async");
 var path = require("path");
 var mysql = require("mysql");
@@ -138,13 +138,8 @@ var htmlFiles = ['./public/index.html','./public/private/secretWindow/adminpanel
  select between openshift or local port
 *
 */
-var server_port = process.env.PORT || 8080;
-var server_ip_address = 'localhost';
-
-if(typeof server_ip_address ==='undefined'){
-    server_ip_address = '127.0.0.1';
-}
-
+var server_port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
+var server_ip_address = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 
 
 /*
@@ -190,11 +185,11 @@ var pool = mysql.createPool(options);
 */
 
 var pool = mysql.createPool({
-    host:     'localhost',
-    user:     'root',
-    password: 'nadhukar123',
-    port:     '3306',
-    database: 'database3',
+  host     : process.env.OPENSHIFT_MYSQL_DB_HOST,
+  user     : process.env.OPENSHIFT_MYSQL_DB_USERNAME,
+  password : process.env.OPENSHIFT_MYSQL_DB_PASSWORD,
+  port     : process.env.OPENSHIFT_MYSQL_DB_PORT,
+  database : process.env.OPENSHIFT_APP_NAME,
     connectionLimit : 500
     });
             
@@ -471,7 +466,7 @@ function isLoggedIn(req, res, next) {
 
 
 
-server.listen(server_port,function () {
+server.listen(server_port,server_ip_address,function () {
     console.log( "Listening on server_port " + server_port );
 });
 
