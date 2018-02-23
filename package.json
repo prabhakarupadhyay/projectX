@@ -32,7 +32,7 @@
     "serve-favicon": "*",
     "passport": "*",
     "passport-google-oauth2": "*",
-    "mime": "*",
+    "mime-types": "*",
     "path": "*",
     "mysql": "*",
     "cheerio": "*",

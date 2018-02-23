@@ -1,7 +1,7 @@
 var myserver = require('./server.js');
 var operations = require("./lib/operations.js");
-var origUser = 'ki';
-var origPass = 'ka';
+var origUser = 'myStartup';
+var origPass = 'amazonKaBaap';
 
 
 exports.auth = function(req,res,absPath,pool){
