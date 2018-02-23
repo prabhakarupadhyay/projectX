@@ -443,6 +443,7 @@ app.get('/auth/google/callback',
                     successRedirect : '/',
                     failureRedirect : '/'
             }),function(err,user){
+    if(err){console.error("thissssssssssssssssssss errrrrrrrr      " + err)}else{console.debug("debuggggg         "+user);}
 });
 
 
@@ -463,6 +464,7 @@ app.use( function( error, request, response, next ) {
         return next();
     }
    Error404(response);
+    console.debug("404 executeddddddddddd   "+   error);
 });
 
 
