@@ -436,7 +436,9 @@ app.get('/about', function (req, res) {
 
 //approvalPrompt : 'force'
 app.get('/auth/google',
-   passport.authenticate('google', { successRedirect: '/',accessType: 'offline',scope : ['profile', 'email']}));
+   passport.authenticate('google', { successRedirect: '/',accessType: 'offline',scope:
+    [ 'https://www.googleapis.com/auth/plus.login',
+  	  'https://www.googleapis.com/auth/plus.profile.emails.read']}));
 
 /*scope:
     [ 'https://www.googleapis.com/auth/plus.login',
