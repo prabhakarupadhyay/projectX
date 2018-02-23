@@ -41,9 +41,7 @@
     "googleapis": "*",
     "passport-oauth2-refresh": "*",
     "@google-cloud/datastore": "*",
-    "@google-cloud/storage": "*",
-    "@google-cloud/trace-agent": "*",
-    "@google-cloud/debug-agent": "*"
+    "@google-cloud/storage": "*"
   },
    "devDependencies": {
     "@google-cloud/nodejs-repo-tools": "1.4.15",

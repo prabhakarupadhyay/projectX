@@ -27,12 +27,6 @@ var MemcachedStore = require('connect-memcached')(session);
 const Storage = require('@google-cloud/storage');
 const Datastore = require('@google-cloud/datastore');
 
-// Activate Google Cloud Trace and Debug when in production
-if (process.env.NODE_ENV === 'production') {
-  require('@google-cloud/trace-agent').start();
-  require('@google-cloud/debug-agent').start();
-}
-
 
 
 /*
