@@ -13,7 +13,6 @@
     <style>
         body {
             font-size: 25px;
-            font-variant: small-caps;
             font-family: sans-serif serif;
         }
         
@@ -93,6 +92,9 @@
         <br> Number:
         <br>
         <input type="text" id="Number">
+        <br> Website:
+        <br>
+        Add http://<input type="text" id="Website">
         <br> Email:
         <br>
         <input type="text" id="Email">
@@ -145,8 +147,36 @@
       </form>
       
             <br><br><br>
+  
+      <form id="Company_Phone">
+        <h2>Add Company Phone no(at the footer)</h2>Number:
+        <br>
+        <input type="text" id="companyNumber">          
+        <br>
+        <input type="button" id="submit6" value="Submit6">             
+      </form>
       
-    
+
+
+      
+      <br><br><br>
+                
+      <form id="completedBook">
+        <h2>COMPLETED BOOKING</h2>Email:
+        <br>
+        <input type="text" id="Booking_Email">
+        <br> Email Key Name(type User/Shop):
+        <br>
+        <input type="text" id="Email_Key_Name">
+        <br>Shop Name(copy paste from getDetails)
+        <br>
+        <input type="text" id="Shop_Name">
+                    <br>
+        <input type="button" id="submit5" value="Submit5">             
+      </form> 
+      
+      <br><br><br>
+      
         <h2>GET BOOKING INFO</h2>
           <br>
         <input type="button" id="submit4" value="Get Details">   
@@ -199,6 +229,9 @@
         var submit2 = document.getElementById("submit2");
         var submit3 = document.getElementById("submit3");
         var submit4 = document.getElementById("submit4");
+        var submit5 = document.getElementById("submit5");
+        var submit6 = document.getElementById("submit6");
+    
         var postForm = document.getElementById("postForm");
         var form1 = document.getElementById("form1");
         
@@ -284,6 +317,7 @@
                              Name : "auto Marg",
                              Address : "malvya nagar 41",
                              Number : "908080808",
+                             Website : "www.modsfusion.com",
                              Email : 'AutoMarg@gmail.com',
                              Lat : '28.592834',
                              Lon : '77.813809',
@@ -294,7 +328,6 @@
         submit.onclick = function(e){
             
             var thisForm = e.target.parentNode;
-            
             for(var i=0;i < thisForm.elements.length; i++){
                 if(thisForm.elements[i].tagName == 'INPUT' || thisForm.elements[i].tagName == 'TEXTAREA'){
                      if(thisForm.elements[i].type != 'button'){
@@ -308,6 +341,61 @@
             }
             firebase.database().ref('Channels/AdminSockets').set(shopInfo);
         }
+        
+        
+        
+        submit5.onclick = function(e){
+            
+            var bookingInfos = {  
+                Event_Name:"bookingDone",
+                Booking_Email:"",
+                Email_Key_Name:"",
+                Shop_Name:""   
+            }
+               
+            var thisForm = e.target.parentNode;
+            for(var i=0;i < thisForm.elements.length; i++){
+                if(thisForm.elements[i].tagName == 'INPUT' || thisForm.elements[i].tagName == 'TEXTAREA'){
+                     if(thisForm.elements[i].type != 'button'){
+                         for(var j in bookingInfos){
+                             if(j == thisForm.elements[i].id){
+                                 bookingInfos[j] = thisForm.elements[i].value;   
+                             }   
+                         }               
+                     }
+                }                
+            }
+            firebase.database().ref('Channels/AdminSockets').set(bookingInfos);
+        }      
+        
+        
+        
+        
+        submit6.onclick = function(e){
+            
+            var myCompanyNumber = {  
+                Event_Name:"AddCompNumber",
+                companyNumber:"", 
+            }
+               
+            var thisForm = e.target.parentNode;
+            for(var i=0;i < thisForm.elements.length; i++){
+                if(thisForm.elements[i].tagName == 'INPUT' || thisForm.elements[i].tagName == 'TEXTAREA'){
+                     if(thisForm.elements[i].type != 'button'){
+                         for(var j in myCompanyNumber){
+                             if(j == thisForm.elements[i].id){
+                                 myCompanyNumber[j] = thisForm.elements[i].value;   
+                             }   
+                         }               
+                     }
+                }                
+            }
+            firebase.database().ref('Channels/AdminSockets').set(myCompanyNumber);
+        }   
+              
+        
+      
+    
         
         
         

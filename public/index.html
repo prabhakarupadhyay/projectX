@@ -2,8 +2,20 @@
 <html>
 
 <head>
+   <!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-114307696-1', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+    
     <link rel="shortcut icon" type="image/png" href="./assets/images/favicon.png">
-    <title>Home</title>
+    <title>ModsFusion</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,16 +24,29 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/home.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/navbar+footer.css">
-    <link href="https://fonts.googleapis.com/css?family=Rajdhani|Crushed" rel="stylesheet"> </head>
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani|Crushed" rel="stylesheet">
+    <script src="//twemoji.maxcdn.com/twemoji.min.js"></script>
+    </head>
 
 <body>
+    
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&autoLogAppEvents=1&version=v2.12&appId=1945744309045122';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <!-- Top NavBar -->
     <nav class="navbar navbar-toggleable-md">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
         <div class="container">
             <div class="col-4">
-                <a class="navbar-brand" href="http://modsfusion-modsfusion.193b.starter-ca-central-1.openshiftapps.com/"><img src="./assets/images/modsfuseLogo.png"></a>
+                <a class="navbar-brand" href="http://modsfusion.com"><img src="./assets/images/modsfuseLogo.png"></a>
             </div>
             <div class="col-4"> </div>
             <div class="col-4 nav-right text-right" id="UserView">
@@ -37,14 +62,12 @@
                     <ol class="carousel-indicators">
                         <li data-slide-to="0" data-target="#carousel-example-captions"></li>
                         <li data-slide-to="1" data-target="#carousel-example-captions" class=""></li>
-                        <li data-slide-to="2" data-target="#carousel-example-captions" class=""></li>
                         <li data-slide-to="3" data-target="#carousel-example-captions" class=""></li>
                     </ol>
                     <div role="listbox" class="carousel-inner">
-                        <div class="carousel-item active"> <img class="d-block img-fluid" src="./assets/images/index/slide0.png" alt="First slide"> </div>
-                        <div class="carousel-item" role="listbox"> <img class="d-block img-fluid" src="./assets/images/index/slide1.png" alt="Second slide"> </div>
-                        <div class="carousel-item" role="listbox"> <img class="d-block img-fluid" src="./assets/images/index/slide2.png" alt="Third slide"> </div>
-                        <div class="carousel-item" role="listbox"> <img class="d-block img-fluid" src="./assets/images/index/slide3.png" alt="Fourth Image"> </div>
+                        <div class="carousel-item active"> <img class="d-block img-fluid" src="./assets/images/index/slide_0.jpg" alt="First slide"> </div>
+                        <div class="carousel-item" role="listbox"> <img class="d-block img-fluid" src="./assets/images/index/slide_2.jpg" alt="Second slide"> </div>
+                        <div class="carousel-item" role="listbox"> <img class="d-block img-fluid" src="./assets/images/index/slide_3.jpg" alt="Fourth Image"> </div>
                     </div>
                     <a data-slide="prev" role="button" href="#carousel-example-captions" class="left carousel-control"> <span aria-hidden="true" class="icon-prev"></span> <span class="sr-only">Previous</span> </a>
                     <a data-slide="next" role="button" href="#carousel-example-captions" class="right carousel-control"> <span aria-hidden="true" class="icon-next"></span> <span class="sr-only">Next</span> </a>
@@ -62,9 +85,8 @@
                         </div>
                     </div>
                     <div class = "sub-banner">
-                        <img src="./assets/images/modsfuseLogo.png" width="40%" height="40%">
-                        <h2 class="slogan"><b>YOU DEMAND,WE CUSTOMISE</b></h2>
-                        <p class="intro">Mods Fusion is the first online 3d customisation hub affiliated with the top customisation shops and private organizations currently providing you with the best car customization deals in town all around the Delhi NCR region.</p>
+                        <h2 class="slogan"><b><span style="color:#00bbff">YOU DEMAND</span>,<span style="color:#923A9B">WE CUSTOMISE</span></b></h2>
+                        <p class="intro" style="color:#282725">Mods Fusion is India's first online modification hub partnered with the top customisation shops and private organizations currently providing you with the best car modification shops in town all around the Delhi region.We are currently in a test phase hence most of the architecture is under constructed.We welcome every single review, criticism😉 and recommendations provided by our users to help grow this community on our social pages linked below.More shops will be listed soon.</p>
                         <a href="/locationSearch"><button type="button" class="btn btn-lg btn1">Get Started</button></a>
                     </div>
                 </div>
@@ -76,33 +98,28 @@
             <div class="row">
                 <div class="col-md-4 col-sm-6 footerleft ">
                     <div class="logofooter"><img src="./assets/images/modsfuseLogo.png" style="height: 65px; width: 200px;"></div>
-                    <p>Contact Us for any queries or investments - </p>
-                    <p><i class="fa fa-map-pin"></i> Adress - not available</p>
-                    <p><i class="fa fa-phone"></i> Phone (India) : not available</p>
+                    <p>Contact Us via Call/WhatsApp for any modification demands or queries - </p>
+                    <p><i class="fa fa-phone"></i> <span>Phone/whatsapp : </span><span id="companyNumber">not available</span></p>
                     <p><i class="fa fa-envelope"></i> E-mail : 1developer.mail@gmail.com</p>
                 </div>
                 <div class="col-md-2 col-sm-6 paddingtop-bottom">
-                    <h6 class="heading7">GENERAL LINKS</h6>
+                    <h6 class="heading7">TWITTER FEED</h6>
                     <ul class="footer-ul">
-                        <li><a href="#"> Privacy Policy</a></li>
-                        <li><a href="#"> Terms &amp; Conditions</a></li>
-                        <li><a href="#"> Return Policy</a></li>
-                        <li><a href="#"> Frequently Ask Questions</a></li>
+                        <li><a class="twitter-timeline" data-height="200" data-theme="light" href="https://twitter.com/mods_fusion?ref_src=twsrc%5Etfw">Tweets by mods_fusion</a> </li>
                     </ul>
                 </div>
                 <div class="col-md-3 col-sm-6 paddingtop-bottom">
-                    <h6 class="heading7">LATEST POST</h6>
+                    <h6 class="heading7">LATEST FB POST</h6>
                     <div class="post">
-                        <p>Some Post Data<span>March 13,2017</span></p>
-                        <p>Some Post Data<span>March 13,2017</span></p>
-                        <p>Some Post Data<span>March 13,2017</span></p>
+                        <div class="fb-page" data-href="https://www.facebook.com/modsfusion/" data-tabs="timeline" data-height="200" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/modsfusion/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/modsfusion/">Mods Fusion</a></blockquote></div>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6 paddingtop-bottom">
                     <h6 class="heading7">SOCIAL MEDIA</h6>
                     <blockquote class="blockquote">
-                        <blockquote cite="https://www.facebook.com/facebook"><a href="https://www.facebook.com/onedeveloper.1">Facebook</a></blockquote>
-                        <blockquote cite="https://twitter.com/mods_fusion"><a href="https://www.twitter.com/">Twitter</a></blockquote>
+                        <blockquote cite="https://www.facebook.com/modsfusion"><a href="https://www.facebook.com/modsfusion/" style="color:#57aee3">Facebook</a></blockquote>
+                        <blockquote cite="https://twitter.com/mods_fusion"><a href="https://twitter.com/mods_fusion" style="color:#57aee3">Twitter</a></blockquote>
+                        <p style="font-size:16px"><a href="https://www.facebook.com/onedeveloper.1" style="color:#c71ce0;">Follow the journey of an entrepreneur</a></p>
                     </blockquote>
                 </div>
             </div>
@@ -113,17 +130,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <p>© 2017 - All Rights with Project X</p>
-                </div>
-                <div class="col-md-6">
-                    <ul class="bottom_ul">
-                        <li><a href="http://enactus.org/">projectx.org</a></li>
-                        <li><a href="#">About us</a></li>
-                        <li><a href="">Blog</a></li>
-                        <li><a href="#">Faq's</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">Site Map</a></li>
-                    </ul>
+                    <p>© 2017-2018 Mods Fusion</p>
                 </div>
             </div>
         </div>

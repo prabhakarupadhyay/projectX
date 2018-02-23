@@ -17,7 +17,7 @@ ul,li{
 }
 
 .faq li.category{
-	background: linear-gradient(#0b1829, #193561);
+	background: #57aee3;
 	font-weight:bold;
 	cursor: pointer;
     font-family: Lato;
@@ -33,7 +33,7 @@ ul,li{
 
 .model
 {
-    background: #193561 !important;
+    background: #4d9bb7 !important;
     margin-bottom: 2px; 
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;

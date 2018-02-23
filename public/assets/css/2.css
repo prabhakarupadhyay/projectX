@@ -6,15 +6,15 @@ html
 }
 body
 {
-    background:linear-gradient(#184088,#19325b,#0b1829,#19325b,#184088);
+/*    background: linear-gradient(#0b1829, white);*/
+    background: #e5e4e3;
     overflow-x: hidden;
 }
 
 .main-content {
     top: 5px;
     padding: 0;
-    background: linear-gradient(black, #0e1f3b);
-    min-height: 600px;
+    background: #36393a;
     text-align: center;
     vertical-align: middle;
     color: white;
@@ -24,18 +24,18 @@ body
 
 .main-content h1 {
     font-family: 'Crushed', cursive;
-    background: linear-gradient(#0b1829, #193561);
+    background: #57aee3;
     margin: 0 0 30px 0;
 }
 
 form {
-    background: linear-gradient(#0b1829, #193561);
+    background: #262623;
     padding: 20px;
     margin-bottom: 100px;
 }
 
 form .btn {
-    background: #0275d8;
+    background: #57aee3;
     color: white;
     transition: all 0.7s ease;
     -o-transition: all 0.7s ease;
@@ -46,16 +46,16 @@ form .btn {
 form .btn:hover,
 form .btn:active {
     cursor: pointer;
-    background: rgba(10, 42, 91, 1);
+    background: #317B93;
 }
 
 .form-control {
-    background: #0275d8;
+    background: #57aee3;
     color: white;
 }
 
 .form-control:focus {
-    background: rgba(10, 42, 91, 1);
+    background: #317B93;
     color: white;
 }
 

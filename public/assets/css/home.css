@@ -12,7 +12,8 @@
 .btn1
 {
     font-variant: small-caps;
-    background:rgba(0,42, 91, 1);
+    background:#4d9bb7;
+    border: 1px solid #262623;
     color: aliceblue;
     cursor: pointer;
 }
@@ -21,14 +22,14 @@
 {
     font-family: 'Rajdhani', sans-serif;
     border: none;
-    background: linear-gradient(#0b1829, #143369);
+    background: linear-gradient(#0b1829, white);
 }
-
+/*linear-gradient(#0b1829, #143369);*/
 .sub-banner
 {
     padding-top: 50px; 
     padding-bottom: 50px; 
-    background-image: url(/assets/images/bkground2.jpg);
+    background-image: url(/assets/images/bkground3.jpg);
     background-repeat: no-repeat;
     background-position: left;
     background-size: cover;
@@ -61,7 +62,7 @@
 .featured h1
 {
     font-family: 'Crushed', cursive;
-    background: linear-gradient(#0b1829, #193561);
+    background: #57aee3;
     width: 100%;
     padding: 10px;
     margin-bottom: 30px;
@@ -69,7 +70,7 @@
 
 .card
 {
-    background: #0275d8;
+    background: #57aee3;
     display: table;
     margin: 2px auto;
 }
@@ -81,7 +82,7 @@
 
 .card-header
 {
-    background: rgba(1,1,1,0.7);
+    background: #4d9bb7;
     font-size: 25px;
 }
 
@@ -94,6 +95,8 @@
 .carousel-inner
 {
     background:linear-gradient(#0b1829,#19325b,#184088);
+    background:-webkit-linear-gradient(#0b1829,#19325b,#184088);
+    background:-moz-linear-gradient(#0b1829,#19325b,#184088);
 }
 
 .carousel-item img
@@ -118,6 +121,9 @@
     position: absolute;
   opacity: 0;
   transition: opacity .75s ease-in-out;
+  transition: opacity .75s ease-in-out;
+  -webkit-transition: opacity .75s ease-in-out;
+  -moz-transition: opacity .75s ease-in-out;
 }
 .carousel-fade .carousel-item.active {
   opacity: 1;

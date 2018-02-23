@@ -13,22 +13,39 @@ ga('create', 'UA-114307696-1', 'auto');
 ga('send', 'pageview');
 </script>
 <!-- End Google Analytics -->
-    <link rel="shortcut icon" type="image/png" href="/websiteAssets/favicon.png">
-    <title>ModsFusion</title>
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+    <title>Mods Fusion</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="./assets/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="./assets/css/2.css">
-    <link rel="stylesheet" type="text/css" href="./assets/css/navbar+footer.css">
-    <link rel="stylesheet" type="text/css" href="./assets/css/notif.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/accslider.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/dynamicPage.css">
+        <link rel="stylesheet" type="text/css" href="./assets/css/notif.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/userPanel.css">
-    <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet"> </head>
-    
+    <link rel="stylesheet" type="text/css" href="./assets/css/navbar+footer.css">
+    <link rel = "stylesheet" type = "text/css" href = "./assets/dist/css/lightbox.min.css">
+    <!--Fonts-->
+    <link rel="stylesheet" type="text/css" href="./assets/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani|Lato" rel="stylesheet">
+    <!-- Insert this script -->
+    <script type="text/javascript" src="https://static.sketchfab.com/api/sketchfab-viewer-1.0.1.js"></script>
+</head>
+
 <body>
+    
+        <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&autoLogAppEvents=1&version=v2.12&appId=1945744309045122';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    
+    
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <!-- Top NavBar -->
     <nav class="navbar navbar-toggleable-md">
@@ -44,33 +61,73 @@ ga('send', 'pageview');
         </div>
     </nav>
     <div class="container main-content">
-        <h1> SEARCH </h1>
-        <div class="row">
-            <div class="col-2"></div>
-            <div class="col-8">
-                <form action="/searchShops" method="get" onsubmit="return geocode(this);">
-                    <div class="form-group" id="location-form">
-                        <label for="location" class="col-form-label">Enter Your Location: </label>
-                        <div class="row">
-                            <div class="col-9">
-                                <p id="out"></p>
-                                <input class="form-control" type="text" value="enter your location" id="location"> </div>
-                            <div class="col-2" style="padding-top: 15px;">
-                                <button class="btn" onclick="geoFindMe(); return false;"><i class="fa fa-dot-circle-o" aria-hidden="true"></i></button>
-                            </div>         
-                            <div class="col-md-11" style="padding-top: 15px;">
-                                <button type="submit" class="btn" id="search"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                <input type="text" name="latitude" id="latitude" value="" hidden="true">
-                                <input type="text" name="longitude" id="longitude" value="" hidden="true">
+        <div>
+            <div class="container-fluid" style="width: 100%; font-family: Rajdhani;">
+                <p style="text-align: center;">
+                <strong style="font-size:2em;">ABOUT </strong></p>  
+            </div>           
+            
+            <div class="container-fluid" style="font-family: Rajdhani; text-align: left">
+                <div class="row-1">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-15 col-12">
+                        <div class="row" id="dynamicAlloc">
+                            <div class=" col-7 col-md-6">  
+                                <div id="oval1"><p>Mods Fusion is India's first online modification hub partnered with the top customisation shops and private organizations.</p></div>
+                            </div>
+                            <div class=" col-5 col-md-6">
+                                <img src="./assets/images/about/partnered.png" alt="Smiley face" height="100" width="100">
                             </div>
                         </div>
+                        <br>
                     </div>
-                </form>
+                </div>
+                <div class="row-2">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-15 col-12">
+                        <div class="row" id="dynamicAlloc">
+                            <div class=" col-5 col-md-6">
+                                <img src="./assets/images/about/carShops.png" alt="Smiley face" height="100" width="100">
+                            </div>
+                            <div class=" col-7 col-md-6">  
+                                <div id="oval1"><p>We provide you the best car modification shops in town all around the Delhi region.</p></div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+                <div class="row-2">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-15 col-12">
+                        <div class="row" id="dynamicAlloc">
+                            <div class=" col-7 col-md-6">  
+                                <div id="oval1"><p>We are currently in a test phase hence most of the architecture is under constructed.We welcome every single review, criticism😉 and recommendations provided by our users to help grow this community on our social pages linked below.</p></div>
+                            </div>                            
+                            <div class=" col-5 col-md-6">
+                                <img src="./assets/images/about/feedback.png" alt="Smiley face" height="100" width="100">
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+                <div class="row-2">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-15 col-12">
+                        <div class="row" id="dynamicAlloc">
+                            <div class=" col-5 col-md-6">
+                                <img src="./assets/images/about/shopList.png" alt="Smiley face" height="100" width="100">
+                            </div>                            
+                            <div class=" col-7 col-md-6">  
+                                <div id="oval1"><p>More shops will be listed as we move further.You can provide us the contact details of any shop that needs to be listed on our facebook/twitter page.</p></div>
+                            </div>                            
+                        </div>
+                        <br>
+                    </div>
+                </div>
             </div>
-            <div class="col-2"></div>
         </div>
-    </div>
-    <!-- USER PANEL -->
+        
+        <!-- USER PANEL -->
     <div class="modal fade" id="UserPanel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content user">
@@ -117,23 +174,66 @@ ga('send', 'pageview');
             </div>
         </div>
     </div>
-    <!--USER PANEL ENDS-->
-    <!-- NOTIFICATION -->
-    <div class="modal fade" id="Notification" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content notif">
-                <div class="modal-header notif-head">
-                    <h5 class="m-title">NOTIFICATIONS</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body notif-body">
-                    <div class="container noty-holder">
-                        <div class="alert alert-read alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> No Notification </div>
+        <!--USER PANEL ENDS-->
+        <!-- NOTIFICATION -->
+        <div class="modal fade" id="Notification" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content notif">
+                    <div class="modal-header notif-head">
+                        <h5 class="m-title">NOTIFICATIONS</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                    </div>
+                    <div class="modal-body notif-body">
+                        <div class="container noty-holder">
+                            <div class="alert alert-read alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <strong>Holy guacamole!</strong> No Notification </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer notif-foot">
+                        <button type="button" class="btn" data-dismiss="modal">Close</button>
                     </div>
                 </div>
-                <div class="modal-footer notif-foot">
-                    <button type="button" class="btn" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 footerleft ">
+                    <div class="logofooter"><img src="./assets/images/modsfuseLogo.png" style="height: 65px; width: 200px;"></div>
+                    <p>Contact Us via Call/WhatsApp for any modification demands or queries - </p>
+                    <p><i class="fa fa-phone"></i> <span>Phone/whatsapp : </span><span id="companyNumber">not available</span></p>
+                    <p><i class="fa fa-envelope"></i> E-mail : 1developer.mail@gmail.com</p>
+                </div>
+                <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                    <h6 class="heading7">TWITTER FEED</h6>
+                    <ul class="footer-ul">
+                        <li><a class="twitter-timeline" data-height="200" data-theme="light" href="https://twitter.com/mods_fusion?ref_src=twsrc%5Etfw">Tweets by mods_fusion</a> </li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                    <h6 class="heading7">LATEST FB POST</h6>
+                    <div class="post">
+                        <div class="fb-page" data-href="https://www.facebook.com/modsfusion/" data-tabs="timeline" data-height="200" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/modsfusion/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/modsfusion/">Mods Fusion</a></blockquote></div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                    <h6 class="heading7">SOCIAL MEDIA</h6>
+                    <blockquote class="blockquote">
+                        <blockquote cite="https://www.facebook.com/modsfusion"><a href="https://www.facebook.com/modsfusion/" style="color:#57aee3">Facebook</a></blockquote>
+                        <blockquote cite="https://twitter.com/mods_fusion"><a href="https://twitter.com/mods_fusion" style="color:#57aee3">Twitter</a></blockquote>
+                        <p style="font-size:16px"><a href="https://www.facebook.com/onedeveloper.1" style="color:#c71ce0;">Follow the journey of an entrepreneur</a></p>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--Footer2-->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>© 2017-2018 Mods Fusion</p>
                 </div>
             </div>
         </div>
@@ -150,52 +250,85 @@ ga('send', 'pageview');
             <ul class="nav nav-pills nav-stacked col-md-1">
                 <li class="nav-item active"> <a class="nav-link" href="http://modsfusion.com/">HOME</a> </li>
                 <li class="nav-item"> <a class="nav-link" href="#">SHOPS</a> </li>
-                <li class="nav-item"> <a class="nav-link" href="#">SEARCH</a> </li>
-                <li class="nav-item"> <a class="nav-link" href="/about">ABOUT</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="/locationSearch">SEARCH</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#">ABOUT</a> </li>
             </ul>
         </div>
     </nav>
     <!-- bottom nav -->
-
     <!-- Scripts -->
-    <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyC9xurRiTwaVtktWTYIvvyd2v8Nk5B2uD8&ver=3.exp"></script>
     <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
     <!--firebase-->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./assets/js/jquery-3.1.1.min.js"></script>
     <!--jquery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <!--tether-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <!--bootstrap-->
+    <script type="text/javascript" src="./assets/js/dynamicPage.js"></script>
     <script src="./assets/js/notif.js"></script>
-    <script src="./assets/js/2.js"></script>
- <script id="modifiable">
-     
-     
-     var userTray = document.getElementById('userTray');
-     var submitPanel = document.getElementById('submitPanel');
-     var formPanel = document.getElementById('formPanel');
-    
-     
-        //***For Testing*** var Ser_logUserDat = [{"User_Email_Name": "Science Maniac","User_Picture":"./assets/images/user.jpg"}]
+    <script src="./assets/js/accslider.js" id="partsSlider"></script>
+    <script src = "./assets/dist/js/lightbox-plus-jquery.min.js"></script>
+    <script id="modifiable">
+        
+        var userTray    = document.getElementById('userTray');
+        var submitPanel = document.getElementById('submitPanel');
+        var formPanel   = document.getElementById('formPanel');   
+        
+        
+        var firstCallCarsFlag = true;
+        var userLoggedIn = false;
+        
+        
+        userTray.onclick = function(){loadUserData();}
+        
+        
+        
+        function unbindClickListener(){
+            $(document).ready(function(){
+                $('li.category').unbind( "click" );
+            });
+        }
+        
+        
+        function bindClickListener(){
+            var action="click";
+            var speed="500";
+
+            $(document).ready(function(){
+	$('li.category').click(function(){
+		$(this).next()
+			.slideToggle(speed)
+				.siblings('li.sub-category')
+					.slideUp();
+		var img = $(this).children('img');
+		//Remove the 'rotate' class except the active 
+		$('img').not(img).removeClass('rotate');
+		//Toggle rotate class
+		img.toggleClass('rotate');
+	});
+});
+            
+        }
+        
+        
+            //***For Testing*** var Ser_logUserDat = [{"User_Email_Name": "Science Maniac","User_Picture":"./assets/images/user.jpg"}]
         if (typeof Ser_logUserDat != 'undefined') {
             executeLogUserFunc();
             loadUserData();
-        }     
-     
-     
-        userTray.onclick = function(){loadUserData();}
-        
+        }
+
         function loadUserData() {
-            
             var userview = document.getElementById('UserView');
-            var username = Ser_logUserDat[0]["User_Email_Name"];
-            var userpic = Ser_logUserDat[0]["User_Picture"];
-            var shopname = Ser_logUserDat[0]["Shop_User_Email_Name"];
-            var shoppic = Ser_logUserDat[0]["Shop_User_Picture"];
-            userview.innerHTML = '<img class = "userpic" src = ' + (userpic || shoppic) + '>';        
-            userview.innerHTML += '<h1 class = "username">' + (username || shopname) +'</h1>'; 
-            userTray.style.visibility = "visible";
+                
+                var username = Ser_logUserDat[0]["User_Email_Name"];
+                var userpic = Ser_logUserDat[0]["User_Picture"];
+                var shopname = Ser_logUserDat[0]["Shop_User_Email_Name"];
+                var shoppic = Ser_logUserDat[0]["Shop_User_Picture"];
+                userview.innerHTML = '<img class = "userpic" src = ' + (userpic || shoppic) + '>';
+                userview.innerHTML += '<h1 class = "username">' + (username || shopname) +'</h1>';
+            
+                userTray.style.visibility = "visible";
             
             if(Ser_logUserDat[1] != undefined){
                 
@@ -220,9 +353,11 @@ ga('send', 'pageview');
                         }
                     }                
                 } 
-            }
+            }            
+            
         }
 
+        
         function executeLogUserFunc() {
             var getLoginKeys = Object.keys(Ser_logUserDat[0]);
             var splitLoginKeys = getLoginKeys[0].split('_')[0];
@@ -263,8 +398,10 @@ ga('send', 'pageview');
                 }
             });
 
+
             function listeToSockets(firebaseUser) {
-                 FireBaseUser = firebaseUser.uid;
+                userLoggedIn = true;
+                FireBaseUser = firebaseUser.uid;
                 //listen to changes at specific socket id
                 firebase.database().ref('Channels/Sockets/' + firebaseUser.uid).on('value', function (socketResponse) {
                     //delete id_token in database once the user is logged in
@@ -280,6 +417,7 @@ ga('send', 'pageview');
                 });
             }
 
+            
             function delIdToken(firebaseUser, keyName, keyValue, keyNameToDelete) {
                 var makeObj = {
                         Event_Name: "deleteTokValue"
@@ -288,6 +426,7 @@ ga('send', 'pageview');
                     //pass data to server at specific socket id(different for every user) to delete id_token(not to be confused with accessToken)
                 firebase.database().ref('Channels/Sockets/' + firebaseUser.uid).set(makeObj);
             }
+            
 
             function isUserEqual(firebaseUser) {
                 if (firebaseUser) {
@@ -302,21 +441,21 @@ ga('send', 'pageview');
                 }
                 return false;
             }
-            
 
                     //push access token name and value to the object
 
-                       var userInfoObj = {
-                        Name: ''
-                        , State: ''
-                        , City: ''
-                        , Zipcode: ''
-                        , Address: ''
-                        , Number: ''
-                    }            
-          
-
-                 submitPanel.onclick = function(e){
+                
+            var userInfoObj = {
+                  Name: ''
+                , State: ''
+                , City: ''
+                , Zipcode: ''
+                , Address: ''
+                , Number: ''    
+            }            
+               
+            submitPanel.onclick = function(e){
+                if(userLoggedIn){
                 var submitButton = e.target.parentNode;
                 var thisForm = submitButton.parentNode;
                 for(var i=0;i < thisForm.elements.length; i++){
@@ -343,17 +482,22 @@ ga('send', 'pageview');
                           
                 userInfoObj[accessToken] = Ser_logUserDat[0][accessToken];
                 if (splitLoginKeys == 'User') {
-                    userInfoObj.Event_Name = "UserData";
+                    userInfoObj.Event_Name = "UserData";   
                 }
                 else {
-                    userInfoObj.Event_Name = "ShopOwnerData";
+                    userInfoObj.Event_Name = "ShopOwnerData";   
                 }
                 firebase.database().ref('Channels/Sockets/' + FireBaseUser).set(userInfoObj);
-                     submitButton.children[0].innerHTML = "Saved";
-                     submitButton.children[0].disabled = true;
-                return false;
-            } 
+                submitButton.children[0].innerHTML = "Saved";   
+                submitButton.children[0].disabled = true;
+                return false;   
+           
+                }
+            }
+               
         }
+        
+        
     </script>
 </body>
 

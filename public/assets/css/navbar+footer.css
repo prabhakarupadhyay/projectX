@@ -10,7 +10,7 @@
 
 .navbar
 {
-    background: #002a5b;
+    background: #262623;
     padding-top, padding-bottom:10px;
     
 }
@@ -49,7 +49,7 @@
 .navbottom
 {
     
-    background: rgb(2, 117, 216);
+    background: #57aee3;
     padding: 0px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -65,7 +65,7 @@
 }
 
 .navbottom-link:hover {
-    background:  rgba(0,42, 91, 0.8);
+    background:  #57aee3;
     width: 100px;
     text-align: center;
     color: white;
@@ -74,7 +74,7 @@
 /* Footer */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
 footer { 
-	background: linear-gradient(#0b1829, #0e1f3b);
+	background: #262623;
 	min-height:350px; 
 	font-family: 'Open Sans', sans-serif;
 	margin-bottom: 0;
@@ -123,6 +123,8 @@ footer {
 .footer-ul li a { 
 	color:#a0a3a4; 
 	transition: color 0.2s linear 0s, background 0.2s linear 0s; 
+	-webkit-transition: color 0.2s linear 0s, background 0.2s linear 0s; 
+	-moz-transition: color 0.2s linear 0s, background 0.2s linear 0s; 
 }
 
 .footer-ul i { 
@@ -139,6 +141,7 @@ footer {
      -moz-transform: scale(1.1);
      -o-transform: scale(1.1);
  }
+
 
 footer .blockquote a, footer .blockquote a:hover
 {
@@ -165,8 +168,8 @@ footer .blockquote a, footer .blockquote a:hover
  
  .copyright { 
     border-top: 1px solid lightblue;
- 	min-height:40px; 
- 	background-color:#002a5b;
+ 	min-height:100px; 
+ 	background-color:black;
  	margin-bottom: 0;
  }
  
@@ -219,7 +222,7 @@ footer .blockquote a, footer .blockquote a:hover
 }
 
 .navbottom-right a, .navbottom-left a{
-    background: #002a5b;
+    background: #262623;
     text-decoration: none;
     color: white !important;
     margin: 0px;
@@ -228,6 +231,9 @@ footer .blockquote a, footer .blockquote a:hover
     font-size: 20px;
     cursor: pointer;
     transition: background 0.5s;
+    -webkit-transition: background 0.5s;
+    transition: background 0.5s;
+    -moz-transition: background 0.5s;
 }
 
 .navbottom-right a:hover, .navbottom-left a:hover{

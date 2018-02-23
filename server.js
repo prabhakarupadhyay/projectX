@@ -8,7 +8,7 @@ var express = require('express');
 var app = express();
 var server = require("http").Server(app);
 var fs = require("fs");
-var mime = require("mime-types");
+var mime = require("mime");
 var async = require("async");
 var path = require("path");
 var mysql = require("mysql");
@@ -120,6 +120,8 @@ global.exportProcessUrl;
 global.eventEmit = new events.EventEmitter();
 eventEmit.setMaxListeners(100);
 global.requestNormalWait = true;
+global.companyName = '';
+global.companyNameValue = '';
 
 /*
  *
@@ -130,7 +132,7 @@ global.requestNormalWait = true;
 var cache = {};
 //var dirName = __dirname + "/public";
 
-var htmlFiles = ['./public/index.html','./public/private/secretWindow/adminpanel.html','./public/dynamicPagee.html','./public/2.html','./public/3.html']
+var htmlFiles = ['./public/index.html','./public/private/secretWindow/adminpanel.html','./public/dynamicPagee.html','./public/2.html','./public/3.html','./public/about.html']
 
 
 /*
@@ -138,8 +140,12 @@ var htmlFiles = ['./public/index.html','./public/private/secretWindow/adminpanel
  select between openshift or local port
 *
 */
-var server_port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
-var server_ip_address = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+var server_port = process.env.PORT || 8080;
+var server_ip_address = 'localhost';
+
+if(typeof server_ip_address ==='undefined'){
+    server_ip_address = '127.0.0.1';
+}
 
 
 /*
@@ -149,7 +155,7 @@ var server_ip_address = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '
 */
 
 //global sql 
-/*
+
 var options = {
 
   client: process.env.SQL_CLIENT,
@@ -159,7 +165,6 @@ var options = {
     
 }
 
-*/
 
 
 //local cloud sql connection via proxy
@@ -173,7 +178,7 @@ var options = {
 //    
 //}
 
-/*
+
 if (process.env.INSTANCE_CONNECTION_NAME && process.env.NODE_ENV === 'production') {
     if (process.env.SQL_CLIENT === 'mysql') {
 
@@ -182,17 +187,18 @@ if (process.env.INSTANCE_CONNECTION_NAME && process.env.NODE_ENV === 'production
 }
 
 var pool = mysql.createPool(options);
-*/
 
-var pool = mysql.createPool({
-  host     : "mysql",
-  user     : "modsfusion",
-  password : "nadhukar123",
-  port     : "3306",
-  database : "database",
-    connectionLimit : 500
-    });
-            
+
+//var pool = mysql.createPool({
+//    host:     'localhost',
+//    user:     'root',
+//    password: 'nadhukar123',
+//    port:     '3306',
+//    database: 'database3',
+//    connectionLimit : 500
+//    });
+//            
+
 
 /*
  *
@@ -200,21 +206,21 @@ var pool = mysql.createPool({
 *
 */
 //global bucket
-//var cloudBucket = process.env.CLOUD_BUCKET;
-//var storage = Storage({
-//  projectId: process.env.PROJECT_ID,
-//    keyFilename: "./MyFirstProject-34650eef0b12.json"
-//});
-//var bucket = storage.bucket(cloudBucket);
-
-
-//local connection with the cloud storage
-var cloudBucket = 'titanium-flash-171510.appspot.com';
+var cloudBucket = process.env.CLOUD_BUCKET;
 var storage = Storage({
-  projectId: 'titanium-flash-171510',
+  projectId: process.env.PROJECT_ID,
     keyFilename: "./MyFirstProject-34650eef0b12.json"
 });
 var bucket = storage.bucket(cloudBucket);
+
+
+//local connection with the cloud storage
+//var cloudBucket = 'titanium-flash-171510.appspot.com';
+//var storage = Storage({
+//  projectId: 'titanium-flash-171510',
+//    keyFilename: "./MyFirstProject-34650eef0b12.json"
+//});
+//var bucket = storage.bucket(cloudBucket);
 
 
 /*
@@ -224,17 +230,17 @@ var bucket = storage.bucket(cloudBucket);
 */
 
 //global datastore
-//var datastore = Datastore({
-//  projectId: process.env.PROJECT_ID,
-//    keyFilename: "./MyFirstProject-34650eef0b12.json"
-//});
-
-
 var datastore = Datastore({
-  projectId: 'titanium-flash-171510',
+  projectId: process.env.PROJECT_ID,
     keyFilename: "./MyFirstProject-34650eef0b12.json"
 });
 
+
+//var datastore = Datastore({
+//  projectId: 'titanium-flash-171510',
+//    keyFilename: "./MyFirstProject-34650eef0b12.json"
+//});
+//
 
 
 /*
@@ -412,7 +418,18 @@ app.get('/searchShops', function (req, res) {
         }
     });
 });
+app.get('/about', function (req, res) {
 
+    var absPath =  htmlFiles[5];
+    operations.sortPageName(htmlFiles[5],function(pgName){
+        if(pgName != undefined){
+           
+            operations.loadPageAboutDat(pool,pgName,req,function(pageData){
+                exportProcessUrl(res,absPath,pageData); 
+            });
+        }
+    });
+});
 
 
 
@@ -466,7 +483,7 @@ function isLoggedIn(req, res, next) {
 
 
 
-server.listen(server_port,server_ip_address,function () {
+server.listen(server_port,function () {
     console.log( "Listening on server_port " + server_port );
 });
 

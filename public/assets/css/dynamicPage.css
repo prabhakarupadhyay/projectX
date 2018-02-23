@@ -9,23 +9,25 @@ html
 }
 body
 {
-    background:linear-gradient(#184088,#19325b,#0b1829,#19325b,#184088);
+   background:#e5e4e3;
     overflow-x: hidden;
+    background-repeat:no-repeat;
 }
 
 .main-content {
     top: 5px;
     padding: 0;
     padding-top: 20px;
-    background: linear-gradient(black, #0e1f3b);
+    background: #36393a;
     vertical-align: middle;
     color: white;
     padding-bottom: 50px;
+    margin-bottom: 10px;
 }
 
 .main-content h1 {
     font-family: 'Crushed', cursive;
-    background: linear-gradient(#0b1829, #193561);
+    background: #57aee3;
     margin: 0 0 30px 0;
     text-align: center;
 }
@@ -48,18 +50,22 @@ body
 .carousel-control-prev
 {
     background: linear-gradient(90deg, rgba(1,1,1,1), rgba(1,1,1,0));
+    background: -webkit-linear-gradient(90deg, rgba(1,1,1,1), rgba(1,1,1,0));
+    background: -moz-linear-gradient(90deg, rgba(1,1,1,1), rgba(1,1,1,0));
 }
 
 .carousel-control-next
 {
     background: linear-gradient(-90deg, rgba(1,1,1,1), rgba(1,1,1,0));
+    background: -webkit-linear-gradient(-90deg, rgba(1,1,1,1), rgba(1,1,1,0));
+    background: -moz-linear-gradient(-90deg, rgba(1,1,1,1), rgba(1,1,1,0));
 }
 /*Carousel Ends*/
 .dock
 {
     list-style: none;
     width: 100%;
-    background: linear-gradient(-90deg,#0b1829, #193561); 
+    background: #57aee3; 
     height: 48px;
     padding: 0px;
 }
@@ -69,7 +75,9 @@ body
     display: inline;
     float: left;
     padding: 10px 20px;
-    background: linear-gradient(90deg,#0b1829, #193561);
+    background: linear-gradient(90deg,#317B93, #57aee3);
+    background: -webkit-linear-gradient(90deg,#317B93, #57aee3);
+    background: -moz-linear-gradient(90deg,#317B93, #57aee3);
     margin: 2px;
     margin-right: 0px;
 }
@@ -82,7 +90,7 @@ body
 }
 
 .btn {
-    background: #0275d8;
+    background: #4d9bb7;
     color: white;
     transition: all 0.7s ease;
     -o-transition: all 0.7s ease;
@@ -94,5 +102,17 @@ body
 .btn:hover,
 .btn:active {
     cursor: pointer;
-    background: rgba(10, 42, 91, 1);
+    background: #317B93;
+}
+
+
+
+
+#oval1{
+
+	background: #646d73;
+    color : white;
+	border-radius: 10px;
+    padding: 10px;
+    
 }

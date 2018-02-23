@@ -2,8 +2,19 @@
 <html>
 
 <head>
+       <!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-114307696-1', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
     <link rel="shortcut icon" type="image/png" href="/websiteAssets/favicon.png">
-    <title>Shop Listing</title>
+    <title>Mods Fusion</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,16 +28,30 @@
     <link href="https://fonts.googleapis.com/css?family=Merienda|Yellowtail|Rajdhani" rel="stylesheet"> </head>
 
 <body>
+    
+        <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&autoLogAppEvents=1&version=v2.12&appId=1945744309045122';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    
+    
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <!-- Top NavBar -->
     <nav class="navbar navbar-toggleable-md">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
         <div class="container">
             <div class="col-4">
-                <a class="navbar-brand" href="http://modsfusion-modsfusion.193b.starter-ca-central-1.openshiftapps.com/"><img src="./assets/images/modsfuseLogo.png"></a>
+                <a class="navbar-brand" href="http://modsfusion.com"><img src="./assets/images/modsfuseLogo.png"></a>
             </div>
             <div class="col-4"> </div>
-            <div class="col-4 nav-right text-right" id = "UserView"> <a href="/auth/google"><img height = "50px" src = "assets/images/gsignin.png"></a> </div>
+            <div class="col-4 nav-right text-right" id="UserView">
+                <a href="/auth/google"><img height="50px" src="./assets/images/gsignin.png"></a>
+            </div>
         </div>
     </nav>
     <div class="container main-content">
@@ -80,6 +105,48 @@
             </div>
         </div>
     </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 footerleft ">
+                    <div class="logofooter"><img src="./assets/images/modsfuseLogo.png" style="height: 65px; width: 200px;"></div>
+                    <p>Contact Us via Call/WhatsApp for any modification demands or queries - </p>
+                    <p><i class="fa fa-phone"></i> <span>Phone/whatsapp : </span><span id="companyNumber">not available</span></p>
+                    <p><i class="fa fa-envelope"></i> E-mail : 1developer.mail@gmail.com</p>
+                </div>
+                <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                    <h6 class="heading7">TWITTER FEED</h6>
+                    <ul class="footer-ul">
+                        <li><a class="twitter-timeline" data-height="200" data-theme="light" href="https://twitter.com/mods_fusion?ref_src=twsrc%5Etfw">Tweets by mods_fusion</a> </li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                    <h6 class="heading7">LATEST FB POST</h6>
+                    <div class="post">
+                        <div class="fb-page" data-href="https://www.facebook.com/modsfusion/" data-tabs="timeline" data-height="200" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/modsfusion/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/modsfusion/">Mods Fusion</a></blockquote></div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                    <h6 class="heading7">SOCIAL MEDIA</h6>
+                    <blockquote class="blockquote">
+                        <blockquote cite="https://www.facebook.com/modsfusion"><a href="https://www.facebook.com/modsfusion/" style="color:#57aee3">Facebook</a></blockquote>
+                        <blockquote cite="https://twitter.com/mods_fusion"><a href="https://twitter.com/mods_fusion" style="color:#57aee3">Twitter</a></blockquote>
+                        <p style="font-size:16px"><a href="https://www.facebook.com/onedeveloper.1" style="color:#c71ce0;">Follow the journey of an entrepreneur</a></p>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--Footer2-->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>© 2017-2018 Mods Fusion</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- USER PANEL -->
     <div class="modal fade" id="UserPanel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -102,10 +169,10 @@
                                 <input type="text" class="form-control userinput" id="State" placeholder="" maxlength="50"> </div>
                             <label for="city" class="col-2 userlabel">City: </label>
                             <div class="col-2">
-                                <input type="text" class="form-control userinput" id="City" placeholder=""maxlength="100"> </div>
+                                <input type="text" class="form-control userinput" id="City" placeholder="" maxlength="100"> </div>
                             <label for="state" class="col-2 userlabel">Zip-Code: </label>
                             <div class="col-2">
-                                <input type="number" class="form-control userinput" id="Zipcode" placeholder=""maxlength="20"> </div>
+                                <input type="number" class="form-control userinput" id="Zipcode" placeholder="" maxlength="20"> </div>
                         </div>
                         <div class="form-group row">
                             <label for="address" class="col-2 userlabel">Address: </label>
@@ -152,18 +219,18 @@
     <!-- bottom nav -->
     <div class="navbottom-content container"> </div>
     <nav class="navbar navbar-toggleable-md fixed-bottom container navbottom">
-        <div class="col-4 navbottom-left"> <a id="userTray" data-toggle="modal" data-target="#UserPanel" style="visibility:hidden;"><i class="fa fa-user" aria-hidden="true"></i></a>
-            <h3 class="userIcon">User Panel</h3></div>
-        <div class="col-4">
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav">
-                    <li class="nav-item active"> <a class="nav-link navbottom-link" href="http://modsfusion-modsfusion.193b.starter-ca-central-1.openshiftapps.com/">Home</a> </li>
-                    <li class="nav-item"> <a class="nav-link navbottom-link" href="#">About</a> </li>
-                    <li class="nav-item"> <a class="nav-link navbottom-link" href="#">Shop</a> </li>
-                </ul>
-            </div>
+        <div class="col-4"> 
+            <a id="userTray" data-toggle="modal" data-target="#UserPanel" style="visibility:hidden;"><i class="fa fa-user" aria-hidden="true"></i></a>
+        <a data-toggle="modal" data-target="#Notification"><i class="fa fa-bell" aria-hidden="true"></i></a>
         </div>
-        <div class="col-4 navbottom-right" style="text-align: right"> <a data-toggle="modal" data-target="#Notification"><i class="fa fa-bell" aria-hidden="true"></i></a> </div>
+        <div class="col-4">
+            <ul class="nav nav-pills nav-stacked col-md-1">
+                <li class="nav-item active"> <a class="nav-link" href="http://modsfusion.com/">HOME</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#">SHOPS</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="/locationSearch">SEARCH</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="/about">ABOUT</a> </li>
+            </ul>
+        </div>
     </nav>
     <!-- bottom nav -->
     <!-- Scripts -->
@@ -303,7 +370,8 @@
                 callback(currentTag);
             }
             else if (currentTag.tagName == 'A') {
-                var createWebUrl = document.location.origin + '/' + 'dynamicShop' + '/' + tagValue
+                var urlSplit = window.location.href.split('/');
+                var createWebUrl = document.location.origin+'/'+'dynamicShop'+'/'+urlSplit[urlSplit.length-1]+'/'+ tagValue;
                 currentTag.setAttribute('href', createWebUrl);
                 callback(currentTag);
             }
