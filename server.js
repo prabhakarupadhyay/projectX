@@ -126,7 +126,7 @@ global.companyNameValue = '';
 var cache = {};
 //var dirName = __dirname + "/public";
 
-var htmlFiles = ['./public/index.html','./public/private/secretWindow/adminpanel.html','./public/dynamicPagee.html','./public/2.html','./public/3.html','./public/about.html']
+var htmlFiles = ['./public/index.html','./public/private/secretWindow/adminpanel.html','./public/dynamicPagee.html','./public/2.html','./public/3.html','./public/about.html','./public/privacypolicy.html']
 
 
 /*
@@ -215,7 +215,7 @@ var bucket = storage.bucket(cloudBucket);
 //    keyFilename: "./MyFirstProject-34650eef0b12.json"
 //});
 //var bucket = storage.bucket(cloudBucket);
-
+//
 
 /*
  *
@@ -234,7 +234,7 @@ var datastore = Datastore({
 //  projectId: 'titanium-flash-171510',
 //    keyFilename: "./MyFirstProject-34650eef0b12.json"
 //});
-//
+
 
 
 /*
@@ -412,6 +412,8 @@ app.get('/searchShops', function (req, res) {
         }
     });
 });
+
+
 app.get('/about', function (req, res) {
 
     var absPath =  htmlFiles[5];
@@ -425,6 +427,18 @@ app.get('/about', function (req, res) {
     });
 });
 
+app.get('/privacy', function (req, res) {
+
+    var absPath =  htmlFiles[6];
+    operations.sortPageName(htmlFiles[6],function(pgName){
+        if(pgName != undefined){
+           
+            operations.loadPagePrivacy(pool,pgName,req,function(pageData){
+                exportProcessUrl(res,absPath,pageData); 
+            });
+        }
+    });
+});
 
 
 
@@ -437,14 +451,27 @@ app.get('/auth/google',
 /*scope:
     [ 'https://www.googleapis.com/auth/plus.login',
   	  'https://www.googleapis.com/auth/plus.profile.emails.read']*/
+
+
 app.get('/auth/google/callback',
-        
-        passport.authenticate('google', {
-                    successRedirect : '/',
-                    failureRedirect : '/'
-            }),function(err,user){
-    if(err){console.error("thissssssssssssssssssss errrrrrrrr      " + err)}else{console.debug("debuggggg         "+user);}
-});
+  passport.authenticate('google'), // complete the authenticate using the google strategy
+  (err, req, res, next) => { // custom error handler to catch any errors, such as TokenError
+    if (err.name === 'TokenError') {
+        console.log(err);
+        console.log(res);        
+     res.redirect('http://modsfusion.com'); // redirect them back to the login page
+
+    } else {
+     // Handle other errors here
+        console.log(err);
+        console.log(res);
+    }
+  },
+  (req, res) => { // On success, redirect back to '/'
+    res.redirect('http://modsfusion.com');
+  }
+);
+
 
 
 app.get('/mysecretwindow', function(req, res) {
@@ -463,8 +490,15 @@ app.use( function( error, request, response, next ) {
     if(!error) {
         return next();
     }
+    
+        console.log("error");
+    console.log("error");
+    console.log("error");
+    console.log("error");
+    console.log(error);
+    console.log(response);
+    console.log(request);
    Error404(response);
-    console.debug("404 executeddddddddddd   "+   error);
 });
 
 
