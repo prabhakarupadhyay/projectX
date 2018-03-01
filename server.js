@@ -62,9 +62,9 @@ var sessionConfig = {
 };
 
 
-if (process.env.NODE_ENV === 'production' && process.env.MEMCACHE_URL) {
+if (process.env.NODE_ENV === 'production') {
   sessionConfig.store = new MemcachedStore({
-    hosts: [process.env.MEMCACHE_URL]
+    hosts: 'memcached-14696.c1.us-central1-2.gce.cloud.redislabs.com:14696'
   });
 }
 
@@ -77,6 +77,18 @@ express middlewares
 *
 */
 app.set('trust proxy', true);
+//app.enable('trust proxy');
+//
+//
+//app.use (function (req, res, next) {
+//    if (req.secure) {
+//        // request was via https, so do no special handling
+//        next();
+//    } else {
+//        // request was via http, so redirect to https
+//        res.redirect('https://' + req.headers.host + req.url);    
+//    }
+//});
 
 //app.set('views', path.join(__dirname, 'views'));
 //app.set('view engine', 'jade');
@@ -134,12 +146,8 @@ var htmlFiles = ['./public/index.html','./public/private/secretWindow/adminpanel
  select between openshift or local port
 *
 */
-var server_port = process.env.PORT || 8080;
-var server_ip_address = 'localhost';
-
-if(typeof server_ip_address ==='undefined'){
-    server_ip_address = '127.0.0.1';
-}
+var server_port = process.env.PORT || 3000;
+var server_ip_address = process.env.IP || '127.0.0.1';
 
 
 /*
@@ -150,14 +158,14 @@ if(typeof server_ip_address ==='undefined'){
 
 //global sql 
 
-var options = {
-
-  client: process.env.SQL_CLIENT,
-  user: process.env.SQL_USER,
-  password: process.env.SQL_PASSWORD,
-  database:  process.env.SQL_DATABASE
-    
-}
+//var options = {
+//
+//  client: process.env.SQL_CLIENT,
+//  user: process.env.SQL_USER,
+//  password: process.env.SQL_PASSWORD,
+//  database:  process.env.SQL_DATABASE
+//    
+//}
 
 
 
@@ -173,25 +181,18 @@ var options = {
 //}
 
 
-if (process.env.INSTANCE_CONNECTION_NAME && process.env.NODE_ENV === 'production') {
-    if (process.env.SQL_CLIENT === 'mysql') {
+//if (process.env.INSTANCE_CONNECTION_NAME && process.env.NODE_ENV === 'production') {
+//    if (process.env.SQL_CLIENT === 'mysql') {
+//
+//        options.socketPath = `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`;
+//    }
+//}
+//
+//var pool = mysql.createPool(options);
+//
 
-        options.socketPath = `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`;
-    }
-}
-
-var pool = mysql.createPool(options);
-
-
-//var pool = mysql.createPool({
-//    host:     'localhost',
-//    user:     'root',
-//    password: 'nadhukar123',
-//    port:     '3306',
-//    database: 'database3',
-//    connectionLimit : 500
-//    });
-//            
+var pool = mysql.createPool(config.mysql);
+            
 
 
 /*
@@ -200,22 +201,22 @@ var pool = mysql.createPool(options);
 *
 */
 //global bucket
-var cloudBucket = process.env.CLOUD_BUCKET;
+//var cloudBucket = process.env.CLOUD_BUCKET;
+//var storage = Storage({
+//  projectId: process.env.PROJECT_ID,
+//    keyFilename: "./MyFirstProject-34650eef0b12.json"
+//});
+//var bucket = storage.bucket(cloudBucket);
+
+
+//local connection with the cloud storage
+var cloudBucket = 'titanium-flash-171510.appspot.com';
 var storage = Storage({
-  projectId: process.env.PROJECT_ID,
+  projectId: 'titanium-flash-171510',
     keyFilename: "./MyFirstProject-34650eef0b12.json"
 });
 var bucket = storage.bucket(cloudBucket);
 
-
-//local connection with the cloud storage
-//var cloudBucket = 'titanium-flash-171510.appspot.com';
-//var storage = Storage({
-//  projectId: 'titanium-flash-171510',
-//    keyFilename: "./MyFirstProject-34650eef0b12.json"
-//});
-//var bucket = storage.bucket(cloudBucket);
-//
 
 /*
  *
@@ -224,16 +225,16 @@ var bucket = storage.bucket(cloudBucket);
 */
 
 //global datastore
-var datastore = Datastore({
-  projectId: process.env.PROJECT_ID,
-    keyFilename: "./MyFirstProject-34650eef0b12.json"
-});
-
-
 //var datastore = Datastore({
-//  projectId: 'titanium-flash-171510',
+//  projectId: process.env.PROJECT_ID,
 //    keyFilename: "./MyFirstProject-34650eef0b12.json"
 //});
+
+
+var datastore = Datastore({
+  projectId: 'titanium-flash-171510',
+    keyFilename: "./MyFirstProject-34650eef0b12.json"
+});
 
 
 
@@ -277,6 +278,7 @@ passportOauth.init(pool,passport,config,GoogleStrategy);
 
 readHtml.readAll(htmlFiles);
 firebaseHandler.listen(fireDatabase,pool,datastore,bucket);
+
 
 var myLogger = function (req, res, next) {
     setHead(res);
@@ -444,34 +446,18 @@ app.get('/privacy', function (req, res) {
 
 //approvalPrompt : 'force'
 app.get('/auth/google',
-   passport.authenticate('google', { successRedirect: '/',accessType: 'offline',scope:
+   passport.authenticate('google', { accessType: 'offline',scope:
     [ 'https://www.googleapis.com/auth/plus.login',
   	  'https://www.googleapis.com/auth/plus.profile.emails.read']}));
 
 /*scope:
     [ 'https://www.googleapis.com/auth/plus.login',
   	  'https://www.googleapis.com/auth/plus.profile.emails.read']*/
-
-
-app.get('/auth/google/callback',
-  passport.authenticate('google'), // complete the authenticate using the google strategy
-  (err, req, res, next) => { // custom error handler to catch any errors, such as TokenError
-    if (err.name === 'TokenError') {
-        console.log(err);
-        console.log(res);        
-     res.redirect('http://modsfusion.com'); // redirect them back to the login page
-
-    } else {
-     // Handle other errors here
-        console.log(err);
-        console.log(res);
-    }
-  },
-  (req, res) => { // On success, redirect back to '/'
-    res.redirect('http://modsfusion.com');
-  }
-);
-
+app.get('/auth/google/callback',passport.authenticate('google', {failureRedirect : '/'}),function(req,res){
+    
+    res.writeHead(303, {'Location': '/'});    
+    res.end();
+});
 
 
 app.get('/mysecretwindow', function(req, res) {
@@ -490,14 +476,6 @@ app.use( function( error, request, response, next ) {
     if(!error) {
         return next();
     }
-    
-        console.log("error");
-    console.log("error");
-    console.log("error");
-    console.log("error");
-    console.log(error);
-    console.log(response);
-    console.log(request);
    Error404(response);
 });
 
@@ -515,7 +493,7 @@ function isLoggedIn(req, res, next) {
 
 
 
-server.listen(server_port,function () {
+server.listen(server_port,server_ip_address,function () {
     console.log( "Listening on server_port " + server_port );
 });
 

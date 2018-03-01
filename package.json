@@ -32,6 +32,7 @@
     "serve-favicon": "*",
     "passport": "*",
     "passport-google-oauth2": "*",
+    "passport-facebook": "*",
     "mime-types": "*",
     "path": "*",
     "mysql": "*",
@@ -63,7 +64,10 @@
           "SQL_PASSWORD",
           "SQL_DATABASE",
           "INSTANCE_CONNECTION_NAME",
-          "MEMCACHE_URL"
+          "MEMCACHE_URL",
+            "MEMCACHE_USERNAME",
+            "MEMCACHE_PASSWORD"
+            
         ],
         "msg": "Last 10 visits:",
         "substitutions": "YOUR_SQL_CLIENT=$SQL_CLIENT,YOUR_USER=$SQL_USER,YOUR_PASSWORD=$SQL_PASSWORD,YOUR_DATABASE=$SQL_DATABASE,YOUR_INSTANCE_CONNECTION_NAME=$INSTANCE_CONNECTION_NAME",
